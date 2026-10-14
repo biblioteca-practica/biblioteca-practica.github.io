@@ -30,86 +30,101 @@
   <link rel="icon" href="assets/luna.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="estilos.css">
   <!-- META PIXEL: pegar aquí el código del píxel de Meta -->
 </head>
 <body>
-  <script>
+<script>
     const LINK_COMPRA = "https://pay.hotmart.com/U108022318D";
+    // VENTA_PAUSADA = true: los botones dicen "Disponible muy pronto" y no llevan a ningún lado.
+    // Para reabrir la venta, poner false.
+    const VENTA_PAUSADA = true;
     document.addEventListener("DOMContentLoaded", () => {
-      if (LINK_COMPRA !== "PEGAR_AQUI_LINK_DE_HOTMART" && LINK_COMPRA.trim()) {
+      if (VENTA_PAUSADA) {
+        document.querySelectorAll(".btn-comprar").forEach(boton => {
+          boton.textContent = "Disponible muy pronto";
+          boton.removeAttribute("href");
+          boton.setAttribute("aria-disabled", "true");
+          boton.style.cursor = "default";
+          boton.style.opacity = "0.75";
+        });
+      } else if (LINK_COMPRA !== "PEGAR_AQUI_LINK_DE_HOTMART" && LINK_COMPRA.trim()) {
         document.querySelectorAll(".btn-comprar").forEach(boton => {
           boton.href = LINK_COMPRA;
         });
       }
+      if (!("IntersectionObserver" in window)) return;
+      const barra = document.querySelector(".sticky-cta");
+      const botonHero = document.querySelector(".hero .btn-comprar");
+      const compra = document.querySelector("#comprar");
+      const movil = window.matchMedia("(max-width: 740px)");
+      let heroVisible = true, compraVisible = false;
+      const actualizar = () => {
+        // La barra empieza solo al pasar el botón; nunca antes de llegar a él.
+        const heroPasado = botonHero.getBoundingClientRect().bottom <= 0;
+        const mostrar = movil.matches && heroPasado && !heroVisible && !compraVisible;
+        barra.hidden = !mostrar;
+        barra.setAttribute("aria-hidden", String(!mostrar));
+      };
+      new IntersectionObserver(([entrada]) => {
+        heroVisible = entrada.isIntersecting;
+        actualizar();
+      }).observe(botonHero);
+      new IntersectionObserver(([entrada]) => {
+        compraVisible = entrada.isIntersecting;
+        actualizar();
+      }).observe(compra);
+      movil.addEventListener("change", actualizar);
+      // También oculta la barra al leer el pie y al volver arriba con el teclado.
+      new IntersectionObserver(([entrada]) => {
+        barra.classList.toggle("footer-visible", entrada.isIntersecting);
+      }).observe(document.querySelector(".site-footer"));
     });
   </script>
-  <a class="skip-link" href="#contenido">Ir al contenido</a>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#inicio" aria-label="21 Noches, inicio"><span class="moon" aria-hidden="true"></span><span>21 <span class="brand-light">Noches</span></span></a>
-      <a class="header-link" href="#muestra">Escucha una muestra <span aria-hidden="true">↗</span></a>
-    </div>
-  </header>
-  <main id="contenido">
-    <section class="hero" id="inicio" aria-labelledby="titulo">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">UN PASO CADA NOCHE</p>
-          <p class="hero-question">¿Te despiertas a las 3 a. m.?</p>
-          <h1 id="titulo">21 Noches <em>para Dormir Profundo</em></h1>
-          <p class="hero-lead">Un plan con audios para dormirte con menos vueltas y saber qué hacer si despiertas de madrugada.</p>
-        </div>
-        <figure class="hero-product">
-          <div class="product-scene">
-            <img class="sleep-photo" src="assets/descanso.webp" width="1000" height="1000" alt="Escena referencial de una mujer descansando en una habitación con luz cálida." fetchpriority="high">
-            <div class="scene-shade" aria-hidden="true"></div>
-            <img class="book-cover" src="assets/portada.webp" width="640" height="960" alt="Portada de 21 Noches para Dormir Profundo.">
-            <span class="scene-label">PDF + 21 audios guiados</span>
-          </div>
-          <figcaption class="visually-hidden">Imagen referencial. Incluye el libro digital, los audios y las hojas prácticas.</figcaption>
-        </figure>
-        <div class="hero-actions">
-          <a class="button btn-comprar" href="#comprar">Quiero empezar · 12 USD <span aria-hidden="true">→</span></a>
-          <p class="purchase-note">Pago único · Acceso inmediato · Garantía de 7 días</p>
-          <a class="text-link sample-link" href="#muestra"><span aria-hidden="true">▶</span> Primero, escucha la voz del Monje</a>
-        </div>
+<a class="skip-link" href="#contenido">Ir al contenido</a>
+<div class="launch-strip">Precio de lanzamiento · <b>12 USD</b> · Pago único</div>
+<header class="site-header"><div class="container header-inner"><a class="brand" href="#inicio" aria-label="21 Noches, inicio"><span class="moon" aria-hidden="true"></span><span>21 <span class="brand-light">Noches</span></span></a><a class="header-link" href="#muestra">Escucha una muestra <span aria-hidden="true">↗</span></a></div></header>
+<main id="contenido">
+<section class="hero" id="inicio" aria-labelledby="titulo"><div class="container hero-grid"><div class="hero-copy">
+  <p class="hero-tag">PROGRAMA DE 21 NOCHES CON AUDIOS</p>
+  <h1 id="titulo">Por fin sabrás qué hacer cuando el <em>sueño no llega</em></h1>
+  <p class="hero-lead">Un paso por noche y un audio de 10 minutos que te guía.</p>
+</div><div class="hero-product"><figure class="product-pack" aria-label="21 Noches para Dormir Profundo: libro digital, audios y hojas">
+      <div class="pack-scene">
+        <img class="pack-book" src="assets/portada.webp" width="640" height="960" fetchpriority="high" alt="Portada real de 21 Noches para Dormir Profundo.">
+        <img class="pack-sheet" src="assets/hoja-ejemplo.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Hoja real de descarga mental, con un ejemplo lleno.">
+        <div class="pack-phone"><span class="phone-speaker" aria-hidden="true"></span><img src="assets/noche-01.webp" width="681" height="1135" loading="eager" decoding="async" alt="Página real de la Noche 1 vista en un marco de celular referencial."></div>
+        <span class="page-seal"><b>182</b><span>páginas</span></span>
+        <div class="pack-audio"><span class="play-circle" aria-hidden="true">▶</span><span><b>21 audios guiados</b><small>Unos 10 min cada uno</small></span><div class="mini-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
+        <div class="pack-card"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg><span>Tarjeta de<br><b>las 3 a. m.</b></span></div>
       </div>
-    </section>
-
-    <div class="facts-strip">
-      <div class="container facts-inner"><span><b>21 noches</b> a tu ritmo</span><span><b>10 min</b> de audio por noche</span><span><b>En tu celular</b> y sin impresora</span></div>
-    </div>
-
-    <section class="section recognition" aria-labelledby="identificacion">
-      <div class="container recognition-grid">
-        <div class="section-intro"><p class="eyebrow">CUANDO APAGAS LA LUZ…</p><h2 id="identificacion">El cuerpo pide descanso.<br><em>La mente sigue despierta.</em></h2><p>Quizá te suena alguna de estas frases.</p></div>
-        <ul class="thoughts">
-          <li>“Tengo mucho cansancio, pero mi cabeza no se calla.”</li>
-          <li>“Miro el reloj y calculo cuántas horas me quedan.”</li>
-          <li>“Me despierto y empiezo a pensar en todo.”</li>
-          <li>“Repaso los pendientes justo cuando quiero descansar.”</li>
-          <li>“Pruebo un consejo, luego otro, y no sé por dónde seguir.”</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section method" aria-labelledby="metodo">
-      <div class="container">
-        <div class="section-heading"><p class="eyebrow">UN CAMINO PARA SEGUIR</p><h2 id="metodo">Esta noche, sabes <em>qué hacer.</em></h2><p>Los consejos sueltos pueden ayudar. Lo difícil es elegir uno y repetirlo. Aquí tienes un orden, un paso concreto y un audio que te acompaña.</p></div>
-        <ol class="steps">
-          <li><span class="step-number">01</span><h3>Lee el paso de hoy</h3><p>Una noche a la vez. Vas directo a la acción, sin leer todo el libro de golpe.</p></li>
-          <li><span class="step-number">02</span><h3>Hazlo a tu manera</h3><p>Tienes ejemplos y hojas simples. Si no puedes imprimir, usa cualquier papel.</p></li>
-          <li><span class="step-number">03</span><h3>Escucha y baja el ritmo</h3><p>Toca el botón del audio en el PDF. La voz serena del Monje te guía, con pausas largas.</p></li>
-        </ol>
-        <p class="method-note">No necesitas una noche perfecta. Si una noche no puedes, retomas la siguiente.</p>
-      </div>
-    </section>
-
-    <section class="section audio-section" id="muestra" aria-labelledby="audio-titulo">
+      <figcaption>21 Noches para Dormir Profundo<span class="visually-hidden">. Composición referencial con portada y páginas reales. Producto digital, sin envío físico.</span></figcaption>
+    </figure></div><div class="hero-actions">
+  <div class="hero-cta"><a class="button btn-comprar" href="#comprar">Empezar hoy · 12 USD <span aria-hidden="true">→</span></a></div>
+  <ul class="trust-row" aria-label="Información de compra">
+    <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg><span>Pago seguro<br>por Hotmart</span></li>
+    <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m13 2-9 12h7l-1 8 10-13h-7Z"/></svg><span>Acceso<br>inmediato</span></li>
+    <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6Z"/><path d="m8 12 3 3 5-6"/></svg><span>Garantía<br>de 7 días</span></li>
+  </ul>
+  <a class="sample-link" href="#muestra"><span aria-hidden="true">▶</span> Escucha 50 segundos del audio 1</a>
+</div></div></section>
+<div class="facts-strip"><div class="container facts-inner"><span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg><b>21 noches</b> a tu ritmo</span><span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="12" width="4" height="8" rx="2"/><rect x="17" y="12" width="4" height="8" rx="2"/></svg><b>10 min</b> de audio</span><span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><b>En tu celular</b> sin impresora</span></div></div>
+<section class="section recognition" aria-labelledby="identificacion"><div class="container recognition-grid">
+  <div><h2 id="identificacion">El cuerpo pide descanso. <em>La mente sigue despierta.</em></h2></div>
+  <ul class="thoughts"><li>“Tengo mucho cansancio, pero mi cabeza no se calla.”</li><li>“Miro el reloj y calculo cuántas horas me quedan.”</li><li>“Me despierto y empiezo a pensar en todo.”</li><li>“Pruebo consejos, pero no sé cuál seguir.”</li></ul>
+</div></section>
+<section class="section benefits" aria-labelledby="beneficios-titulo"><div class="container">
+  <div class="section-heading"><h2 id="beneficios-titulo">En 21 noches, esto es lo que <em>vas a tener.</em></h2></div>
+  <div class="benefits-grid"><article class="benefit-card"><span class="icon-circle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg></span><h3>Tus pendientes al papel</h3><p>Dejas la lista fuera del cuarto.</p></article><article class="benefit-card"><span class="icon-circle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><h3>Elige tu hora ancla</h3><p>Tu horario al despertar.</p></article><article class="benefit-card"><span class="icon-circle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18V7m18 11V9M3 14h18M7 10h3M3 18v3m18-3v3"/><path d="M3 8h18v6"/></svg></span><h3>Un plan para la cama</h3><p>Sabes qué hacer si sigues despierta.</p></article><article class="benefit-card"><span class="icon-circle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="12" width="4" height="8" rx="2"/><rect x="17" y="12" width="4" height="8" rx="2"/></svg></span><h3>10 minutos para soltar</h3><p>Una voz y pausas largas.</p></article><article class="benefit-card"><span class="icon-circle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg></span><h3>Tu plan de madrugada</h3><p>Tu tarjeta, paso a paso.</p></article><article class="benefit-card"><span class="icon-circle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6Z"/><path d="M14 3v5h5M9 12h7M9 16h5"/></svg></span><h3>Tu rutina para seguir</h3><p>Usas lo que te sirvió.</p></article></div>
+  <p class="results-note">Cada persona avanza a su ritmo. Los resultados varían.</p>
+  <ol class="method-strip" aria-label="El método de cada noche"><li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h7a3 3 0 0 1 3 3v14a4 4 0 0 0-3-2H4Z"/><path d="M14 7a3 3 0 0 1 3-3h4v15h-4a4 4 0 0 0-3 2"/></svg><b>1. Lee</b></li><li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6Z"/><path d="M14 3v5h5M9 12h7M9 16h5"/></svg><b>2. Hazlo</b></li><li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="12" width="4" height="8" rx="2"/><rect x="17" y="12" width="4" height="8" rx="2"/></svg><b>3. Escucha</b></li></ol>
+  <p class="basis-note">Basado en técnicas de la terapia cognitivo-conductual para el insomnio (TCC-I). <a href="#base-cientifica">Ver la base y sus límites</a>.</p>
+  <div class="section-cta"><a class="button btn-comprar" href="#comprar">Quiero mis 21 noches <span aria-hidden="true">→</span></a><p class="purchase-note">Pago único · Acceso inmediato</p></div>
+</div></section>
+<section class="section audio-section" id="muestra" aria-labelledby="audio-titulo">
       <div class="container audio-grid">
-        <div><p class="eyebrow">ESCUCHA ANTES DE ELEGIR</p><h2 id="audio-titulo">Una voz tranquila.<br><em>Un momento para ti.</em></h2><p>Escucha los primeros 50 segundos de la noche 1. Así conocerás el tono sereno y las pausas que acompañan cada audio.</p></div>
+        <div><h2 id="audio-titulo">Una voz tranquila. <em>Un momento para ti.</em></h2><p>Escucha 50 segundos de la Noche 1. Conoce su voz tranquila y sus pausas.</p></div>
         <div class="audio-card">
           <div class="audio-card-heading"><span class="audio-icon" aria-hidden="true">♫</span><div><p class="eyebrow">MUESTRA · NOCHE 1</p><h3>Respira y suelta el día</h3></div></div>
           <div class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -117,95 +132,115 @@
             <source src="assets/muestra-noche-01.mp3" type="audio/mpeg">
             Tu navegador no muestra el reproductor. <a href="assets/muestra-noche-01.mp3">Abre la muestra de audio.</a>
           </audio>
-          <p id="audio-ayuda">Toca ▶ para escuchar. Los audios completos duran unos 9–10 minutos. Sin apuro, con espacio para respirar.</p>
+          <p id="audio-ayuda">Toca ▶. Los audios completos duran unos 9–10 minutos, con pausas para respirar.</p>
           <a class="audio-download" href="assets/muestra-noche-01.mp3" download>Descargar la muestra de 50 segundos</a>
         </div>
       </div>
     </section>
-
-    <section class="section includes" id="incluye" aria-labelledby="incluye-titulo">
-      <div class="container">
-        <div class="section-heading"><p class="eyebrow">TODO EN UN MISMO PROGRAMA</p><h2 id="incluye-titulo">Tu pequeño kit <em>para la noche.</em></h2><p>Una guía para preparar el descanso, escuchar y tener un plan a mano cuando lo necesites.</p></div>
-        <div class="includes-grid">
-          <article><span class="item-label">EL CAMINO</span><h3>El libro de 182 páginas</h3><p>PDF con las 21 noches, pasos claros y ejemplos. Lo abres desde tu celular.</p></article>
-          <article><span class="item-label">LA COMPAÑÍA</span><h3>21 audios guiados</h3><p>La voz del Monje, con ritmo lento y pausas largas. Cada noche tiene su botón de audio dentro del PDF.</p></article>
-          <article><span class="item-label">LA PRÁCTICA</span><h3>Hojas para usar</h3><p>Registro de sueño, descarga mental, plan de luz y más. Con ejemplo lleno y versión para hacer a mano.</p></article>
-          <article><span class="item-label">LA MADRUGADA</span><h3>Tu tarjeta de las 3 a. m.</h3><p>Un plan para cuando despiertas de noche. También incluye un apartado para los calores nocturnos.</p></article>
-        </div>
-        <div class="preview-heading"><h3>Mira el libro por dentro</h3><p>Estas son páginas reales del PDF. Toca una imagen para verla en grande.</p></div>
-        <div class="previews">
+<section class="section includes" id="incluye" aria-labelledby="incluye-titulo"><div class="container">
+  <div class="section-heading"><h2 id="incluye-titulo">Tu programa <em>completo.</em></h2><p>Todo digital. Lo abres en tu celular.</p></div>
+  <div class="program-grid">
+    <article class="program-card"><img src="assets/portada.webp" width="640" height="960" loading="lazy" decoding="async" alt="Miniatura de la portada real del libro."><div><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h7a3 3 0 0 1 3 3v14a4 4 0 0 0-3-2H4Z"/><path d="M14 7a3 3 0 0 1 3-3h4v15h-4a4 4 0 0 0-3 2"/></svg><h3>Libro PDF: 182 páginas</h3><p>Las 21 noches, con pasos y ejemplos.</p></div></article>
+    <article class="program-card"><div class="audio-thumbnail" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="12" width="4" height="8" rx="2"/><rect x="17" y="12" width="4" height="8" rx="2"/></svg><b>21</b><span>audios</span></div><div><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="12" width="4" height="8" rx="2"/><rect x="17" y="12" width="4" height="8" rx="2"/></svg><h3>21 audios guiados</h3><p>Unos 10 min. Los botones están dentro del PDF.</p></div></article>
+  </div>
+  <h3 class="extras-title">Incluido sin costo extra</h3>
+  <div class="extras-grid">
+    <article class="extra-card"><span class="extra-ribbon">REGALO 01 · INCLUIDO</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg><h3>Tarjeta de las 3 a. m.</h3><p>Tu plan para cuando despiertas de madrugada.</p></article>
+    <article class="extra-card"><span class="extra-ribbon">REGALO 02 · INCLUIDO</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6Z"/><path d="M14 3v5h5M9 12h7M9 16h5"/></svg><h3>Hojas imprimibles</h3><p>Sueño, descarga mental y luz. Con ejemplo lleno y opción a mano.</p></article>
+    <article class="extra-card"><span class="extra-ribbon">REGALO 03 · INCLUIDO</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1 1m12 12 1 1M5 19l1-1M18 6l1-1"/></svg><h3>Calores nocturnos</h3><p>Pasos si el calor te despierta y cuándo consultar.</p></article>
+  </div>
+  <div class="pack-summary"><figure class="product-pack" aria-label="21 Noches para Dormir Profundo: libro digital, audios y hojas">
+      <div class="pack-scene">
+        <img class="pack-book" src="assets/portada.webp" width="640" height="960" loading="lazy" decoding="async" alt="Portada real de 21 Noches para Dormir Profundo.">
+        <img class="pack-sheet" src="assets/hoja-ejemplo.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Hoja real de descarga mental, con un ejemplo lleno.">
+        <div class="pack-phone"><span class="phone-speaker" aria-hidden="true"></span><img src="assets/noche-01.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Página real de la Noche 1 vista en un marco de celular referencial."></div>
+        <span class="page-seal"><b>182</b><span>páginas</span></span>
+        <div class="pack-audio"><span class="play-circle" aria-hidden="true">▶</span><span><b>21 audios guiados</b><small>Unos 10 min cada uno</small></span><div class="mini-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
+        <div class="pack-card"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg><span>Tarjeta de<br><b>las 3 a. m.</b></span></div>
+      </div>
+      <figcaption>21 Noches para Dormir Profundo<span class="visually-hidden">. Composición referencial con portada y páginas reales. Producto digital, sin envío físico.</span></figcaption>
+    </figure><div><ul class="check-list"><li>Libro PDF de 182 páginas</li><li>21 audios guiados</li><li>Tarjeta de las 3 a. m.</li><li>Hojas imprimibles</li><li>Apartado de calores nocturnos</li></ul><p class="pack-total">Todo por <b>12 USD</b> · pago único</p><div class="pack-cta"><a class="button btn-comprar" href="#comprar">Quiero el pack completo <span aria-hidden="true">→</span></a><p class="purchase-note">Garantía de 7 días por Hotmart</p></div></div></div>
+</div></section>
+<section class="section preview-section" id="por-dentro" aria-labelledby="interior-titulo"><div class="container">
+  <div class="section-heading"><h2 id="interior-titulo">Mira el libro <em>por dentro.</em></h2><p>3 páginas reales. Toca para ampliar.</p></div>
+  <div class="previews">
           <figure><a href="assets/noche-01.webp" target="_blank" rel="noopener" aria-label="Ver en grande la página 7: apertura de la noche 1"><img src="assets/noche-01.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Página 7 del libro: Noche 1, Vacía tu cabeza. Diez minutos, fuera de la cama, audio 1."></a><figcaption><b>Un paso para esta noche</b><span>Apertura de la noche 1 · Página 7</span></figcaption></figure>
           <figure><a href="assets/hoja-ejemplo.webp" target="_blank" rel="noopener" aria-label="Ver en grande la página 11: hoja de descarga mental llena"><img src="assets/hoja-ejemplo.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Página 11 del libro: hoja de descarga mental llena, con pendientes y tres pasos pequeños para mañana."></a><figcaption><b>Un ejemplo ya resuelto</b><span>Hoja de descarga mental · Página 11</span></figcaption></figure>
           <figure><a href="assets/ya-en-la-cama.webp" target="_blank" rel="noopener" aria-label="Ver en grande la página 12: Ya en la cama y botón del audio"><img src="assets/ya-en-la-cama.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Página 12 del libro: Ya en la cama, con el botón Escuchar la noche 1 y un repaso de los pasos."></a><figcaption><b>El audio, a un toque</b><span>Ya en la cama · Página 12</span></figcaption></figure>
         </div>
-      </div>
-    </section>
-
-    <section class="section journey" aria-labelledby="recorrido">
+  <div class="section-cta"><a class="button btn-comprar" href="#comprar">Quiero mis 21 noches <span aria-hidden="true">→</span></a><p class="purchase-note">Pago único · Acceso inmediato</p></div>
+</div></section>
+<section class="section comparison" aria-labelledby="comparacion-titulo"><div class="container">
+  <div class="section-heading"><h2 id="comparacion-titulo">La diferencia no es dormir “perfecto”. Es <em>saber qué hacer.</em></h2></div>
+  <div class="comparison-table"><div class="comparison-row"><p class="without"><span aria-hidden="true">×</span><span><small>Sin un plan</small>Consejos sueltos, sin un orden.</span></p><p class="with"><span aria-hidden="true">✓</span><span><small>Con 21 Noches</small><b>Un paso concreto</b> cada noche.</span></p></div><div class="comparison-row"><p class="without"><span aria-hidden="true">×</span><span><small>Sin un plan</small>Pendientes en la cabeza.</span></p><p class="with"><span aria-hidden="true">✓</span><span><small>Con 21 Noches</small>Los dejas <b>en un papel.</b></span></p></div><div class="comparison-row"><p class="without"><span aria-hidden="true">×</span><span><small>Sin un plan</small>Miras el reloj de madrugada.</span></p><p class="with"><span aria-hidden="true">✓</span><span><small>Con 21 Noches</small>Sigues <b>tu tarjeta</b> de las 3 a. m.</span></p></div><div class="comparison-row"><p class="without"><span aria-hidden="true">×</span><span><small>Sin un plan</small>Das vueltas esperando el sueño.</span></p><p class="with"><span aria-hidden="true">✓</span><span><small>Con 21 Noches</small>Sabes <b>cuándo levantarte</b> y qué hacer.</span></p></div><div class="comparison-row"><p class="without"><span aria-hidden="true">×</span><span><small>Sin un plan</small>A solas con tus pensamientos.</span></p><p class="with"><span aria-hidden="true">✓</span><span><small>Con 21 Noches</small><b>Una voz tranquila</b> te acompaña 10 min.</span></p></div></div>
+  <div class="section-cta"><a class="button btn-comprar" href="#comprar">Empezar esta noche <span aria-hidden="true">→</span></a><p class="purchase-note">Menos de 0,60 USD por noche</p></div>
+</div></section>
+<section class="section journey" aria-labelledby="recorrido"><div class="container">
+  <div class="section-heading"><h2 id="recorrido">Tres semanas. <em>Una noche a la vez.</em></h2></div>
+  <div class="weeks"><article><span>SEMANA 1 · NOCHES 1–7</span><h3>Bajar el ruido</h3><p>Pendientes al papel y horarios claros.</p></article><article><span>SEMANA 2 · NOCHES 8–14</span><h3>La cama, para dormir</h3><p>Soltar la tensión y salir de la espera.</p></article><article><span>SEMANA 3 · NOCHES 15–21</span><h3>Tu plan para seguir</h3><p>Tu plan de madrugada y tu rutina.</p></article></div>
+</div></section>
+<section class="section fit" aria-labelledby="para-quien">
       <div class="container">
-        <div class="section-heading"><p class="eyebrow">TRES SEMANAS, UNA NOCHE A LA VEZ</p><h2 id="recorrido">Del ruido mental <em>a tu propia rutina.</em></h2><p>No tienes que cambiar todo hoy. El programa te lleva paso a paso.</p></div>
-        <div class="weeks">
-          <article class="week"><div class="week-title"><span>01</span><p>SEMANA 1 · NOCHES 1–7</p></div><h3>Bajar el ruido y ordenar el reloj</h3><p>Guardas los pendientes, ordenas tus horarios y preparas tu ritual.</p><ul><li><span>Noche 1</span><b>Vacía tu cabeza</b></li><li><span>Noche 3</span><b>La hora de la preocupación</b></li></ul></article>
-          <article class="week"><div class="week-title"><span>02</span><p>SEMANA 2 · NOCHES 8–14</p></div><h3>Que la cama vuelva a ser para dormir</h3><p>Practicas el control de estímulos y la relajación muscular. Aprendes a soltar la espera.</p><ul><li><span>Noche 8</span><b>La cama es solo para dormir</b></li><li><span>Noche 14</span><b>Deja de perseguir el sueño</b></li></ul></article>
-          <article class="week"><div class="week-title"><span>03</span><p>SEMANA 3 · NOCHES 15–21</p></div><h3>Las noches difíciles y tu plan para siempre</h3><p>Preparas tu plan de madrugada, revisas el cuarto y eliges lo que te sirve.</p><ul><li><span>Noche 15</span><b>Me desperté a las 3 a. m., ¿qué hago?</b></li><li><span>Noche 21</span><b>Tu plan para siempre</b></li></ul></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section evidence" aria-labelledby="respaldo">
-      <div class="container evidence-inner">
-        <div><p class="eyebrow">PRÁCTICAS CON UNA BASE REAL</p><h2 id="respaldo">Basado en técnicas<br><em>con respaldo científico.</em></h2></div>
-        <div><p>El libro adapta prácticas de la terapia cognitivo-conductual para el insomnio y de la higiene del sueño. Incluye descarga mental, hora de la preocupación, control de estímulos, relajación muscular y respiración lenta.</p><p>Es una guía educativa. El respaldo corresponde a las técnicas; no es una prueba de resultados de este ebook ni equivale a recibir terapia.</p>
-          <ul class="source-list">
-            <li><a href="https://pubmed.ncbi.nlm.nih.gov/33164742/" target="_blank" rel="noopener noreferrer">Edinger y colaboradores · AASM, 2021 <span aria-hidden="true">↗</span></a><span>Guía clínica sobre tratamientos conductuales y psicológicos del insomnio.</span></li>
-            <li><a href="https://www.nhs.uk/every-mind-matters/mental-wellbeing-tips/self-help-cbt-techniques/tackling-your-worries/" target="_blank" rel="noopener noreferrer">NHS · Tackling your worries <span aria-hidden="true">↗</span></a><span>Escribir preocupaciones y reservarles un momento del día.</span></li>
-            <li><a href="https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits" target="_blank" rel="noopener noreferrer">NHLBI / NIH · Healthy Sleep Habits <span aria-hidden="true">↗</span></a><span>Hábitos de sueño, horarios y ambiente de descanso.</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section fit" aria-labelledby="para-quien">
-      <div class="container">
-        <div class="section-heading"><p class="eyebrow">ELIGE CON CALMA</p><h2 id="para-quien">¿Es para <em>ti?</em></h2></div>
+        <div class="section-heading"><h2 id="para-quien">¿Es para <em>ti?</em></h2></div>
         <div class="fit-grid">
           <div class="fit-card"><h3>Puede acompañarte si…</h3><ul><li>Eres una persona adulta y quieres ordenar tus hábitos de noche.</li><li>Tu mente repasa pendientes al acostarte.</li><li>Buscas pasos simples y una voz tranquila que te guíe.</li><li>Quieres saber qué hacer cuando despiertas de madrugada.</li></ul></div>
           <div class="fit-card medical-card"><h3>Consulta primero si…</h3><ul><li>Sospechas apnea: roncas fuerte, te ahogas o te dicen que dejas de respirar al dormir.</li><li>El dolor, una enfermedad o los sudores frecuentes cortan tu sueño.</li><li>Duermes mal desde hace meses o el sueño de día afecta tu seguridad.</li></ul><p>Este programa no trata esas causas. Un profesional puede ayudarte a elegir el cuidado adecuado.</p></div>
         </div>
       </div>
     </section>
-
-    <!-- TESTIMONIOS: agregar solo reales y con permiso -->
-
-    <section class="section offer" id="comprar" aria-labelledby="precio-titulo">
-      <div class="container offer-grid">
-        <div class="offer-copy"><p class="eyebrow">TU PROGRAMA COMPLETO</p><h2 id="precio-titulo">Empieza con<br><em>la primera noche.</em></h2><p>El libro, los audios y las hojas prácticas. Todo listo para que sigas el camino a tu ritmo.</p><ul class="offer-list"><li>PDF de 182 páginas con las 21 noches</li><li>21 audios guiados de unos 9–10 minutos</li><li>Hojas con ejemplos y opción de hacerlas a mano</li><li>Tarjeta de las 3 a. m. y apartado de calores nocturnos</li></ul></div>
-        <div class="price-card"><p class="price-label">UN SOLO PAGO</p><p class="price"><span>12</span> USD</p><p class="price-detail">Sin suscripción · Acceso inmediato</p><a class="button btn-comprar" href="#comprar">Quiero el programa · 12 USD <span aria-hidden="true">→</span></a><p class="checkout-note">Compra a través de Hotmart</p><div class="guarantee"><span class="guarantee-number">7</span><div><h3>Días de garantía</h3><p>Si no te sirve, pides tu reembolso dentro de 7 días desde Hotmart.</p></div></div></div>
+<!-- TESTIMONIOS: solo reales y con permiso
+  <section class="section testimonials" aria-labelledby="testimonios-titulo">
+    <div class="container"><h2 id="testimonios-titulo">Experiencias de lectores</h2>
+      <article class="testimonial-card"><blockquote>[Texto real autorizado]</blockquote>
+        <p class="testimonial-author">[Nombre de pila e inicial] · [País]</p>
+      </article>
+    </div>
+  </section>
+-->
+<section class="section start-section" aria-labelledby="empezar-titulo"><div class="container">
+  <div class="section-heading"><h2 id="empezar-titulo">Así de fácil es <em>empezar.</em></h2></div>
+  <ol class="start-steps"><li><span>1</span><div><h3>Tocas el botón y pagas</h3><p>Hotmart procesa tu pago de forma segura.</p></div></li><li><span>2</span><div><h3>Te llega un correo</h3><p>Hotmart te envía el acceso. Revisa también Promociones o Spam.</p></div></li><li><span>3</span><div><h3>Abres la Noche 1</h3><p>En tu celular, abres el PDF y tocas el botón del audio.</p></div></li></ol>
+  <p class="support-note">¿Te trabas en algún paso? Escríbenos desde tu compra en Hotmart (opción «Contactar al productor») y te ayudamos.</p>
+</div></section>
+<section class="section offer" id="comprar" aria-labelledby="precio-titulo"><div class="container offer-grid">
+  <div class="offer-copy"><p class="eyebrow">TU PROGRAMA COMPLETO</p><h2 id="precio-titulo">Empieza con <em>la primera noche.</em></h2><p>El libro, los audios y las hojas prácticas. Sigue el camino a tu ritmo.</p><figure class="product-pack" aria-label="21 Noches para Dormir Profundo: libro digital, audios y hojas">
+      <div class="pack-scene">
+        <img class="pack-book" src="assets/portada.webp" width="640" height="960" loading="lazy" decoding="async" alt="Portada real de 21 Noches para Dormir Profundo.">
+        <img class="pack-sheet" src="assets/hoja-ejemplo.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Hoja real de descarga mental, con un ejemplo lleno.">
+        <div class="pack-phone"><span class="phone-speaker" aria-hidden="true"></span><img src="assets/noche-01.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Página real de la Noche 1 vista en un marco de celular referencial."></div>
+        <span class="page-seal"><b>182</b><span>páginas</span></span>
+        <div class="pack-audio"><span class="play-circle" aria-hidden="true">▶</span><span><b>21 audios guiados</b><small>Unos 10 min cada uno</small></span><div class="mini-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
+        <div class="pack-card"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg><span>Tarjeta de<br><b>las 3 a. m.</b></span></div>
       </div>
-    </section>
-
-    <section class="section faq" aria-labelledby="preguntas">
-      <div class="container faq-grid">
-        <div><p class="eyebrow">ANTES DE EMPEZAR</p><h2 id="preguntas">Resolvemos<br><em>tus dudas.</em></h2><p>Lo necesario para dar el primer paso con tranquilidad.</p></div>
-        <div class="faq-list">
-          <details><summary>¿Cómo recibo el programa?</summary><div><p>Después de que Hotmart confirme tu pago, tienes acceso inmediato al producto digital. Sigue las instrucciones de acceso de Hotmart para abrir o descargar el PDF. Los botones dentro del libro abren los audios.</p></div></details>
-          <details><summary>¿Puedo usarlo en mi celular?</summary><div><p>Sí. El PDF está pensado para leerse en el celular. Abre la noche que te toca y pulsa su botón de audio. Necesitas conexión a internet para abrir los audios.</p></div></details>
-          <details><summary>¿Necesito imprimir las hojas?</summary><div><p>No. Cada hoja tiene un ejemplo lleno y una opción para hacerla a mano. Puedes usar un cuaderno o cualquier papel.</p></div></details>
-          <details><summary>¿Cuánto tiempo necesito al día?</summary><div><p>Cada audio dura unos 9–10 minutos. Antes haces el paso de esa noche: suele llevar unos pocos minutos y el libro te dice cuánto. Algunas prácticas, como la hora de la preocupación o el ritual, se hacen en otro momento del día.</p></div></details>
-          <details><summary>¿Y si tomo pastillas para dormir?</summary><div><p>No dejes ninguna medicación ni cambies la dosis sin consultar a tu médico. Pregúntale cómo integrar estas prácticas a tu cuidado actual.</p></div></details>
-          <details><summary>¿Es para hombres y mujeres?</summary><div><p>Sí. Es para personas adultas de cualquier género. El apartado de calores nocturnos se usa si te pasa; no tienes que hacer todo de la misma manera.</p></div></details>
-          <details><summary>¿Es una suscripción?</summary><div><p>No. Son 12 USD en un solo pago por el programa. No hay pagos mensuales.</p></div></details>
-          <details><summary>¿Qué pasa si no me sirve?</summary><div><p>Tienes 7 días de garantía. Dentro de ese plazo, puedes pedir el reembolso desde Hotmart.</p></div></details>
-        </div>
-      </div>
-    </section>
-
-    <section class="section closing" aria-labelledby="cierre">
-      <div class="container closing-inner"><span class="moon" aria-hidden="true"></span><p class="eyebrow">UNA NOCHE A LA VEZ</p><h2 id="cierre">Por hoy, puedes<br><em>soltar el día.</em></h2><p>No tienes que resolverlo todo antes de dormir.<br>Empieza con un paso pequeño.</p><a class="button btn-comprar" href="#comprar">Empezar mis 21 noches · 12 USD <span aria-hidden="true">→</span></a><p class="purchase-note">Pago único · Garantía de 7 días</p></div>
-    </section>
-  </main>
-  <footer class="site-footer">
-    <div class="container footer-inner"><p class="footer-title">21 Noches para Dormir Profundo</p><p>Imágenes referenciales. Las capturas del interior corresponden al PDF real.</p><p>Contenido educativo. No reemplaza la atención médica ni psicológica. Los resultados varían según cada persona.</p><nav aria-label="Enlaces legales"><!-- POR COMPLETAR --><a href="#">Privacidad</a><!-- POR COMPLETAR --><a href="#">Términos y condiciones</a></nav></div>
+      <figcaption>21 Noches para Dormir Profundo<span class="visually-hidden">. Composición referencial con portada y páginas reales. Producto digital, sin envío físico.</span></figcaption>
+    </figure></div>
+  <div class="price-card"><p class="price-label">PRECIO DE LANZAMIENTO</p><p class="price"><span>12</span> USD</p><p class="price-detail">Pago único · Sin mensualidades</p><p class="night-price">Son 21 noches: menos de 0,60 USD por noche.</p><ul class="check-list"><li>Libro PDF de 182 páginas</li><li>21 audios guiados</li><li>Tarjeta de las 3 a. m.</li><li>Hojas imprimibles</li><li>Apartado de calores nocturnos</li></ul>
+  <a class="button btn-comprar" href="#comprar">Quiero mis 21 noches <span aria-hidden="true">→</span></a><p class="checkout-note"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg> Pago seguro por Hotmart<br>Acceso inmediato a tu correo tras confirmar el pago</p><p class="price-guarantee"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6Z"/><path d="m8 12 3 3 5-6"/></svg> Garantía de 7 días</p></div>
+</div></section>
+<section class="section guarantee-section" aria-labelledby="garantia-titulo"><div class="container guarantee-layout">
+  <div class="guarantee-seal" role="img" aria-label="Garantía de 7 días"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6Z"/><path d="m8 12 3 3 5-6"/></svg><b>7 DÍAS</b><span>GARANTÍA</span></div>
+  <div><h2 id="garantia-titulo">Pruébalo 7 días. Si no es para ti, <em>te devuelven tu dinero.</em></h2>
+    <p>Empieza las primeras noches con calma. Si el programa no es para ti, pide el reembolso desde tu cuenta de Hotmart dentro de los 7 días después de la compra. Hotmart te devuelve el 100% de lo que pagaste.</p>
+    <p class="secure-note"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg> Pago seguro procesado por Hotmart</p>
+    <div class="guarantee-cta"><a class="button btn-comprar" href="#comprar">Sí, quiero dormir mejor <span aria-hidden="true">→</span></a><p class="purchase-note">Garantía de 7 días por Hotmart</p></div>
+  </div>
+</div></section>
+<section class="section faq" aria-labelledby="preguntas"><div class="container faq-grid"><div><h2 id="preguntas">Resolvemos <em>tus dudas.</em></h2></div><div class="faq-list"><details><summary>¿Es seguro pagar?</summary><div><p>Sí. El pago lo procesa Hotmart, una plataforma de productos digitales. Tus datos de pago no pasan por nosotros.</p></div></details><details><summary>¿Cómo pago? ¿Puedo pagar desde mi país?</summary><div><p>Al tocar el botón de compra, Hotmart te muestra los métodos de pago disponibles en tu país.</p></div></details><details><summary>¿Cómo recibo el programa?</summary><div><p>Después de que Hotmart confirme tu pago, tienes acceso inmediato al producto digital. Te llega un correo de Hotmart con las instrucciones para abrir o descargar el PDF. Si no lo ves, revisa Spam o Promociones. Los botones dentro del libro abren los audios.</p></div></details><details><summary>No soy buena con la tecnología, ¿podré usarlo?</summary><div><p>Sí. Abres el PDF en el celular, buscas la noche que te toca y pulsas su botón de audio. Si te trabas, usa el contacto de soporte indicado en “Así de fácil es empezar”.</p></div></details><details><summary>¿Los audios se pueden escuchar sin internet?</summary><div><p>Actualmente necesitas conexión a internet para abrir los audios desde sus botones en el PDF. La muestra de esta página sí se puede descargar.</p></div></details><details><summary>¿Qué pasa si no me sirve?</summary><div><p>Tienes 7 días de garantía. Dentro de ese plazo, puedes pedir el reembolso desde Hotmart.</p></div></details><details><summary>¿Puedo usarlo en mi celular?</summary><div><p>Sí. El PDF está pensado para leerse en el celular. Abre la noche que te toca y pulsa su botón de audio. Necesitas conexión a internet para abrir los audios.</p></div></details><details><summary>¿Necesito imprimir las hojas?</summary><div><p>No. Cada hoja tiene un ejemplo lleno y una opción para hacerla a mano. Puedes usar un cuaderno o cualquier papel.</p></div></details><details><summary>¿Cuánto tiempo necesito al día?</summary><div><p>Cada audio dura unos 9–10 minutos. Antes haces el paso de esa noche: suele llevar unos pocos minutos y el libro te dice cuánto. Algunas prácticas, como la hora de la preocupación o el ritual, se hacen en otro momento del día.</p></div></details><details><summary>¿Y si tomo pastillas para dormir?</summary><div><p>No dejes ninguna medicación ni cambies la dosis sin consultar a tu médico. Pregúntale cómo integrar estas prácticas a tu cuidado actual.</p></div></details><details><summary>¿Es para hombres y mujeres?</summary><div><p>Sí. Es para personas adultas de cualquier género. El apartado de calores nocturnos se usa si te pasa; no tienes que hacer todo de la misma manera.</p></div></details><details><summary>¿Es una suscripción?</summary><div><p>No. Son 12 USD en un solo pago por el programa. No hay pagos mensuales.</p></div></details></div></div></section>
+<section class="section evidence" id="base-cientifica" aria-labelledby="respaldo"><div class="container evidence-inner">
+  <h2 id="respaldo">Prácticas con <em>una base real.</em></h2>
+  <details><summary>¿En qué se basa?</summary><div><p>El libro adapta prácticas de la terapia cognitivo-conductual para el insomnio y de la higiene del sueño: descarga mental, hora de la preocupación, control de estímulos, relajación muscular y respiración lenta.</p><p>Es una guía educativa. El respaldo corresponde a las técnicas; no es una prueba de resultados de este ebook ni equivale a recibir terapia.</p><ul class="source-list">
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/33164742/" target="_blank" rel="noopener noreferrer">Edinger y colaboradores · AASM, 2021 <span aria-hidden="true">↗</span></a><span>Guía clínica sobre tratamientos conductuales y psicológicos del insomnio.</span></li>
+            <li><a href="https://www.nhs.uk/every-mind-matters/mental-wellbeing-tips/self-help-cbt-techniques/tackling-your-worries/" target="_blank" rel="noopener noreferrer">NHS · Tackling your worries <span aria-hidden="true">↗</span></a><span>Escribir preocupaciones y reservarles un momento del día.</span></li>
+            <li><a href="https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits" target="_blank" rel="noopener noreferrer">NHLBI / NIH · Healthy Sleep Habits <span aria-hidden="true">↗</span></a><span>Hábitos de sueño, horarios y ambiente de descanso.</span></li>
+          </ul></div></details>
+</div></section>
+<section class="section closing" aria-labelledby="cierre"><div class="container closing-inner"><span class="moon" aria-hidden="true"></span><h2 id="cierre">Por hoy, puedes <em>soltar el día.</em></h2><p>Un paso pequeño. Una noche a la vez.</p><div class="closing-cta"><a class="button btn-comprar" href="#comprar">Empezar hoy · 12 USD <span aria-hidden="true">→</span></a><p class="purchase-note">Pago único · Garantía de 7 días</p></div></div></section>
+</main>
+<footer class="site-footer">
+    <div class="container footer-inner"><p class="footer-title">21 Noches para Dormir Profundo</p><p>Imagen referencial: composición del pack. Portada y páginas reales. Producto digital, sin envío físico.</p><p>Contenido educativo. No reemplaza la atención médica ni psicológica. Los resultados varían según cada persona.</p><!-- POR COMPLETAR: enlaces legales (Privacidad, Términos) --></div>
   </footer>
+<div class="sticky-cta" hidden aria-label="Compra del programa">
+  <div class="sticky-inner"><p>21 Noches <b>12 USD</b></p><a class="button btn-comprar" href="#comprar">Empezar hoy <span aria-hidden="true">→</span></a></div>
+</div>
 </body>
 </html>
