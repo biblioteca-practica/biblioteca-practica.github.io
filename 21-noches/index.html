@@ -39,7 +39,7 @@
     const LINK_COMPRA = "https://pay.hotmart.com/U108022318D";
     // VENTA_PAUSADA = true: los botones dicen "Disponible muy pronto" y no llevan a ningún lado.
     // Para reabrir la venta, poner false.
-    const VENTA_PAUSADA = true;
+    const VENTA_PAUSADA = false;
     document.addEventListener("DOMContentLoaded", () => {
       if (VENTA_PAUSADA) {
         document.querySelectorAll(".btn-comprar").forEach(boton => {
