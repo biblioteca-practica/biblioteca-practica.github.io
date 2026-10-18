@@ -1,0 +1,374 @@
+<!doctype html>
+<!--
+  PUBLICADA (18/10/2026) en https://biblioteca-practica.github.io/postres/ con el OK del editor.
+  Antes de publicar: 1) PRECIO (lo decide el editor), 2) LINK_COMPRA (enlace de pago de Hotmart), 3) VENTA_PAUSADA = false,
+  4) og:image / og:url con la URL pública, 5) píxel de Meta si se usa.
+-->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#3d2215">
+  <title>Postres que se Venden Solos | 50 recetas con su costo, su precio y dónde venderlas</title>
+  <meta name="description" content="50 recetas para vender desde tu casa. Cada una trae el costo por unidad, tu precio mínimo, cuánto te queda por tanda y dónde venderla. Incluye 15 recetas para Navidad y una calculadora en tu moneda.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_LA">
+  <meta property="og:title" content="Postres que se Venden Solos">
+  <meta property="og:description" content="Deja de regalar tus postres. 50 recetas paso a paso, cada una con lo que cuesta y a cuánto venderla. Incluye 15 para vender esta Navidad.">
+  <meta property="og:image" content="https://biblioteca-practica.github.io/postres/assets/producto-redes.jpg">
+  <meta property="og:url" content="https://biblioteca-practica.github.io/postres/">
+  <link rel="canonical" href="https://biblioteca-practica.github.io/postres/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;700;800&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/fotos/tres-leches-vaso.webp">
+  <link rel="stylesheet" href="estilos.css">
+  <!-- META PIXEL: pegar aquí el código del píxel de Meta -->
+</head>
+<body>
+<script>
+  const PRECIO = "17 USD";                        // lo decide el editor
+  const LINK_COMPRA = "https://pay.hotmart.com/Y108085505D";
+  const VENTA_PAUSADA = false;                     // true para pausar la venta
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".precio").forEach(e => e.textContent = PRECIO);
+    document.querySelectorAll(".btn-comprar").forEach(b => {
+      if (VENTA_PAUSADA) { b.textContent = "Disponible muy pronto"; b.removeAttribute("href"); b.setAttribute("aria-disabled", "true"); b.classList.add("pausado"); }
+      else if (LINK_COMPRA !== "PEGAR_AQUI_LINK_DE_HOTMART" && LINK_COMPRA.trim()) { b.href = LINK_COMPRA; }
+    });
+  });
+</script>
+
+<div class="cinta">Pago único · Lo recibes al instante en tu correo · Garantía de 7 días</div>
+
+<header class="cabecera"><div class="contenedor">
+  <a class="marca" href="#inicio">Postres <span>que se venden solos</span></a>
+  <a class="btn btn-chico btn-comprar" href="#comprar">Comprar</a>
+</div></header>
+
+<main id="inicio">
+  <section class="hero"><div class="contenedor hero-grid">
+    <div class="hero-texto">
+      <h1>Deja de regalar tus postres.</h1>
+      <p class="continua">Y empieza a venderlos desde tu cocina con esta guía: 50 recetas paso a paso, cada una con lo que cuesta y a cuánto venderla.</p>
+      <ul class="chips chips-hero"><li>+480 páginas con fotos</li><li>Calculadora de precios incluida</li></ul>
+      <a class="btn btn-comprar" href="#comprar">Quiero el libro · <span class="precio"></span></a>
+      <p class="nota">Pago seguro con Hotmart · Garantía de 7 días</p>
+      <div class="ejemplo-hero">
+        <p class="ejemplo-tit">Así viene cada receta · ejemplo: tres leches en vaso</p>
+        <div class="numeros">
+          <div><span>Te cuesta cada vaso</span><b>S/ 1.97</b></div>
+          <div><span>Lo vendes a</span><b>S/ 5</b></div>
+          <div class="verde"><span>Te quedan por tanda</span><b>S/ 42.42</b></div>
+        </div>
+        <p class="nota">Precios de mayorista de Perú (octubre 2026), si vendes los 14 vasos. Tus números dependen de tu zona.</p>
+      </div>
+    </div>
+    <div class="hero-fotos">
+      <figure class="foto-principal">
+        <img src="assets/fotos/tres-leches-vaso.webp" alt="Vasos de tres leches con canela, tapados y listos para vender" width="1200" height="800">
+        <a class="sello" href="#navidad"><span class="sello-1">Incluye</span><span class="sello-2">15 recetas</span><span class="sello-3">para vender esta Navidad</span></a>
+      </figure>
+      <div class="fotos-chicas">
+        <img src="assets/fotos/flan-vainilla.webp" alt="Flan de vainilla con caramelo" width="900" height="600">
+        <img src="assets/fotos/pie-de-limon.webp" alt="Porción de pie de limón con merengue" width="900" height="600">
+      </div>
+      <p class="referencial">Fotos referenciales</p>
+    </div>
+  </div></section>
+
+  <section class="seccion crema"><div class="contenedor angosto">
+    <h2>Vendiste todos los vasitos. ¿Y cuánto te quedó a ti?</h2>
+    <ul class="dolores">
+      <li>Pones el precio mirando lo que cobra otra señora del barrio, y a fin de mes no sabes si ganaste.</li>
+      <li>Te piden 20 vasos para un cumpleaños y no sabes si te conviene aceptar.</li>
+      <li>Compras los ingredientes de a poquito en la tienda de la esquina y se te va media ganancia.</li>
+      <li>Quieres vender en Navidad, pero diciembre te agarra sin nada listo.</li>
+    </ul>
+    <p class="grande">Este libro trae las recetas con la cuenta hecha y te enseña a sacarla tú misma, con lo que pagas en tu mercado.</p>
+  </div></section>
+
+  <div class="banda"><img src="assets/fotos/galleta-chocolate-vaso.webp" alt="Vasos de galleta y chocolate" loading="lazy" width="900" height="600"><img src="assets/fotos/budin-pan.webp" alt="Budín de pan con caramelo" loading="lazy" width="900" height="600"><img src="assets/fotos/alfajores-maicena.webp" alt="Alfajores de maicena" loading="lazy" width="900" height="600"></div>
+  <section class="seccion"><div class="contenedor">
+    <p class="antetitulo centro-txt">Seis de las 50, con su cuenta</p>
+    <h2 class="centro-txt">El brownie te deja S/ 39. El cheesecake, S/ 77. ¿Cuál harías primero?</h2>
+    <div class="platos">
+      <article class="plato">
+        <img src="assets/fotos/cheesecake-fresa-vaso.webp" alt="Cheesecake de fresa en vasito" loading="lazy" width="900" height="600">
+        <div class="plato-txt"><h3>Cheesecake de fresa en vasito</h3>
+          <p class="rinde">20 vasitos · ingredientes S/ 42.34</p>
+          <div class="mini"><span>Te cuesta</span><b>S/ 2.64</b><span>Lo vendes a</span><b>S/ 6.50</b></div>
+          <p class="queda">Te quedan <b>S/ 77.20</b> por tanda</p></div>
+      </article>
+      <article class="plato">
+        <img src="assets/fotos/tres-leches-chocolate.webp" alt="Tres leches de chocolate en vaso" loading="lazy" width="900" height="600">
+        <div class="plato-txt"><h3>Tres leches de chocolate</h3>
+          <p class="rinde">14 vasos · ingredientes S/ 23.12</p>
+          <div class="mini"><span>Te cuesta</span><b>S/ 2.13</b><span>Lo vendes a</span><b>S/ 5.50</b></div>
+          <p class="queda">Te quedan <b>S/ 47.18</b> por tanda</p></div>
+      </article>
+      <article class="plato">
+        <img src="assets/fotos/chocotejas.webp" alt="Chocotejas envueltas en papel dorado" loading="lazy" width="900" height="600">
+        <div class="plato-txt"><h3>Chocotejas de pecana y de maní</h3>
+          <p class="rinde">18 chocotejas · ingredientes S/ 21.49</p>
+          <div class="mini"><span>Te cuesta</span><b>S/ 1.61</b><span>La vendes a</span><b>S/ 4</b></div>
+          <p class="queda">Te quedan <b>S/ 43.02</b> por tanda</p></div>
+      </article>
+      <article class="plato">
+        <img src="assets/fotos/gelatina-mosaico.webp" alt="Gelatina mosaico en vasos" loading="lazy" width="900" height="600">
+        <div class="plato-txt"><h3>Gelatina mosaico en vaso</h3>
+          <p class="rinde">20 vasos · ingredientes S/ 20.54</p>
+          <div class="mini"><span>Te cuesta</span><b>S/ 1.44</b><span>La vendes a</span><b>S/ 3.50</b></div>
+          <p class="queda">Te quedan <b>S/ 41.20</b> por tanda</p></div>
+      </article>
+      <article class="plato">
+        <img src="assets/fotos/brownie-dulce-de-leche.webp" alt="Brownies con dulce de leche en bolsitas" loading="lazy" width="900" height="600">
+        <div class="plato-txt"><h3>Brownie con dulce de leche</h3>
+          <p class="rinde">16 brownies · ingredientes S/ 19.02</p>
+          <div class="mini"><span>Te cuesta</span><b>S/ 1.51</b><span>Lo vendes a</span><b>S/ 4</b></div>
+          <p class="queda">Te quedan <b>S/ 39.84</b> por tanda</p></div>
+      </article>
+      <article class="plato">
+        <img src="assets/fotos/cupcakes-vainilla.webp" alt="Cupcakes de vainilla con crema" loading="lazy" width="900" height="600">
+        <div class="plato-txt"><h3>Cupcakes de vainilla con crema</h3>
+          <p class="rinde">12 cupcakes · ingredientes S/ 12.22</p>
+          <div class="mini"><span>Te cuesta</span><b>S/ 1.55</b><span>Lo vendes a</span><b>S/ 4</b></div>
+          <p class="queda">Te quedan <b>S/ 29.40</b> por tanda</p></div>
+      </article>
+    </div>
+    <p class="chico centro-txt">"Te cuesta" incluye gas, luz y empaque. Precios de mayorista de Perú (octubre 2026); el precio de venta es un ejemplo y lo que te queda supone que vendes toda la tanda. Fotos referenciales.</p>
+  </div></section>
+
+  <section class="seccion navidad" id="navidad"><div class="contenedor">
+    <p class="antetitulo centro-txt">Especial Navidad y fiestas · 15 recetas</p>
+    <h2 class="centro-txt">Nunca esperes a diciembre para vender en Navidad.</h2>
+    <p class="centro">Los pedidos se toman en noviembre, con adelanto: chocolatadas del colegio y la parroquia, regalos del trabajo, cajitas y ferias. Estas son las 15 recetas del especial, y cada una trae su calendario: desde cuándo tomar pedidos con adelanto y cuántos días antes se puede preparar.</p>
+    <div class="nav-grid"><figure><img src="assets/navidad/paneton-casero.webp" alt="Mini panetones caseros" loading="lazy" width="600" height="400"><figcaption>Mini panetones caseros</figcaption></figure><figure><img src="assets/navidad/chocolate-chocolatada.webp" alt="Chocolate caliente para chocolatada" loading="lazy" width="600" height="400"><figcaption>Chocolate caliente para chocolatada</figcaption></figure><figure><img src="assets/navidad/queque-navideno.webp" alt="Queque navideño de frutas" loading="lazy" width="600" height="400"><figcaption>Queque navideño de frutas</figcaption></figure><figure><img src="assets/navidad/galletas-jengibre.webp" alt="Galletas de jengibre" loading="lazy" width="600" height="400"><figcaption>Galletas de jengibre</figcaption></figure><figure><img src="assets/navidad/tronco-navideno.webp" alt="Tronco navideño de chocolate" loading="lazy" width="600" height="400"><figcaption>Tronco navideño de chocolate</figcaption></figure><figure><img src="assets/navidad/crinkles-chocolate.webp" alt="Crinkles de chocolate" loading="lazy" width="600" height="400"><figcaption>Crinkles de chocolate</figcaption></figure><figure><img src="assets/navidad/polvorones-nuez.webp" alt="Polvorones de nuez" loading="lazy" width="600" height="400"><figcaption>Polvorones de nuez</figcaption></figure><figure><img src="assets/navidad/bombones-rellenos.webp" alt="Mini bombones rellenos" loading="lazy" width="600" height="400"><figcaption>Mini bombones rellenos</figcaption></figure><figure><img src="assets/navidad/rocas-chocolate.webp" alt="Rocas crocantes de chocolate" loading="lazy" width="600" height="400"><figcaption>Rocas crocantes de chocolate</figcaption></figure><figure><img src="assets/navidad/paletas-chocolate.webp" alt="Paletas de chocolate" loading="lazy" width="600" height="400"><figcaption>Paletas de chocolate</figcaption></figure><figure><img src="assets/navidad/trufas-paneton.webp" alt="Trufas de panetón" loading="lazy" width="600" height="400"><figcaption>Trufas de panetón</figcaption></figure><figure><img src="assets/navidad/pie-pecanas.webp" alt="Pie de pecanas" loading="lazy" width="600" height="400"><figcaption>Pie de pecanas</figcaption></figure><figure><img src="assets/navidad/natilla-navidena.webp" alt="Natilla navideña" loading="lazy" width="600" height="400"><figcaption>Natilla navideña</figcaption></figure><figure><img src="assets/navidad/mazapanes-mani.webp" alt="Mazapanes de maní" loading="lazy" width="600" height="400"><figcaption>Mazapanes de maní</figcaption></figure><figure><img src="assets/navidad/paneton-vaso.webp" alt="Panetón en vaso tipo tiramisú" loading="lazy" width="600" height="400"><figcaption>Panetón en vaso tipo tiramisú</figcaption></figure></div>
+    <h3 class="centro-txt cal-tit">El calendario de pedidos que trae el libro</h3>
+    <div class="calendario cal6"><div><b>1 al 15 de noviembre</b><span>Pruebas tus presentaciones, publicas tu catálogo con fotos y abres pedidos con 50 % de adelanto.</span></div><div><b>16 al 30 de noviembre</b><span>Confirmas regalos del trabajo y chocolatadas, con horario y número de invitados. Compras por mayor lo que no se malogra.</span></div><div><b>1 al 7 de diciembre</b><span>Entregas los primeros encargos y mides cuánto tardas en cada tanda.</span></div><div><b>8 al 14 de diciembre</b><span>Revisas los adelantos y cierras las fechas que ya llenaste.</span></div><div><b>15 al 24 de diciembre</b><span>Preparas por tandas según cada entrega. Lo más delicado, la víspera.</span></div><div><b>25 al 31 de diciembre</b><span>Tomas pedidos para Año Nuevo con el tiempo que te quede.</span></div></div>
+    <h3 class="centro-txt cal-tit">Cuatro de las 15, con su cuenta</h3>
+    <div class="platos navidad-platos">
+      <article class="plato">
+        <img src="assets/fotos/chocolate-chocolatada.webp" alt="Vasos de chocolate caliente junto a un termo" loading="lazy" width="900" height="600">
+        <div class="plato-txt"><h3>Chocolate caliente para chocolatada</h3>
+          <p class="rinde">16 vasos · ingredientes S/ 22.81</p>
+          <div class="mini"><span>Te cuesta</span><b>S/ 2.02</b><span>Lo vendes a</span><b>S/ 5</b></div>
+          <p class="queda">Te quedan <b>S/ 47.68</b> por tanda</p></div>
+      </article>
+      <article class="plato">
+        <img src="assets/fotos/pie-pecanas.webp" alt="Porción de pie de pecanas" loading="lazy" width="900" height="600">
+        <div class="plato-txt"><h3>Pie de pecanas por porción</h3>
+          <p class="rinde">16 porciones · ingredientes S/ 28.07</p>
+          <div class="mini"><span>Te cuesta</span><b>S/ 2.43</b><span>Lo vendes a</span><b>S/ 6</b></div>
+          <p class="queda">Te quedan <b>S/ 57.12</b> por tanda</p></div>
+      </article>
+      <article class="plato">
+        <img src="assets/fotos/paneton-casero.webp" alt="Mini panetones caseros envueltos para regalo" loading="lazy" width="900" height="600">
+        <div class="plato-txt"><h3>Mini panetones caseros</h3>
+          <p class="rinde">10 panetones · ingredientes S/ 14.85</p>
+          <div class="mini"><span>Te cuesta</span><b>S/ 2.28</b><span>Lo vendes a</span><b>S/ 5.50</b></div>
+          <p class="queda">Te quedan <b>S/ 32.20</b> por tanda</p></div>
+      </article>
+      <article class="plato">
+        <img src="assets/fotos/tronco-navideno.webp" alt="Tronco navideño de chocolate en porciones" loading="lazy" width="900" height="600">
+        <div class="plato-txt"><h3>Tronco navideño de chocolate</h3>
+          <p class="rinde">12 porciones · ingredientes S/ 14.38</p>
+          <div class="mini"><span>Te cuesta</span><b>S/ 1.77</b><span>Lo vendes a</span><b>S/ 4.50</b></div>
+          <p class="queda">Te quedan <b>S/ 32.76</b> por tanda</p></div>
+      </article>
+    </div>
+    <p class="chico centro-txt nav-nota">Ejemplos del libro con precios de mayorista de Perú (octubre 2026), vendiendo toda la tanda. Fotos referenciales.</p>
+  </div></section>
+  <section class="seccion crema"><div class="contenedor dos-col">
+    <div>
+      <p class="antetitulo">Un ejemplo real del libro</p>
+      <h2>El vaso te cuesta S/ 1.97. Míralo línea por línea.</h2>
+      <p>Tres leches en vaso, 14 vasos de 7 oz. Precios de Makro y Plaza Vea, octubre 2026. Así viene la cuenta en la receta:</p>
+      <div class="ficha">
+        <div class="ficha-tit">Lo que compras para la tanda</div>
+        <div class="fila"><span>Leche condensada (1 lata)</span><b>5.70</b></div>
+        <div class="fila"><span>Crema de leche (200 ml)</span><b>4.00</b></div>
+        <div class="fila"><span>Crema para batir (250 ml)</span><b>3.73</b></div>
+        <div class="fila"><span>Leche evaporada (1 lata)</span><b>3.54</b></div>
+        <div class="fila"><span>Huevos (5)</span><b>2.09</b></div>
+        <div class="fila"><span>Azúcar, harina, polvo de hornear, vainilla y canela</span><b>2.04</b></div>
+        <div class="fila sub"><span>Ingredientes de los 14 vasos</span><b>S/ 21.10</b></div>
+        <div class="fila"><span>Gas y luz (10 %), y vaso con tapa, cucharita y sticker</span><b>+ S/ 0.46 c/u</b></div>
+        <div class="fila roja"><span>Costo por vaso · tu mínimo es el doble</span><b>S/ 1.97 · S/ 4</b></div>
+        <div class="fila verde"><span>Precio de ejemplo</span><b>S/ 5</b></div>
+        <div class="fila total"><span>Si vendes los 14, te quedan</span><b>S/ 42.42</b></div>
+      </div>
+      <p class="chico">¿Vives en otro país? Anotas lo que pagas tú y la calculadora hace la cuenta en tu moneda. El libro trae además el mismo vaso calculado con precios de México.</p>
+    </div>
+    <div>
+      <h3>Y además, en cada receta:</h3>
+      <ul class="check">
+        <li>Cantidades en gramos y en tazas, y el paso a paso con un ejemplo en cada paso.</li>
+        <li>Fotos de los momentos donde una se equivoca: el punto de la crema, cómo cae la mezcla, cómo se ve el centro cocido.</li>
+        <li>Cuánto rinde, cuánto dura y cómo se guarda.</li>
+        <li>Qué hacer si algo sale mal.</li>
+        <li>Dónde se vende mejor y un mensaje de WhatsApp listo para copiar.</li>
+      </ul>
+      <img class="foto-lado" src="assets/fotos/volteado-pina.webp" alt="Porciones de volteado de piña en envases con tapa" loading="lazy" width="900" height="600">
+    </div>
+  </div></section>
+
+  <section class="seccion chocolate" id="libro"><div class="contenedor">
+    <p class="antetitulo centro-txt claro">Lo que trae el libro</p>
+    <h2 class="centro-txt">Más de 480 páginas, con foto de cada receta y de cada paso difícil.</h2>
+    <div class="valor">
+      <div><b>481</b><span>páginas para leer en el celular</span></div>
+      <div><b>50</b><span>recetas, cada una con su cuenta</span></div>
+      <div><b>157</b><span>fotos: la de cada postre y 107 de pasos</span></div>
+      <div><b>15</b><span>recetas de Navidad con calendario</span></div>
+      <div><b>9</b><span>lugares para vender sin tienda</span></div>
+      <div><b>8</b><span>capítulos de negocio: pedidos, fotos, etiqueta, higiene</span></div>
+    </div>
+    <p class="centro">Cuatro páginas reales del libro, tal como las ves en el celular:</p>
+    <div class="paginas">
+      <figure><img src="assets/pagina-receta.webp" alt="Página de apertura de la receta de tres leches en vaso" loading="lazy" width="615" height="1024"><figcaption>La ficha de cada receta</figcaption></figure>
+      <figure><img src="assets/pagina-pasos.webp" alt="Página de pasos del bizcocho marmoleado, con una foto en cada paso difícil" loading="lazy" width="615" height="1024"><figcaption>Pasos con fotos</figcaption></figure>
+      <figure><img src="assets/pagina-costo.webp" alt="Página con la tabla de costo y el precio mínimo" loading="lazy" width="615" height="1024"><figcaption>La cuenta, ingrediente por ingrediente</figcaption></figure>
+      <figure><img src="assets/pagina-donde-vender.webp" alt="Página con lugares para vender en el barrio" loading="lazy" width="615" height="1024"><figcaption>Dónde vender en tu barrio</figcaption></figure>
+    </div>
+  </div></section>
+  <section class="seccion bonos" id="bonos"><div class="contenedor">
+    <p class="antetitulo centro-txt">Vienen con el libro, sin pagar más</p>
+    <h2 class="centro-txt">Tres bonos que hacen la cuenta y escriben los mensajes por ti.</h2>
+    <div class="bono">
+      <img src="assets/bono-calculadora.webp" alt="Hoja de la tres leches en la calculadora de precios: ingredientes, costo por unidad, precio mínimo y ganancia por tanda" loading="lazy" width="900" height="1071">
+      <div class="bono-txt">
+        <p class="bono-num">Bono 1</p>
+        <h3>Calculadora de precios (Excel y Google Sheets)</h3>
+        <p>Trae las 50 recetas ya cargadas, cada una en su pestaña. Escribes lo que pagaste por cada ingrediente, en soles, pesos o dólares, y te sale el costo por unidad, tu precio mínimo y lo que te queda por tanda. Si pones un precio por debajo del mínimo, te avisa. Tiene una pestaña en blanco para tus propias recetas.</p>
+        <p class="resuelve"><b>Lo que resuelve:</b> dejas de sacar cuentas en la calculadora del celular. Cambias un precio y se actualiza todo.</p>
+      </div>
+    </div>
+    <div class="bono inverso">
+      <img src="assets/bono-hoja-costeo.webp" alt="Hoja de costeo para imprimir y la misma cuenta hecha a mano en un cuaderno" loading="lazy" width="900" height="729">
+      <div class="bono-txt">
+        <p class="bono-num">Bono 2</p>
+        <h3>Hoja de costeo para imprimir, y la versión en cuaderno</h3>
+        <p>Una hoja para imprimir o copiar, con los pasos en orden: total de ingredientes, gas y luz, empaque, costo por unidad, tu mínimo, lo que cobran en tu zona y lo que te queda. Al lado, la misma cuenta hecha a mano en un cuaderno, con los brownies de ejemplo.</p>
+        <p class="resuelve"><b>Lo que resuelve:</b> sacas tu precio aunque no tengas computadora.</p>
+      </div>
+    </div>
+    <div class="bono">
+      <img src="assets/bono-mensajes.webp" alt="Páginas del bono Mensajes listos para vender: portada, mensajes para cada momento y los de la tres leches" loading="lazy" width="900" height="485">
+      <div class="bono-txt">
+        <p class="bono-num">Bono 3 · nuevo</p>
+        <h3>Mensajes listos para vender</h3>
+        <p>Un PDF aparte con 2 mensajes por receta: uno corto para tu estado de WhatsApp y otro para el grupo de Facebook del barrio o Marketplace. Y 8 mensajes para los momentos que más cuestan: cuando te preguntan "¿a cómo?", cuando te piden rebaja, para confirmar un pedido y una entrega, para tomar los pedidos de Navidad y para que te recomienden.</p>
+        <p class="resuelve"><b>Lo que resuelve:</b> ya no te quedas mirando el celular sin saber qué escribir. Copias, cambias tu precio y tu zona, y pegas.</p>
+      </div>
+    </div>
+  </div></section>
+  <section class="seccion"><div class="contenedor">
+    <h2 class="centro-txt">Vende lo que ya te piden.</h2>
+    <p class="centro">Tres leches, brownies, alfajores, flan, pie de limón, chocotejas y 44 más: los que se acaban primero en los cumpleaños, el trabajo y la salida del colegio. <b class="dato-horno">25 de las 50 no necesitan horno.</b></p>
+    <div class="galeria">
+      <figure><img src="assets/fotos/torta-chocolate-porcion.webp" alt="Porciones de torta de chocolate húmeda" loading="lazy" width="900" height="600"><figcaption>Torta de chocolate húmeda</figcaption></figure>
+      <figure><img src="assets/fotos/alfajores-chocolate.webp" alt="Alfajores bañados en chocolate" loading="lazy" width="900" height="600"><figcaption>Alfajores bañados en chocolate</figcaption></figure>
+      <figure><img src="assets/fotos/brownies-clasicos.webp" alt="Brownies clásicos" loading="lazy" width="900" height="600"><figcaption>Brownies clásicos</figcaption></figure>
+      <figure><img src="assets/fotos/brigadeiros.webp" alt="Brigadeiros con grageas" loading="lazy" width="900" height="600"><figcaption>Brigadeiros</figcaption></figure>
+      <figure><img src="assets/fotos/bizcocho-marmoleado.webp" alt="Tajadas de bizcocho marmoleado" loading="lazy" width="900" height="600"><figcaption>Bizcocho marmoleado</figcaption></figure>
+      <figure><img src="assets/fotos/trufas-chocolate.webp" alt="Trufas de chocolate en cajita" loading="lazy" width="900" height="600"><figcaption>Trufas de chocolate</figcaption></figure>
+      <figure><img src="assets/fotos/cheesecake-maracuya-porcion.webp" alt="Porciones de cheesecake de maracuyá" loading="lazy" width="900" height="600"><figcaption>Cheesecake de maracuyá</figcaption></figure>
+      <figure><img src="assets/fotos/mazamorra-morada.webp" alt="Mazamorra morada en vasos" loading="lazy" width="900" height="600"><figcaption>Mazamorra morada</figcaption></figure>
+    </div>
+    <div class="categorias">
+      <div><b>8</b> postres en vaso</div>
+      <div><b>7</b> tortas y porciones</div>
+      <div><b>7</b> brownies, galletas y alfajores</div>
+      <div><b>3</b> chocolates y bombones</div>
+      <div><b>4</b> gelatinas, flanes y de cuchara</div>
+      <div><b>6</b> saludables, sin azúcar añadida</div>
+      <div class="rojo"><b>15</b> para Navidad y fiestas</div>
+    </div>
+    <details class="lista-50"><summary>Ver las 50 recetas</summary>
+      <div class="lista-cols">
+        <div><h4>Postres en vaso</h4><ol start="1"><li>Tres leches en vaso</li><li>Tres leches de chocolate en vaso</li><li>Cheesecake de fresa en vaso</li><li>Galleta y chocolate en vaso</li><li>Mousse de maracuyá en vaso</li><li>Torta helada en vaso</li><li>Suspiro a la limeña en vaso</li><li>Pie de limón en vaso (sin horno y sin huevo)</li></ol>
+        <h4>Tortas y porciones</h4><ol start="9"><li>Torta de chocolate húmeda</li><li>Pie de limón</li><li>Cheesecake de maracuyá</li><li>Bizcocho marmoleado por tajada</li><li>Volteado de piña por porción</li><li>Pan de plátano por tajada</li><li>Budín de pan con caramelo</li></ol>
+        <h4>Brownies, galletas y alfajores</h4><ol start="16"><li>Brownies clásicos</li><li>Brownie con dulce de leche</li><li>Galletas gigantes con chispas</li><li>Galletas de mantequilla decoradas</li><li>Alfajores de maicena</li><li>Alfajores bañados en chocolate</li><li>Cupcakes de vainilla con crema</li></ol></div>
+        <div><h4>Chocolates y bombones</h4><ol start="23"><li>Trufas de chocolate</li><li>Brigadeiros</li><li>Chocotejas de pecana y de maní</li></ol>
+        <h4>Gelatinas, flanes y postres de cuchara</h4><ol start="26"><li>Gelatina mosaico en vaso</li><li>Flan casero de vainilla</li><li>Arroz con leche</li><li>Mazamorra morada</li></ol>
+        <h4>Saludables y sin azúcar añadida</h4><ol start="30"><li>Brownie de avena y plátano (sin azúcar añadida)</li><li>Cheesecake de yogur griego con stevia</li><li>Barritas de avena y dátiles, sin horno</li><li>Gelatina sin azúcar con frutas</li><li>Paletas heladas de yogur y fruta</li><li>Trufas de dátiles y cacao, sin cobertura</li></ol></div>
+        <div><h4>Especial Navidad y fiestas</h4><ol start="36"><li>Mini panetones caseros con pasas</li><li>Chocolate caliente para chocolatadas</li><li>Queque navideño de frutas remojadas</li><li>Galletas de jengibre (muñequitos)</li><li>Tronco navideño de chocolate</li><li>Crinkles de chocolate (galletas craqueladas)</li><li>Polvorones de nuez (bolitas pequeñas)</li><li>Mini bombones rellenos en molde</li><li>Rocas crocantes de chocolate</li><li>Paletas de chocolate para fiestas del colegio</li><li>Trufas de panetón bañadas en chocolate</li><li>Pie de pecanas por porción</li><li>Natilla navideña en cuadritos</li><li>Mazapanes de maní prensados, sin horno</li><li>Panetón en vaso tipo tiramisú, sin licor</li></ol></div>
+      </div>
+    </details>
+    <p class="chico centro">Fotos referenciales.</p>
+  </div></section>
+
+  <section class="seccion crema"><div class="contenedor">
+    <h2 class="centro-txt">Tu primera clienta vive en tu misma cuadra.</h2>
+    <p class="centro">El libro explica 9 lugares para vender sin tienda: cómo empezar en cada uno, qué llevar, un ejemplo y qué cuidar.</p>
+    <div class="lugares">
+      <div>Tu cuadra y tus vecinos</div><div>El grupo de WhatsApp del barrio</div><div>Pedidos en tu trabajo</div>
+      <div>Parques y plazas</div><div>Salida del colegio</div><div>Mercados y ferias</div>
+      <div>Salida de la iglesia o del partido</div><div>Marketplace</div><div>Cumpleaños por pedido</div>
+    </div>
+  </div></section>
+
+  <div class="banda"><img src="assets/fotos/torta-helada-vaso.webp" alt="Torta helada en vaso" loading="lazy" width="900" height="600"><img src="assets/fotos/mousse-maracuya-vaso.webp" alt="Mousse de maracuyá en vaso" loading="lazy" width="900" height="600"><img src="assets/fotos/galletas-mantequilla-decoradas.webp" alt="Galletas de mantequilla decoradas" loading="lazy" width="900" height="600"></div>
+  <section class="seccion crema"><div class="contenedor dos-col">
+    <div class="caja-si"><h3>Es para ti si…</h3><ul class="check">
+      <li>Haces postres en casa, o quieres empezar, y necesitas un ingreso extra.</li>
+      <li>Quieres vender sin poner una tienda.</li>
+      <li>Vives en cualquier país de Latinoamérica: la cuenta se hace en tu moneda.</li>
+    </ul></div>
+    <div class="caja-no"><h3>No es para ti si…</h3><ul class="equis">
+      <li>Buscas un curso en video.</li>
+      <li>Quieres recetas de pastelería fina para bodas y eventos grandes.</li>
+      <li>Esperas que alguien te prometa cuánto vas a ganar.</li>
+    </ul></div>
+  </div></section>
+
+  <section class="seccion oferta" id="comprar"><div class="contenedor angosto">
+    <h2>Lo descargas hoy y cocinas el fin de semana.</h2>
+    <img class="oferta-img" src="assets/producto.webp" alt="Libro Postres que se Venden Solos en tablet y celular, con postres alrededor. Imagen referencial." loading="lazy" width="900" height="900">
+    <ul class="check grande">
+      <li>El libro en PDF para leer en el celular: más de 480 páginas, 50 recetas con foto y 107 fotos de pasos.</li>
+      <li>Especial Navidad y fiestas: 15 recetas con su calendario de pedidos.</li>
+      <li>La parte de negocio: empezar con poca plata, tomar pedidos, fotos con el celular, etiquetas, higiene y fechas fuertes del año.</li>
+      <li>Bono 1: calculadora de precios (Excel y Google Sheets) con las 50 recetas.</li>
+      <li>Bono 2: hoja de costeo para imprimir y cómo hacerla en tu cuaderno.</li>
+      <li>Bono 3: mensajes listos para vender, 2 por receta y 8 para cada momento.</li>
+    </ul>
+    <div class="precio-caja">
+      <span class="precio-grande precio"></span>
+      <span class="precio-nota">Pago único. Lo recibes en tu correo apenas se confirma el pago.</span>
+      <a class="btn btn-grande btn-comprar" href="#comprar">Quiero el libro</a>
+      <span class="precio-nota">Pago seguro con Hotmart: tarjeta y otros medios de tu país.</span>
+    </div>
+    <div class="garantia">
+      <b>Garantía de 7 días.</b> Si en los primeros 7 días ves que el libro no es para ti, pides el reembolso desde Hotmart y te devuelven todo tu dinero.
+    </div>
+  </div></section>
+
+  <section class="seccion"><div class="contenedor angosto">
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Sirve si no vivo en Perú?</summary><p>Sí. Los ejemplos están en soles con precios de Perú, y hay uno con precios de México, pero cada receta trae las cantidades exactas y la calculadora hace la cuenta con lo que pagas tú, en tu moneda. Los nombres de los ingredientes vienen como se dicen en cada país (dulce de leche, manjar blanco, arequipe, cajeta).</p></details>
+    <details><summary>¿Necesito horno?</summary><p class="dato-horno-faq">Para la mitad no. 25 de las 50 recetas se hacen sin horno: varios postres en vaso, gelatinas, mazamorra, brigadeiros, trufas y 8 de las 15 de Navidad.</p></details>
+    <details><summary>¿Y batidora?</summary><p>31 de las 50 se hacen sin batidora. Para las otras conviene tenerla, aunque en las galletas, el queque, el bizcocho y el volteado la receta te dice cómo hacerlo con cuchara y un poco más de tiempo.</p></details>
+    <details><summary>¿Cómo lo recibo?</summary><p>Después del pago, Hotmart te manda un correo con el acceso. Descargas el libro, la calculadora y el PDF de mensajes, y los guardas en tu celular o en tu computadora.</p></details>
+    <details><summary>¿Es un curso con videos?</summary><p>Es un libro en PDF, con fotos en los pasos que más cuestan. No trae videos.</p></details>
+    <details><summary>¿Cuánto voy a ganar?</summary><p>Depende de tu zona, de cuánto vendas y de los precios que pongas. Los números de esta página son ejemplos del libro con precios de Perú. El libro te enseña a calcular tu costo y tu mínimo para que no vendas a pérdida. No te promete una cifra.</p></details>
+    <details><summary>¿Las recetas funcionan en mi cocina?</summary><p>Son recetas clásicas, con medidas exactas y la forma de saber cuándo está listo cada paso. Igual, haz una tanda de prueba antes de vender: cada horno calienta distinto.</p></details>
+    <details><summary>¿Y si no me gusta?</summary><p>Tienes 7 días de garantía. Pides el reembolso desde Hotmart y te devuelven todo.</p></details>
+  </div></section>
+
+  <section class="seccion chocolate cierre"><div class="contenedor angosto">
+    <img class="cierre-img" src="assets/fotos/galletas-gigantes-chispas.webp" alt="Galletas gigantes con chispas de chocolate" loading="lazy" width="900" height="600">
+    <h2>Haz tu primera tanda este sábado.</h2>
+    <p>Elige una de las fáciles, saca la cuenta con tus precios, regala 5 de prueba a tus vecinas y toma tus primeros pedidos.</p>
+    <a class="btn btn-grande btn-comprar" href="#comprar">Quiero el libro · <span class="precio"></span></a>
+  </div></section>
+</main>
+
+<footer class="pie"><div class="contenedor">
+  <p>Postres que se Venden Solos · Biblioteca Práctica</p>
+  <p class="chico">Los números de esta página y del libro son ejemplos con precios de mayorista de Perú (octubre 2026) para que calcules los tuyos. Los resultados dependen de tu zona, tus precios y tus ventas. Fotos referenciales.</p>
+</div></footer>
+</body>
+</html>
