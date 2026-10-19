@@ -14,7 +14,7 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_LA">
   <meta property="og:title" content="Postres que se Venden Solos">
-  <meta property="og:description" content="Deja de regalar tus postres. 50 recetas paso a paso, cada una con lo que cuesta y a cuánto venderla. Incluye 15 para vender esta Navidad.">
+  <meta property="og:description" content="Vende tus postres de Navidad antes de prepararlos. Calendario de pedidos, 50 recetas paso a paso con su precio, mensajes y plantillas para tus estados.">
   <meta property="og:image" content="https://biblioteca-practica.github.io/postres/assets/producto-redes.jpg">
   <meta property="og:url" content="https://biblioteca-practica.github.io/postres/">
   <link rel="canonical" href="https://biblioteca-practica.github.io/postres/">
@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;700;800&family=Pacifico&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="assets/fotos/tres-leches-vaso.webp">
+  <link rel="preload" as="image" href="assets/portada.webp">
   <link rel="stylesheet" href="estilos.css">
   <!-- META PIXEL: pegar aquí el código del píxel de Meta -->
 </head>
@@ -49,12 +49,46 @@
 
 <main id="inicio">
   <section class="hero"><div class="contenedor hero-grid">
-    <div class="hero-texto">
-      <h1>Deja de regalar tus postres.</h1>
-      <p class="continua">Y empieza a venderlos desde tu cocina con esta guía: 50 recetas paso a paso, cada una con lo que cuesta y a cuánto venderla.</p>
-      <ul class="chips chips-hero"><li>+480 páginas con fotos</li><li>Calculadora de precios incluida</li></ul>
+    <div class="hero-intro">
+      <p class="hero-pildora">Recetario + kit para vender esta Navidad</p>
+      <h1>Vende tus postres de Navidad <span class="resalta">antes de prepararlos.</span></h1>
+      <p class="continua">Tomas los pedidos en noviembre, con adelanto, y en diciembre solo cocinas y entregas.</p>
+    </div>
+    <div class="kit-hero" aria-label="Libro y plantillas para estados">
+      <div class="kit-base" aria-hidden="true"></div>
+      <div class="kit-stage"><div class="kit-book">
+        <div class="kit-spine" aria-hidden="true"></div>
+        <div class="kit-pages" aria-hidden="true"></div>
+        <img class="kit-front" src="assets/portada.webp" alt="Portada de Postres que se Venden Solos" width="467" height="700" loading="eager" fetchpriority="high">
+      </div></div>
+      <div class="kit-phone">
+        <div class="phone-screen">
+          <img class="estado estado-1" src="assets/estados/01-tres-leches-vaso.webp" alt="Plantilla de estado de tres leches en vaso" width="360" height="640" loading="eager">
+          <img class="estado estado-2" src="assets/estados/24-brigadeiros.webp" alt="Plantilla de estado de brigadeiros" width="360" height="640" loading="eager">
+          <img class="estado estado-3" src="assets/estados/46-trufas-paneton.webp" alt="Plantilla de estado de trufas de panetón" width="360" height="640" loading="eager">
+          <img class="estado estado-4" src="assets/estados/03-cheesecake-fresa-vaso.webp" alt="Plantilla de estado de cheesecake de fresa" width="360" height="640" loading="eager">
+          <div class="estado-progreso" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+      <a class="sello" href="#navidad"><span class="sello-1">Incluye</span><span class="sello-2">15 recetas</span><span class="sello-3">para vender esta Navidad</span></a>
+      <div class="kit-chat">Hola, está a <span class="ph">[tu precio]</span> el vaso, con tapa y cucharita.</div>
+      <div class="kit-ganancia">Cada receta trae su cuenta<b>Cuesta S/ 1.97</b><b>Se vende a S/ 5</b></div>
+    </div>
+    <div class="hero-resumen">
+      <h2>Todo lo que recibes</h2>
+      <ul class="kit-tarjetas">
+        <li><span class="kit-icono" aria-hidden="true">📖</span><div><b>50 recetas paso a paso</b><span>con fotos de los pasos difíciles</span></div></li>
+        <li><span class="kit-icono" aria-hidden="true">🧮</span><div><b>El precio de cada una</b><span>costo, precio mínimo y lo que te queda</span></div></li>
+        <li><span class="kit-icono" aria-hidden="true">📅</span><div><b>Calendario de Navidad</b><span>qué hacer cada semana</span></div></li>
+        <li><span class="kit-icono" aria-hidden="true">💬</span><div><b>Mensajes listos</b><span>para responder el "¿a cómo?"</span></div></li>
+        <li><span class="kit-icono" aria-hidden="true">📱</span><div><b>Plantillas para tus estados</b><span>una por receta</span></div></li>
+        <li><span class="kit-icono" aria-hidden="true">🎄</span><div><b>Especial Navidad</b><span>15 recetas para cajitas y regalos</span></div></li>
+      </ul>
+    </div>
+    <div class="hero-accion">
       <a class="btn btn-comprar" href="#comprar">Quiero el libro · <span class="precio"></span></a>
-      <p class="nota">Pago seguro con Hotmart · Garantía de 7 días</p>
+      <p class="nota">Pago único · Lo recibes al instante en tu correo · Garantía de 7 días</p>
+    </div>
       <div class="ejemplo-hero">
         <p class="ejemplo-tit">Así viene cada receta · ejemplo: tres leches en vaso</p>
         <div class="numeros">
@@ -64,18 +98,6 @@
         </div>
         <p class="nota">Precios de mayorista de Perú (octubre 2026), si vendes los 14 vasos. Tus números dependen de tu zona.</p>
       </div>
-    </div>
-    <div class="hero-fotos">
-      <figure class="foto-principal">
-        <img src="assets/fotos/tres-leches-vaso.webp" alt="Vasos de tres leches con canela, tapados y listos para vender" width="1200" height="800">
-        <a class="sello" href="#navidad"><span class="sello-1">Incluye</span><span class="sello-2">15 recetas</span><span class="sello-3">para vender esta Navidad</span></a>
-      </figure>
-      <div class="fotos-chicas">
-        <img src="assets/fotos/flan-vainilla.webp" alt="Flan de vainilla con caramelo" width="900" height="600">
-        <img src="assets/fotos/pie-de-limon.webp" alt="Porción de pie de limón con merengue" width="900" height="600">
-      </div>
-      <p class="referencial">Fotos referenciales</p>
-    </div>
   </div></section>
 
   <section class="seccion crema"><div class="contenedor angosto">
