@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#17473c">
+<title>Mi calculadora · 28 Días para Volver a Tener Cintura</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,700..800&family=Figtree:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root { --verde: #17473c; --verde2: #2c7a64; --menta: #e3f1ea; --coral: #ec6346; --durazno: #ffe6da; --crema: #fbf6ef;
+          --amarillo: #f5c242; --tinta: #22302b; --gris: #5b6964; --linea: #eadfd3 }
+  * { box-sizing: border-box; margin: 0; padding: 0 }
+  body { font-family: 'Figtree', system-ui, sans-serif; font-size: 16px; line-height: 1.4; color: var(--tinta); background: var(--crema); }
+  .app { max-width: 520px; margin: 0 auto; padding: 0 14px 40px }
+  header { background: var(--verde); color: #fff; padding: 16px 16px 14px; margin: 0 -14px 12px }
+  header small { display: block; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--amarillo) }
+  h1 { font-family: 'Bricolage Grotesque', sans-serif; font-stretch: 85%; font-weight: 800; font-size: 28px; line-height: 1.05 }
+  h2 { font-family: 'Bricolage Grotesque', sans-serif; font-stretch: 85%; font-weight: 800; font-size: 21px; color: var(--verde); margin-bottom: 6px }
+  .tabs { display: flex; gap: 6px; margin-top: 12px }
+  .tabs button { flex: 1; border: 0; border-radius: 99px; padding: 9px 6px; font: 800 15px 'Figtree', sans-serif; background: rgba(255,255,255,.14); color: #fff }
+  .tabs button.on { background: #fff; color: var(--verde) }
+  .card { background: #fff; border-radius: 16px; padding: 14px; margin-bottom: 12px; box-shadow: 0 1px 0 var(--linea) }
+  label { display: block; font-weight: 800; font-size: 14px; margin: 10px 0 4px }
+  label:first-of-type { margin-top: 2px }
+  input, select { width: 100%; font: 600 17px 'Figtree', sans-serif; padding: 10px 12px; border: 2px solid var(--linea); border-radius: 12px; background: #fffdfa; color: var(--tinta) }
+  input:focus, select:focus { outline: none; border-color: var(--coral) }
+  .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px }
+  .dos label { margin-top: 10px }
+  .nota { font-size: 13px; color: var(--gris); margin-top: 6px }
+  .vacio { text-align: center; color: var(--gris); padding: 18px 8px }
+  .grande { font-family: 'Bricolage Grotesque', sans-serif; font-stretch: 85%; font-weight: 800; font-size: 34px; line-height: 1; color: var(--coral) }
+  .kv { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--linea) }
+  .kv:last-child { border-bottom: 0 }
+  .kv b { font-size: 15px } .kv span { font-weight: 800; color: var(--verde); text-align: right }
+  .kv em { grid-column: 1 / -1; font-style: normal; font-size: 13px; color: var(--gris) }
+  .meta { background: var(--durazno); border-radius: 14px; padding: 12px 14px; margin-bottom: 12px }
+  .meta p { font-size: 15px }
+  .plato { display: grid; grid-template-columns: 92px 1fr; gap: 8px; padding: 9px 0; border-bottom: 1px solid var(--linea); align-items: center }
+  .plato:last-child { border-bottom: 0 }
+  .plato b { font-size: 14px; text-transform: uppercase; letter-spacing: .04em; color: var(--coral) }
+  .plato .m { font-size: 15px; line-height: 1.3 }
+  .ico { display: inline-flex; gap: 3px; vertical-align: -2px; margin-right: 3px } .ico i { display: block; width: 15px; height: 15px; border-radius: 50% }
+  .ico i.pa { background: #f2a487 } .ico i.pu { background: #f5d27a } .ico i.h { width: 8px; border-radius: 15px 0 0 15px }
+  .final { background: var(--verde); color: #fff; border-radius: 16px; padding: 14px; margin: 4px 0 14px }
+  .final h2 { color: var(--amarillo) } .final .grande { color: #fff } .final p { font-size: 15px }
+  .pasos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; text-align: center }
+  .pasos div { background: var(--menta); border-radius: 12px; padding: 8px 2px }
+  .pasos b { display: block; font-size: 12px; color: var(--verde2); text-transform: uppercase }
+  .pasos span { font-weight: 800; font-size: 17px; color: var(--verde) }
+  /* Avance */
+  .semana { margin-bottom: 14px }
+  .semana h3 { font-size: 13px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--verde2); margin: 0 0 6px 2px }
+  .dia { display: grid; grid-template-columns: 70px 1fr 54px; gap: 8px; align-items: center; background: #fff; border-radius: 12px; padding: 7px 10px; margin-bottom: 5px }
+  .dia .f { font-weight: 800; font-size: 14px; line-height: 1.1; color: var(--verde) }
+  .dia .f small { display: block; font-weight: 600; font-size: 12px; color: var(--gris) }
+  .dia input { padding: 7px 9px; font-size: 16px }
+  .regla { display: flex; flex-direction: column; align-items: center; font-size: 11px; font-weight: 800; color: var(--gris); gap: 2px }
+  .regla input { width: 22px; height: 22px; accent-color: var(--coral) }
+  .cinta { background: var(--menta); border-radius: 12px; padding: 8px 10px; margin: -2px 0 6px }
+  .cinta .t { font-size: 13px; font-weight: 800; color: var(--verde); margin-bottom: 4px }
+  .cinta .tres { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; align-items: center }
+  .cinta input { padding: 7px 8px; font-size: 15px }
+  .cinta .prom { font-weight: 800; color: var(--verde); text-align: center; font-size: 15px }
+  .semaforo { display: grid; grid-template-columns: 40px 1fr; gap: 10px; align-items: center; border-radius: 14px; padding: 11px 12px; margin: 4px 0 6px }
+  .semaforo .luz { width: 34px; height: 34px; border-radius: 50%; box-shadow: inset 0 -3px 0 rgba(0,0,0,.15) }
+  .semaforo p { font-size: 14.5px; line-height: 1.3 } .semaforo b { display: block; font-size: 15px }
+  .s-verde { background: #e1f3e6 } .s-verde .luz { background: #3bb36a }
+  .s-amarillo { background: #fff3cf } .s-amarillo .luz { background: #f2b822 }
+  .s-rojo { background: #ffe1da } .s-rojo .luz { background: #e5533b }
+  .s-gris { background: #f1ede7 } .s-gris .luz { background: #c9c2b8 }
+  .btn { display: block; width: 100%; border: 0; border-radius: 99px; padding: 12px; font: 800 16px 'Figtree', sans-serif; background: var(--coral); color: #fff; margin-top: 12px }
+  .btn.sec { background: transparent; color: var(--gris); font-weight: 600; font-size: 14px; text-decoration: underline }
+  [hidden] { display: none !important }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <small>28 Días para Volver a Tener Cintura</small>
+    <h1 id="saludo">Mi calculadora</h1>
+    <div class="tabs"><button id="t-num" class="on">Mis números</button><button id="t-av">Mi avance</button></div>
+  </header>
+
+  <section id="v-num">
+    <div class="card">
+      <h2>Tus medidas de hoy</h2>
+      <label for="nombre">¿Cómo te llamas?</label><input id="nombre" autocomplete="given-name" placeholder="Tu nombre">
+      <div class="dos">
+        <div><label for="edad">Edad</label><input id="edad" type="number" inputmode="numeric" min="18" max="80" placeholder="años"></div>
+        <div><label for="talla">Estatura</label><input id="talla" type="number" inputmode="decimal" min="130" max="200" placeholder="cm (ej. 158)"></div>
+      </div>
+      <div class="dos">
+        <div><label for="peso">Peso</label><input id="peso" type="number" inputmode="decimal" step="0.1" min="35" max="200" placeholder="kg"></div>
+        <div><label for="inicio">Empiezas el</label><input id="inicio" type="date"></div>
+      </div>
+      <label for="act">¿Cuánto te mueves hoy, sin contar el plan?</label>
+      <select id="act">
+        <option value="1">Paso casi todo el día sentada</option>
+        <option value="2" selected>Me muevo algo: casa, compras, hijos</option>
+        <option value="3">Camino bastante o trabajo de pie</option>
+      </select>
+      <p class="nota">Tus datos se guardan solo en este celular.</p>
+    </div>
+    <div id="res" hidden></div>
+    <div id="falta" class="card vacio">Pon tu edad, tu estatura y tu peso, y aquí aparecen tus números.</div>
+  </section>
+
+  <section id="v-av" hidden>
+    <div class="card"><p>Pésate cada mañana, después de ir al baño, y anota el peso del día. El que manda es el <b>promedio de la semana</b>. Los días 1, 7, 14, 21 y 28 mide tu cintura dos veces. Marca <b>regla</b> los días que la tengas o estés por tenerla.</p></div>
+    <div id="tabla"></div>
+    <button class="btn sec" id="borrar">Borrar todos mis datos de este celular</button>
+  </section>
+</div>
+
+<script>
+const K = 'cintura28_v1';
+let D = {};
+try { D = JSON.parse(localStorage.getItem(K)) || {}; } catch (e) { D = {}; }
+D.dias = D.dias || {};
+const $ = id => document.getElementById(id);
+const guardar = () => { try { localStorage.setItem(K, JSON.stringify(D)); } catch (e) {} };
+const num = v => { const n = parseFloat(String(v).replace(',', '.')); return isFinite(n) ? n : null; };
+const f1 = n => n.toFixed(1).replace('.', ',');
+const medio = n => { const e = Math.floor(n), r = n - e; return (e ? e : '') + (r >= .5 ? (e ? ' ½' : '½') : '') || '0'; };
+const hoy = () => { const d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0, 10); };
+
+// ---------- Mis números
+const CAMPOS = ['nombre', 'edad', 'talla', 'peso', 'inicio', 'act'];
+if (!D.inicio) D.inicio = hoy();
+CAMPOS.forEach(c => { if (D[c] != null) $(c).value = D[c]; $(c).addEventListener('input', () => { D[c] = $(c).value; guardar(); calcular(); }); });
+
+function iconos(n, cl) { const e = Math.floor(n); return `<i class="${cl}"></i>`.repeat(e) + (n - e >= .5 ? `<i class="${cl} h"></i>` : ''); }
+
+function numeros(edad, talla, peso, act) {
+  const fac = { 1: 1.3, 2: 1.4, 3: 1.55 }[act] || 1.4;
+  const m = talla / 100, imc = peso / (m * m);
+  const tmb = 10 * peso + 6.25 * talla - 5 * edad - 161;          // Mifflin-St Jeor, mujer
+  const gasto = tmb * fac;
+  const deficit = imc < 20 ? 0 : Math.min(700, Math.max(300, gasto * 0.22));
+  const meta = Math.max(1200, gasto - deficit);
+  // Porciones para 3 comidas (sin merienda): palma (proteína) y puño (arroz, papa, tortilla...) de unas 150 kcal; verduras y aceite 120 por comida.
+  const pal = { des: 1, alm: peso >= 80 ? 1.5 : 1, cena: peso >= 95 ? 1.5 : 1 };
+  const puños = P => Math.round(((meta - 360 - 150 * P) / 150) * 2) / 2;
+  let F = puños(pal.des + pal.alm + pal.cena);
+  if (F > 4) { pal.des += 0.5; F = puños(pal.des + pal.alm + pal.cena); }   // lo que sobra va primero como proteína en el desayuno
+  F = Math.min(4.5, Math.max(2.5, F));
+  const pu = { des: 1, alm: 1, cena: 0.5 };
+  ['alm', 'des', 'cena', 'alm', 'des'].slice(0, Math.round((F - 2.5) * 2)).forEach(k => pu[k] += .5);
+  const caminata = 2.3 * peso * 0.35;                              // 3,3 MET, ~21 min al día de promedio en las 4 semanas
+  const grasa = (gasto - meta + caminata) * 28 / 7700;
+  const bajaMin = deficit ? grasa * 0.7 + 0.5 : 0, bajaMax = deficit ? grasa + 1.5 : 0;
+  const base = { 1: 3000, 2: 5000, 3: 7000 }[act] || 5000;
+  const pasos = [2000, 2500, 3000, 3500].map(x => Math.round((base + x) / 500) * 500);
+  return { imc, gasto, meta, pal, pu, bajaMin, bajaMax, pasos, sanoMin: 18.5 * m * m, sanoMax: 24.9 * m * m, mantener: !deficit };
+}
+
+function calcular() {
+  const edad = num(D.edad), talla = num(D.talla), peso = num(D.peso), nom = (D.nombre || '').trim();
+  $('saludo').textContent = nom ? `Hola, ${nom}` : 'Mi calculadora';
+  const ok = edad >= 18 && edad <= 80 && talla >= 130 && talla <= 200 && peso >= 35 && peso <= 200;
+  $('res').hidden = !ok; $('falta').hidden = ok;
+  if (!ok) return;
+  const r = numeros(edad, talla, peso, D.act || 2);
+  const cat = r.imc < 18.5 ? 'bajo peso' : r.imc < 25 ? 'peso saludable' : r.imc < 30 ? 'sobrepeso' : 'obesidad';
+  const quien = nom ? `${nom}, en` : 'En';
+  const meta = r.mantener
+    ? `<div class="meta"><p>Tu peso ya está en el rango saludable. Este plan te sirve para deshinchar la barriga y tener más fuerza, con tus porciones completas. No bajes de <b>${Math.ceil(r.sanoMin)} kg</b>.</p></div>`
+    : `<div class="meta"><p>${quien} 28 días puedes bajar</p><div class="grande">${f1(r.bajaMin)} a ${f1(r.bajaMax)} kg</div>
+       <p>y entre <b>${Math.round(r.bajaMin * 0.9 + 1)} y ${Math.round(r.bajaMax + 2)} cm</b> de cintura, si sigues el plan. La primera semana baja más rápido porque se va la hinchazón.</p></div>`;
+  const comida = (t, p, f, extra) => `<div class="plato"><b>${t}</b><div class="m"><span class="ico">${iconos(p, 'pa')}</span> ${medio(p)} palma${p > 1 ? 's' : ''} de proteína<br>` +
+    (f ? `<span class="ico">${iconos(f, 'pu')}</span> ${medio(f)} puño${f > 1 ? 's' : ''} de arroz, papa, tortilla o pan` : 'Sin puño: solo proteína y verduras') + (extra || '') + `</div></div>`;
+  $('res').innerHTML = meta +
+    `<div class="card"><h2>Cuánto te sirves</h2><p class="nota" style="margin:0 0 4px">En cada comida, la mitad del plato es verdura.</p>` +
+    comida('Desayuno', r.pal.des, r.pu.des) + comida('Almuerzo', r.pal.alm, r.pu.alm) +
+    comida('Cena', r.pal.cena, r.pu.cena) +
+    `<p class="nota">Si almuerzas lentejas o frijoles, una taza cuenta como una palma y medio puño. Si te da hambre en la tarde, mira "Qué hago si…" en tu plan.</p></div>` +
+    `<div class="card"><h2>Tus pasos de cada día</h2><div class="pasos">${r.pasos.map((p, i) => `<div><b>Semana ${i + 1}</b><span>${p.toLocaleString('es')}</span></div>`).join('')}</div>
+     <p class="nota">La caminata del plan ya te da casi todos los pasos que suma cada semana. Si tu celular cuenta pasos, míralo en la noche.</p></div>` +
+    `<div class="card"><h2>Tus números</h2>
+      <div class="kv"><b>Tu IMC</b><span>${f1(r.imc)}</span><em>En la tabla de la OMS: ${cat}.</em></div>
+      <div class="kv"><b>Tu peso saludable</b><span>${Math.ceil(r.sanoMin)} a ${Math.floor(r.sanoMax)} kg</span><em>Para tu estatura. La meta de estos 28 días es la de arriba; el resto llega después.</em></div>
+      <div class="kv"><b>Lo que gasta tu cuerpo</b><span>${Math.round(r.gasto / 10) * 10} kcal</span><em>Al día, con lo que te mueves hoy. Con tus porciones comes unas ${Math.round(r.meta / 10) * 10}, sin tener que contarlas.</em></div>
+     </div>`;
+}
+
+// ---------- Mi avance
+const CINTA = [1, 7, 14, 21, 28];
+const fecha = n => { const d = new Date((D.inicio || hoy()) + 'T12:00:00'); d.setDate(d.getDate() + n - 1); return d; };
+const corta = d => d.toLocaleDateString('es', { weekday: 'short', day: 'numeric', month: 'numeric' });
+const dd = n => (D.dias[n] = D.dias[n] || {});
+
+function tabla() {
+  let h = '';
+  for (let s = 1; s <= 4; s++) {
+    h += `<div class="semana"><h3>Semana ${s}</h3>`;
+    for (let n = s * 7 - 6; n <= s * 7; n++) {
+      const x = D.dias[n] || {};
+      h += `<div class="dia"><div class="f">Día ${n}<small>${corta(fecha(n))}</small></div>
+        <input data-n="${n}" data-k="peso" type="number" inputmode="decimal" step="0.1" placeholder="peso (kg)" value="${x.peso ?? ''}">
+        <label class="regla">regla<input data-n="${n}" data-k="regla" type="checkbox" ${x.regla ? 'checked' : ''}></label></div>`;
+      if (CINTA.includes(n)) {
+        h += `<div class="cinta"><div class="t">Cintura del Día ${n}${n === 1 ? ' (en la mañana)' : ''}</div><div class="tres">
+          <input data-n="${n}" data-k="c1" type="number" inputmode="decimal" step="0.1" placeholder="1.ª (cm)" value="${x.c1 ?? ''}">
+          <input data-n="${n}" data-k="c2" type="number" inputmode="decimal" step="0.1" placeholder="2.ª (cm)" value="${x.c2 ?? ''}">
+          <div class="prom" id="cp${n}"></div></div>` +
+          (n === 1 ? `<div class="t" style="margin-top:6px">Día 1 en la noche</div><div class="tres">
+          <input data-n="1" data-k="noche" type="number" inputmode="decimal" step="0.1" placeholder="cm" value="${x.noche ?? ''}"><div class="prom" id="cpn" style="grid-column: span 2"></div></div>` : '') + `</div>`;
+      }
+    }
+    h += `<div id="sem${s}"></div></div>`;
+  }
+  h += `<div id="final"></div>`;
+  $('tabla').innerHTML = h;
+  $('tabla').querySelectorAll('input').forEach(i => i.addEventListener('input', () => {
+    const o = dd(i.dataset.n);
+    if (i.type === 'checkbox') o.regla = i.checked; else o[i.dataset.k] = i.value === '' ? null : num(i.value);
+    guardar(); avance();
+  }));
+  avance();
+}
+
+const cintura = n => { const x = D.dias[n] || {}; const v = [x.c1, x.c2].filter(y => y > 0); return v.length ? v.reduce((a, b) => a + b) / v.length : null; };
+const promSem = s => { const v = []; for (let n = s * 7 - 6; n <= s * 7; n++) { const p = (D.dias[n] || {}).peso; if (p > 0) v.push(p); } return v.length >= 3 ? v.reduce((a, b) => a + b) / v.length : null; };
+const reglaSem = s => { for (let n = s * 7 - 6; n <= s * 7; n++) if ((D.dias[n] || {}).regla) return true; return false; };
+
+function avance() {
+  CINTA.forEach(n => { const c = cintura(n), e = $('cp' + n); if (e) e.textContent = c ? `${f1(c)} cm` : ''; });
+  const c1 = cintura(1), noche = (D.dias[1] || {}).noche;
+  if ($('cpn')) $('cpn').textContent = c1 && noche ? `+${f1(noche - c1)} cm de hinchazón` : '';
+  const base = (D.dias[1] || {}).peso || num(D.peso);
+  const amarillos = [];
+  for (let s = 1; s <= 4; s++) {
+    const prom = promSem(s), prev = s === 1 ? base : promSem(s - 1), el = $('sem' + s);
+    if (!prom || !prev) { el.innerHTML = `<div class="semaforo s-gris"><div class="luz"></div><p><b>Tu semáforo de la semana ${s}</b>Se enciende cuando anotes al menos 3 pesos de esta semana.</p></div>`; continue; }
+    const baja = prev - prom, regla = reglaSem(s);
+    const cIni = cintura(1), cFin = cintura(s * 7), dc = cIni && cFin ? cIni - cFin : null;
+    const ctxt = dc != null ? ` Tu cintura: ${dc >= 0 ? f1(dc) + ' cm menos' : f1(-dc) + ' cm más'} desde el Día 1.` : '';
+    let color, t, m;
+    // con IMC menor a 20 el plan no le quita comida (calculadora: mantener): el semáforo nunca le pide comer menos
+    const talla = num(D.talla), imc = talla ? base / ((talla / 100) ** 2) : 25;
+    if (imc < 20) {
+      if (baja > 1) { color = 'amarillo'; t = 'Estás bajando de más'; m = 'Tu peso ya es sano: suma una fruta y medio puño más en el almuerzo.'; }
+      else { color = 'verde'; t = 'Vas bien'; m = 'Tu peso se mantiene, que es lo que buscas. Lo tuyo es la cintura y la fuerza.'; }
+    } else if (s === 1) {
+      if (baja >= 0.3 || (dc != null && dc >= 1)) { color = 'verde'; t = 'Vas bien'; m = 'Se está yendo la hinchazón. Desde la semana 2 baja más despacio, y así tiene que ser.'; }
+      else if (regla) { color = 'amarillo'; t = 'La regla tapa lo que bajaste'; m = 'Te sube la balanza con agua. Sigue igual y mira tu cintura.'; }
+      else { color = 'amarillo'; t = 'Revisa dos cosas'; m = '¿Tomaste los 2 vasos de agua antes de comer y caminaste después de almorzar? Ponlos firmes en la semana 2.'; }
+    } else if (baja > 1) { color = 'verde'; t = 'Vas muy rápido'; m = 'Suma una fruta al día para no perder músculo.'; }
+    else if (baja >= 0.25) { color = 'verde'; t = 'Vas bien'; m = 'Sigue igual.'; }
+    else if (regla) { color = 'amarillo'; t = 'Semana con regla'; m = 'El agua tapa lo que bajaste. Sigue igual y mira el promedio de la próxima semana.'; }
+    else if (amarillos.includes(s - 1) && baja <= 0) { color = 'rojo'; t = 'Dos semanas sin bajar'; m = 'Mide tus porciones con la mano en cada comida, saca el puño de la cena y camina 10 minutos más.'; }
+    else { color = 'amarillo'; t = 'Cambia una cosa'; m = 'Medio puño menos de arroz o pan en la cena, o 10 minutos más de caminata.'; }
+    if (color === 'amarillo' && !regla) amarillos.push(s);
+    el.innerHTML = `<div class="semaforo s-${color}"><div class="luz"></div><p><b>${t}</b>Promedio de la semana ${s}: ${f1(prom)} kg (${baja >= 0 ? f1(baja) + ' kg menos' : f1(-baja) + ' kg más'} que ${s === 1 ? 'el Día 1' : 'la semana ' + (s - 1)}).${ctxt} ${m}</p></div>`;
+  }
+  resultado(base);
+}
+
+// El Día 28: cuánto bajó en total (peso del Día 28 o, si no lo anotó, el promedio de la semana 4) y cuántos cm de cintura.
+function resultado(base) {
+  const el = $('final'); if (!el) return;
+  const p28 = (D.dias[28] || {}).peso || promSem(4), c1 = cintura(1), c28 = cintura(28);
+  if (!(p28 && base) && !(c1 && c28)) { el.innerHTML = ''; return; }
+  const kg = p28 && base ? base - p28 : null, cm = c1 && c28 ? c1 - c28 : null;
+  const linea = (v, u) => v >= 0 ? `${f1(v)} ${u} menos` : `${f1(-v)} ${u} más`;
+  const nom = (D.nombre || '').trim();
+  el.innerHTML = `<div class="final"><h2>${nom ? nom + ', tu' : 'Tu'} resultado de los 28 días</h2>` +
+    (kg != null ? `<div class="grande">${linea(kg, 'kg')}</div>` : '') +
+    (cm != null ? `<p style="margin-top:4px"><b>${linea(cm, 'cm')}</b> de cintura desde el Día 1.</p>` : '') +
+    `<p style="margin-top:8px">Compara tus fotos del Día 1 y del Día 28. Para que no vuelva lo que bajaste, sigue con el bono <b>Después del día 28</b>.</p></div>`;
+}
+
+// ---------- pestañas
+function ver(av) { $('v-num').hidden = av; $('v-av').hidden = !av; $('t-num').classList.toggle('on', !av); $('t-av').classList.toggle('on', av); if (av) tabla(); window.scrollTo(0, 0); }
+$('t-num').onclick = () => ver(false); $('t-av').onclick = () => ver(true);
+$('borrar').onclick = () => { if (confirm('¿Borrar todos tus datos de este celular? No se pueden recuperar.')) { D = { dias: {}, inicio: hoy() }; guardar(); location.reload(); } };
+$('inicio').value = D.inicio;
+calcular();
+if (location.hash === '#avance') ver(true);
+</script>
+</body>
+</html>
