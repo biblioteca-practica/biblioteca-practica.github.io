@@ -32,7 +32,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="estilos.css">
-  <!-- META PIXEL: pegar aquí el código del píxel de Meta -->
+  <!-- Meta Pixel (Biblioteca Practica - Libros). Compra la registra Hotmart con el mismo píxel. -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1087344250838953');
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent', {content_name: '21 Noches para Dormir Profundo', value: 12, currency: 'USD'});
+    document.addEventListener('click', e => {
+      if (e.target.closest('.btn-comprar')) fbq('track', 'InitiateCheckout', {value: 12, currency: 'USD'});
+    });
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1087344250838953&ev=PageView&noscript=1"></noscript>
 </head>
 <body>
 <script>
