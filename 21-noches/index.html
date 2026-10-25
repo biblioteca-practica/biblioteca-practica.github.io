@@ -1,39 +1,32 @@
 <!doctype html>
-<!--
-  COMPRA: cambia únicamente LINK_COMPRA, al inicio del body, por el enlace de Hotmart.
-  Todos los enlaces .btn-comprar se actualizan al cargar el documento.
-  Mientras diga PEGAR_AQUI_LINK_DE_HOTMART, conservan href="#comprar" y bajan al precio.
-  Publica esta carpeta con sus assets. Consulta LEEME.md para la configuración final.
--->
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#301b2d">
-  <title>21 Noches para Dormir Profundo | PDF + 21 audios guiados</title>
-  <meta name="description" content="Un plan noche a noche para preparar tu descanso y saber qué hacer si despiertas de madrugada. PDF de 182 páginas, 21 audios y hojas prácticas. 12 USD.">
+  <meta name="theme-color" content="#1f1430">
+  <title>21 Noches para Dormir Profundo | Las 21 noches del Monje</title>
+  <meta name="description" content="Un paso y un audio con la voz del Monje cada noche, para la cabeza que no se calla al acostarte y para cuando te despiertas a las 3 de la mañana. 12 USD, pago único.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_LA">
   <meta property="og:title" content="21 Noches para Dormir Profundo">
-  <meta property="og:description" content="¿Tu mente no se apaga de noche? Sigue un plan de 21 noches con PDF, audios guiados y hojas prácticas. 12 USD, pago único.">
-  <!-- Al publicar, usa la URL pública completa de esta imagen en og:image y twitter:image. -->
+  <meta property="og:description" content="Haz esto 10 minutos antes de dormir y vuelve a dormir toda la noche. 21 audios con la voz del Monje. 12 USD, pago único.">
   <meta property="og:image" content="https://biblioteca-practica.github.io/21-noches/assets/producto-redes.jpg">
-  <meta property="og:url" content="https://biblioteca-practica.github.io/21-noches/">
-  <link rel="canonical" href="https://biblioteca-practica.github.io/21-noches/">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="1200">
-  <meta property="og:image:alt" content="21 Noches para Dormir Profundo: ebook, audios guiados y hojas prácticas. Imagen referencial.">
+  <meta property="og:url" content="https://biblioteca-practica.github.io/21-noches/">
+  <link rel="canonical" href="https://biblioteca-practica.github.io/21-noches/">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="21 Noches para Dormir Profundo">
-  <meta name="twitter:description" content="Un paso cada noche, un audio que te acompaña y un plan para la madrugada. PDF + 21 audios. 12 USD.">
-  <meta name="twitter:image" content="https://biblioteca-practica.github.io/21-noches/assets/producto-redes.jpg">
   <link rel="icon" href="assets/luna.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="assets/monje.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="estilos.css">
-  <!-- Meta Pixel (Biblioteca Practica - Libros). Compra la registra Hotmart con el mismo píxel. -->
+  <!-- Meta Pixel (Biblioteca Practica - Libros). La compra la registra Hotmart con el mismo píxel. -->
   <script>
+    // En vista previa (archivo local o localhost) no se manda nada al píxel.
+    if (location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
+      window.fbq = function () {};
+    } else {
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
     n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
@@ -42,219 +35,668 @@
     fbq('init', '1087344250838953');
     fbq('track', 'PageView');
     fbq('track', 'ViewContent', {content_name: '21 Noches para Dormir Profundo', value: 12, currency: 'USD'});
-    document.addEventListener('click', e => {
-      if (e.target.closest('.btn-comprar')) fbq('track', 'InitiateCheckout', {value: 12, currency: 'USD'});
-    });
+    }
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1087344250838953&ev=PageView&noscript=1"></noscript>
+  <style>
+    :root {
+      --noche: #1f1430;
+      --noche-2: #2e1d47;
+      --oro: #f0b54a;
+      --oro-claro: #f8dc9c;
+      --crema: #fbf6ee;
+      --crema-2: #f3e9d8;
+      --tinta: #2a2230;
+      --suave: #675b6d;
+      --linea: #e6dac6;
+      --boton: #f5a524;
+      --boton-hover: #ffb93d;
+      --radio: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--crema);
+      color: var(--tinta);
+      font: 400 17px/1.6 "Nunito", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; line-height: 1.15; margin: 0 0 .5em; }
+    h2 { font-size: clamp(1.6rem, 6vw, 2.3rem); }
+    p { margin: 0 0 1em; }
+    .contenedor { width: min(100% - 32px, 1040px); margin-inline: auto; }
+    .angosto { width: min(100% - 32px, 680px); margin-inline: auto; }
+    .seccion { padding: 56px 0; }
+    .etiqueta {
+      display: inline-block;
+      font-weight: 800;
+      font-size: .78rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #9a6a12;
+      margin-bottom: 10px;
+    }
+
+    /* Barra superior */
+    .barra-top {
+      background: #140d20;
+      color: var(--oro-claro);
+      text-align: center;
+      font-size: .82rem;
+      font-weight: 700;
+      padding: 8px 12px;
+    }
+
+    /* Botón de compra */
+    .btn-comprar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 460px;
+      min-height: 60px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      background: var(--boton);
+      color: #2b1600;
+      font-weight: 800;
+      font-size: 1.12rem;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 10px 24px rgba(245, 165, 36, .35);
+      transition: transform .15s ease, background .15s ease;
+    }
+    .btn-comprar:hover { background: var(--boton-hover); transform: translateY(-1px); }
+    .btn-comprar .flecha { font-size: 1.3em; line-height: 1; }
+    .bajo-boton { font-size: .9rem; color: var(--suave); margin: 10px 0 0; }
+    .confianza {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 16px;
+      list-style: none;
+      padding: 0;
+      margin: 14px 0 0;
+      font-size: .86rem;
+      font-weight: 700;
+    }
+
+    /* Hero */
+    .hero {
+      background:
+        radial-gradient(120% 70% at 80% 0%, rgba(240, 181, 74, .18), transparent 60%),
+        linear-gradient(180deg, var(--noche) 0%, var(--noche-2) 100%);
+      color: #fff;
+      padding: 28px 0 44px;
+    }
+    .hero .contenedor { display: grid; gap: 22px; }
+    .hero .etiqueta { color: var(--oro); margin: 0; }
+    .hero h1 { font-size: clamp(1.9rem, 7.6vw, 3rem); margin: 0; }
+    .hero h1 em { font-style: normal; color: var(--oro-claro); }
+    .hero .sub { color: #e9e1f2; font-size: 1.05rem; margin: 0; }
+    .hero-visual { position: relative; margin: 4px 0 18px; }
+    .hv-monje {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      object-position: 50% 30%;
+      border-radius: 22px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, .45);
+    }
+    .hv-libro {
+      position: absolute;
+      right: 8px;
+      bottom: -18px;
+      width: 30%;
+      border-radius: 6px;
+      transform: rotate(4deg);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, .55);
+    }
+    .hv-sello {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      background: rgba(20, 13, 32, .82);
+      color: var(--oro-claro);
+      border: 1px solid rgba(248, 220, 156, .45);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: .85rem;
+      font-weight: 800;
+    }
+    .beneficios { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .beneficios li { display: flex; gap: 12px; align-items: flex-start; font-weight: 600; color: #f4eefa; }
+    .beneficios .ico { flex: 0 0 auto; width: 1.6em; text-align: center; }
+    .hero .bajo-boton { color: #cfc4dc; }
+    .hero .confianza { color: #e9e1f2; }
+    .prueba-social {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .07);
+      font-size: .92rem;
+      color: #f4eefa;
+    }
+    .prueba-social img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; object-position: 50% 20%; }
+    .prueba-social b { color: var(--oro-claro); }
+
+    /* Regalo: audio */
+    .regalo { background: var(--crema-2); }
+    .tarjeta-regalo {
+      background: #fff;
+      border: 2px dashed #e2b25a;
+      border-radius: var(--radio);
+      padding: 26px 20px;
+      text-align: center;
+    }
+    .tarjeta-regalo audio { width: 100%; margin: 8px 0 6px; }
+    .tarjeta-regalo .chico { font-size: .88rem; color: var(--suave); }
+    .tarjeta-regalo .btn-comprar { margin: 18px auto 0; }
+
+    /* Dolor */
+    .dolor-lista { list-style: none; padding: 0; margin: 0 0 22px; display: grid; gap: 12px; }
+    .dolor-lista li {
+      background: #fff;
+      border: 1px solid var(--linea);
+      border-radius: 14px;
+      padding: 14px 16px 14px 46px;
+      position: relative;
+    }
+    .dolor-lista li::before { content: "🌙"; position: absolute; left: 14px; top: 13px; }
+    .cita {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.25rem;
+      line-height: 1.4;
+      border-left: 4px solid var(--oro);
+      padding: 4px 0 4px 16px;
+      margin: 0;
+    }
+
+    /* Enseñanza */
+    .ensenanza {
+      background: linear-gradient(180deg, var(--noche-2), var(--noche));
+      color: #fff;
+    }
+    .ensenanza .etiqueta { color: var(--oro); }
+    .ensenanza p { color: #e9e1f2; font-size: 1.07rem; }
+    .pasos { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 14px; }
+    .pasos li {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 14px;
+      align-items: start;
+      background: rgba(255, 255, 255, .06);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .pasos .num {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--oro);
+      color: #2b1600;
+      font: 700 1.3rem "Fraunces", serif;
+    }
+    .pasos h3 { font-size: 1.15rem; margin: 2px 0 4px; color: #fff; }
+    .pasos p { margin: 0; font-size: .98rem; }
+
+    /* 21 noches */
+    .semanas { display: grid; gap: 16px; margin-top: 22px; }
+    .semana {
+      background: #fff;
+      border: 1px solid var(--linea);
+      border-radius: var(--radio);
+      padding: 18px;
+    }
+    .semana h3 { font-size: 1.15rem; margin-bottom: 10px; }
+    .semana h3 span { display: block; font: 800 .75rem "Nunito", sans-serif; letter-spacing: .12em; text-transform: uppercase; color: #9a6a12; }
+    .semana ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 7px; }
+    .semana li { display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: center; font-size: .96rem; }
+    .semana li b {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--crema-2);
+      font-size: .82rem;
+    }
+
+    /* Por dentro */
+    .por-dentro { background: var(--crema-2); }
+    .paginas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; }
+    .paginas figure { margin: 0; }
+    .paginas img { border-radius: 10px; box-shadow: 0 8px 18px rgba(42, 34, 48, .18); }
+    .paginas figcaption { font-size: .78rem; line-height: 1.3; margin-top: 8px; color: var(--suave); }
+    .paginas figcaption b { display: block; color: var(--tinta); font-size: .84rem; }
+
+    /* Lo que recibes */
+    .pack { display: grid; gap: 10px; margin: 20px 0 26px; padding: 0; list-style: none; }
+    .pack li {
+      display: grid;
+      grid-template-columns: 40px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      background: #fff;
+      border: 1px solid var(--linea);
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .pack .ico { font-size: 1.6rem; text-align: center; }
+    .pack h3 { font: 800 1rem "Nunito", sans-serif; margin: 0; }
+    .pack p { margin: 2px 0 0; font-size: .9rem; color: var(--suave); line-height: 1.4; }
+    .pack .tag {
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #e8f5e9;
+      color: #23662b;
+    }
+    .pack .tag.regalo-tag { background: #fff1d6; color: #8a5a00; }
+    .precio {
+      background: linear-gradient(180deg, var(--noche-2), var(--noche));
+      color: #fff;
+      border-radius: 22px;
+      padding: 28px 20px;
+      text-align: center;
+    }
+    .precio .etiqueta { color: var(--oro); }
+    .precio .monto { font: 700 3.6rem/1 "Fraunces", serif; color: var(--oro-claro); margin: 4px 0 6px; }
+    .precio .monto small { font-size: 1.2rem; }
+    .precio p { color: #e9e1f2; margin-bottom: 6px; }
+    .precio .subida { color: var(--oro-claro); font-weight: 800; }
+    .precio .btn-comprar { margin: 18px auto 0; }
+    .precio .pagos { font-size: .88rem; color: #cfc4dc; margin-top: 14px; }
+    .precio .confianza { justify-content: center; color: #e9e1f2; }
+
+    /* Garantía */
+    .garantia {
+      display: grid;
+      grid-template-columns: 84px 1fr;
+      gap: 16px;
+      align-items: center;
+      background: #fff;
+      border: 1px solid var(--linea);
+      border-radius: var(--radio);
+      padding: 20px;
+      margin-top: 22px;
+    }
+    .garantia .sello {
+      width: 84px; height: 84px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      text-align: center;
+      background: var(--oro);
+      color: #2b1600;
+      font: 800 .72rem/1.1 "Nunito", sans-serif;
+      text-transform: uppercase;
+    }
+    .garantia .sello b { display: block; font: 700 1.9rem/1 "Fraunces", serif; }
+    .garantia h3 { font-size: 1.15rem; margin-bottom: 4px; }
+    .garantia p { margin: 0; font-size: .95rem; }
+
+    /* Preguntas */
+    .faq details {
+      background: #fff;
+      border: 1px solid var(--linea);
+      border-radius: 14px;
+      padding: 0 16px;
+      margin-bottom: 10px;
+    }
+    .faq summary {
+      cursor: pointer;
+      font-weight: 800;
+      padding: 16px 28px 16px 0;
+      list-style: none;
+      position: relative;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; position: absolute; right: 0; top: 12px; font-size: 1.4rem; color: #9a6a12; }
+    .faq details[open] summary::after { content: "–"; }
+    .faq details p { margin: 0 0 16px; color: var(--suave); }
+
+    /* Cierre */
+    .cierre {
+      background: linear-gradient(180deg, var(--noche), #140d20);
+      color: #fff;
+      text-align: center;
+    }
+    .cierre img {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: 50% 20%;
+      margin: 0 auto 16px;
+      border: 3px solid var(--oro);
+    }
+    .cierre p { color: #e9e1f2; }
+    .cierre .btn-comprar { margin: 20px auto 0; }
+    .pie { background: #140d20; color: #a99bb8; text-align: center; font-size: .85rem; padding: 22px 16px 96px; }
+    .pie p { margin: 0 0 6px; }
+
+    /* Barra fija en el celular */
+    .barra-fija {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(20, 13, 32, .96);
+      color: #fff;
+      box-shadow: 0 -8px 24px rgba(0, 0, 0, .3);
+      z-index: 20;
+      transform: translateY(110%);
+      transition: transform .25s ease;
+    }
+    .barra-fija.visible { transform: translateY(0); }
+    .barra-fija .texto { font-size: .9rem; line-height: 1.25; }
+    .barra-fija .texto b { color: var(--oro-claro); font-size: 1.05rem; }
+    .barra-fija .btn-comprar { width: auto; min-height: 48px; font-size: 1rem; padding: 10px 20px; box-shadow: none; }
+
+    @media (min-width: 860px) {
+      .hero { padding: 48px 0 64px; }
+      .hero .contenedor { grid-template-columns: 1.05fr .95fr; align-items: center; column-gap: 48px; }
+      .hero-texto { grid-column: 1; }
+      .hero-visual { grid-column: 2; grid-row: 1 / span 2; }
+      .semanas { grid-template-columns: repeat(3, 1fr); }
+      .barra-fija { display: none; }
+      .pie { padding-bottom: 22px; }
+    }
+  </style>
 </head>
 <body>
-<script>
-    const LINK_COMPRA = "https://pay.hotmart.com/U108022318D";
-    // VENTA_PAUSADA = true: los botones dicen "Disponible muy pronto" y no llevan a ningún lado.
-    // Para reabrir la venta, poner false.
-    const VENTA_PAUSADA = false;
-    document.addEventListener("DOMContentLoaded", () => {
-      if (VENTA_PAUSADA) {
-        document.querySelectorAll(".btn-comprar").forEach(boton => {
-          boton.textContent = "Disponible muy pronto";
-          boton.removeAttribute("href");
-          boton.setAttribute("aria-disabled", "true");
-          boton.style.cursor = "default";
-          boton.style.opacity = "0.75";
-        });
-      } else if (LINK_COMPRA !== "PEGAR_AQUI_LINK_DE_HOTMART" && LINK_COMPRA.trim()) {
-        document.querySelectorAll(".btn-comprar").forEach(boton => {
-          boton.href = LINK_COMPRA;
-        });
-      }
-      if (!("IntersectionObserver" in window)) return;
-      const barra = document.querySelector(".sticky-cta");
-      const botonHero = document.querySelector(".hero .btn-comprar");
-      const compra = document.querySelector("#comprar");
-      const movil = window.matchMedia("(max-width: 740px)");
-      let heroVisible = true, compraVisible = false;
-      const actualizar = () => {
-        // La barra empieza solo al pasar el botón; nunca antes de llegar a él.
-        const heroPasado = botonHero.getBoundingClientRect().bottom <= 0;
-        const mostrar = movil.matches && heroPasado && !heroVisible && !compraVisible;
-        barra.hidden = !mostrar;
-        barra.setAttribute("aria-hidden", String(!mostrar));
-      };
-      new IntersectionObserver(([entrada]) => {
-        heroVisible = entrada.isIntersecting;
-        actualizar();
-      }).observe(botonHero);
-      new IntersectionObserver(([entrada]) => {
-        compraVisible = entrada.isIntersecting;
-        actualizar();
-      }).observe(compra);
-      movil.addEventListener("change", actualizar);
-      // También oculta la barra al leer el pie y al volver arriba con el teclado.
-      new IntersectionObserver(([entrada]) => {
-        barra.classList.toggle("footer-visible", entrada.isIntersecting);
-      }).observe(document.querySelector(".site-footer"));
-    });
-  </script>
-<a class="skip-link" href="#contenido">Ir al contenido</a>
-<div class="launch-strip">Precio de lanzamiento · <b>12 USD</b> · Pago único</div>
-<header class="site-header"><div class="container header-inner"><a class="brand" href="#inicio" aria-label="21 Noches, inicio"><span class="moon" aria-hidden="true"></span><span>21 <span class="brand-light">Noches</span></span></a><a class="header-link" href="#muestra">Escucha una muestra <span aria-hidden="true">↗</span></a></div></header>
-<main id="contenido">
-<section class="hero" id="inicio" aria-labelledby="titulo"><div class="container hero-grid"><div class="hero-copy">
-  <p class="hero-tag">PROGRAMA DE 21 NOCHES CON AUDIOS</p>
-  <h1 id="titulo">Por fin sabrás qué hacer cuando el <em>sueño no llega</em></h1>
-  <p class="hero-lead">Un paso por noche y un audio de 10 minutos que te guía.</p>
-</div><div class="hero-product"><figure class="product-pack" aria-label="21 Noches para Dormir Profundo: libro digital, audios y hojas">
-      <div class="pack-scene">
-        <img class="pack-book" src="assets/portada.webp" width="640" height="960" fetchpriority="high" alt="Portada real de 21 Noches para Dormir Profundo.">
-        <img class="pack-sheet" src="assets/hoja-ejemplo.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Hoja real de descarga mental, con un ejemplo lleno.">
-        <div class="pack-phone"><span class="phone-speaker" aria-hidden="true"></span><img src="assets/noche-01.webp" width="681" height="1135" loading="eager" decoding="async" alt="Página real de la Noche 1 vista en un marco de celular referencial."></div>
-        <span class="page-seal"><b>182</b><span>páginas</span></span>
-        <div class="pack-audio"><span class="play-circle" aria-hidden="true">▶</span><span><b>21 audios guiados</b><small>Unos 10 min cada uno</small></span><div class="mini-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
-        <div class="pack-card"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg><span>Tarjeta de<br><b>las 3 a. m.</b></span></div>
+  <div class="barra-top">🌙 Acceso inmediato · Pago único · 7 días de garantía</div>
+
+  <header class="hero">
+    <div class="contenedor">
+      <div class="hero-texto">
+        <p class="etiqueta">Las 21 noches del Monje</p>
+        <h1>Haz esto 10 minutos antes de dormir y <em>vuelve a dormir toda la noche</em></h1>
       </div>
-      <figcaption>21 Noches para Dormir Profundo<span class="visually-hidden">. Composición referencial con portada y páginas reales. Producto digital, sin envío físico.</span></figcaption>
-    </figure></div><div class="hero-actions">
-  <div class="hero-cta"><a class="button btn-comprar" href="#comprar">Empezar hoy · 12 USD <span aria-hidden="true">→</span></a></div>
-  <ul class="trust-row" aria-label="Información de compra">
-    <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg><span>Pago seguro<br>por Hotmart</span></li>
-    <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m13 2-9 12h7l-1 8 10-13h-7Z"/></svg><span>Acceso<br>inmediato</span></li>
-    <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6Z"/><path d="m8 12 3 3 5-6"/></svg><span>Garantía<br>de 7 días</span></li>
-  </ul>
-  <a class="sample-link" href="#muestra"><span aria-hidden="true">▶</span> Escucha 50 segundos del audio 1</a>
-</div></div></section>
-<div class="facts-strip"><div class="container facts-inner"><span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg><b>21 noches</b> a tu ritmo</span><span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="12" width="4" height="8" rx="2"/><rect x="17" y="12" width="4" height="8" rx="2"/></svg><b>10 min</b> de audio</span><span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><b>En tu celular</b> sin impresora</span></div></div>
-<section class="section recognition" aria-labelledby="identificacion"><div class="container recognition-grid">
-  <div><h2 id="identificacion">El cuerpo pide descanso. <em>La mente sigue despierta.</em></h2></div>
-  <ul class="thoughts"><li>“Tengo mucho cansancio, pero mi cabeza no se calla.”</li><li>“Miro el reloj y calculo cuántas horas me quedan.”</li><li>“Me despierto y empiezo a pensar en todo.”</li><li>“Pruebo consejos, pero no sé cuál seguir.”</li></ul>
-</div></section>
-<section class="section benefits" aria-labelledby="beneficios-titulo"><div class="container">
-  <div class="section-heading"><h2 id="beneficios-titulo">En 21 noches, esto es lo que <em>vas a tener.</em></h2></div>
-  <div class="benefits-grid"><article class="benefit-card"><span class="icon-circle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg></span><h3>Tus pendientes al papel</h3><p>Dejas la lista fuera del cuarto.</p></article><article class="benefit-card"><span class="icon-circle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><h3>Elige tu hora ancla</h3><p>Tu horario al despertar.</p></article><article class="benefit-card"><span class="icon-circle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18V7m18 11V9M3 14h18M7 10h3M3 18v3m18-3v3"/><path d="M3 8h18v6"/></svg></span><h3>Un plan para la cama</h3><p>Sabes qué hacer si sigues despierta.</p></article><article class="benefit-card"><span class="icon-circle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="12" width="4" height="8" rx="2"/><rect x="17" y="12" width="4" height="8" rx="2"/></svg></span><h3>10 minutos para soltar</h3><p>Una voz y pausas largas.</p></article><article class="benefit-card"><span class="icon-circle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg></span><h3>Tu plan de madrugada</h3><p>Tu tarjeta, paso a paso.</p></article><article class="benefit-card"><span class="icon-circle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6Z"/><path d="M14 3v5h5M9 12h7M9 16h5"/></svg></span><h3>Tu rutina para seguir</h3><p>Usas lo que te sirvió.</p></article></div>
-  <p class="results-note">Cada persona avanza a su ritmo. Los resultados varían.</p>
-  <ol class="method-strip" aria-label="El método de cada noche"><li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h7a3 3 0 0 1 3 3v14a4 4 0 0 0-3-2H4Z"/><path d="M14 7a3 3 0 0 1 3-3h4v15h-4a4 4 0 0 0-3 2"/></svg><b>1. Lee</b></li><li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6Z"/><path d="M14 3v5h5M9 12h7M9 16h5"/></svg><b>2. Hazlo</b></li><li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="12" width="4" height="8" rx="2"/><rect x="17" y="12" width="4" height="8" rx="2"/></svg><b>3. Escucha</b></li></ol>
-  <p class="basis-note">Basado en técnicas de la terapia cognitivo-conductual para el insomnio (TCC-I). <a href="#base-cientifica">Ver la base y sus límites</a>.</p>
-  <div class="section-cta"><a class="button btn-comprar" href="#comprar">Quiero mis 21 noches <span aria-hidden="true">→</span></a><p class="purchase-note">Pago único · Acceso inmediato</p></div>
-</div></section>
-<section class="section audio-section" id="muestra" aria-labelledby="audio-titulo">
-      <div class="container audio-grid">
-        <div><h2 id="audio-titulo">Una voz tranquila. <em>Un momento para ti.</em></h2><p>Escucha 50 segundos de la Noche 1. Conoce su voz tranquila y sus pausas.</p></div>
-        <div class="audio-card">
-          <div class="audio-card-heading"><span class="audio-icon" aria-hidden="true">♫</span><div><p class="eyebrow">MUESTRA · NOCHE 1</p><h3>Respira y suelta el día</h3></div></div>
-          <div class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          <audio id="audio-muestra" controls preload="none" aria-label="Muestra de 50 segundos: Respira y suelta el día, noche 1" aria-describedby="audio-ayuda">
-            <source src="assets/muestra-noche-01.mp3" type="audio/mpeg">
-            Tu navegador no muestra el reproductor. <a href="assets/muestra-noche-01.mp3">Abre la muestra de audio.</a>
-          </audio>
-          <p id="audio-ayuda">Toca ▶. Los audios completos duran unos 9–10 minutos, con pausas para respirar.</p>
-          <a class="audio-download" href="assets/muestra-noche-01.mp3" download>Descargar la muestra de 50 segundos</a>
+
+      <div class="hero-visual">
+        <img class="hv-monje" src="assets/monje.webp" width="720" height="600" alt="El Monje, sonriendo en el jardín del templo">
+        <img class="hv-libro" src="assets/portada.webp" width="640" height="960" alt="Portada del libro 21 Noches para Dormir Profundo">
+        <span class="hv-sello">🎧 21 audios con su voz</span>
+      </div>
+
+      <div class="hero-texto">
+        <p class="sub">Un paso corto y un audio con la voz del Monje cada noche. Para la cabeza que no se calla al acostarte y para cuando te despiertas a las 3 a. m.</p>
+        <div style="margin-top:20px">
+          <a class="btn-comprar" href="#comprar" data-boton="hero">Quiero empezar esta noche <span class="flecha">→</span></a>
+          <p class="bajo-boton">12 USD, pago único. Al pagar lo ves en tu moneda.</p>
+          <ul class="confianza">
+            <li>🔒 Pago seguro con Hotmart</li>
+            <li>✉️ Acceso inmediato</li>
+            <li>✅ 7 días de garantía</li>
+          </ul>
+        </div>
+        <ul class="beneficios" style="margin-top:26px">
+          <li><span class="ico">🌙</span>Te duermes más rápido, sin dar vueltas en la cama</li>
+          <li><span class="ico">🎧</span>21 audios de 10 minutos para escuchar acostada, con la luz apagada</li>
+          <li><span class="ico">⏰</span>Un plan para cuando abres los ojos de madrugada</li>
+          <li><span class="ico">🔥</span>Pasos para cuando los calores te despiertan</li>
+          <li><span class="ico">📱</span>Todo en tu celular, sin imprimir nada</li>
+        </ul>
+        <div class="prueba-social">
+          <img src="assets/monje.webp" width="44" height="44" alt="">
+          <span><b>Más de 400 mil personas</b> siguen los consejos del Monje en Facebook.</span>
         </div>
       </div>
-    </section>
-<section class="section includes" id="incluye" aria-labelledby="incluye-titulo"><div class="container">
-  <div class="section-heading"><h2 id="incluye-titulo">Tu programa <em>completo.</em></h2><p>Todo digital. Lo abres en tu celular.</p></div>
-  <div class="program-grid">
-    <article class="program-card"><img src="assets/portada.webp" width="640" height="960" loading="lazy" decoding="async" alt="Miniatura de la portada real del libro."><div><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h7a3 3 0 0 1 3 3v14a4 4 0 0 0-3-2H4Z"/><path d="M14 7a3 3 0 0 1 3-3h4v15h-4a4 4 0 0 0-3 2"/></svg><h3>Libro PDF: 182 páginas</h3><p>Las 21 noches, con pasos y ejemplos.</p></div></article>
-    <article class="program-card"><div class="audio-thumbnail" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="12" width="4" height="8" rx="2"/><rect x="17" y="12" width="4" height="8" rx="2"/></svg><b>21</b><span>audios</span></div><div><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="12" width="4" height="8" rx="2"/><rect x="17" y="12" width="4" height="8" rx="2"/></svg><h3>21 audios guiados</h3><p>Unos 10 min. Los botones están dentro del PDF.</p></div></article>
-  </div>
-  <h3 class="extras-title">Incluido sin costo extra</h3>
-  <div class="extras-grid">
-    <article class="extra-card"><span class="extra-ribbon">REGALO 01 · INCLUIDO</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg><h3>Tarjeta de las 3 a. m.</h3><p>Tu plan para cuando despiertas de madrugada.</p></article>
-    <article class="extra-card"><span class="extra-ribbon">REGALO 02 · INCLUIDO</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6Z"/><path d="M14 3v5h5M9 12h7M9 16h5"/></svg><h3>Hojas imprimibles</h3><p>Sueño, descarga mental y luz. Con ejemplo lleno y opción a mano.</p></article>
-    <article class="extra-card"><span class="extra-ribbon">REGALO 03 · INCLUIDO</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1 1m12 12 1 1M5 19l1-1M18 6l1-1"/></svg><h3>Calores nocturnos</h3><p>Pasos si el calor te despierta y cuándo consultar.</p></article>
-  </div>
-  <div class="pack-summary"><figure class="product-pack" aria-label="21 Noches para Dormir Profundo: libro digital, audios y hojas">
-      <div class="pack-scene">
-        <img class="pack-book" src="assets/portada.webp" width="640" height="960" loading="lazy" decoding="async" alt="Portada real de 21 Noches para Dormir Profundo.">
-        <img class="pack-sheet" src="assets/hoja-ejemplo.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Hoja real de descarga mental, con un ejemplo lleno.">
-        <div class="pack-phone"><span class="phone-speaker" aria-hidden="true"></span><img src="assets/noche-01.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Página real de la Noche 1 vista en un marco de celular referencial."></div>
-        <span class="page-seal"><b>182</b><span>páginas</span></span>
-        <div class="pack-audio"><span class="play-circle" aria-hidden="true">▶</span><span><b>21 audios guiados</b><small>Unos 10 min cada uno</small></span><div class="mini-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
-        <div class="pack-card"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg><span>Tarjeta de<br><b>las 3 a. m.</b></span></div>
+    </div>
+  </header>
+
+  <section class="seccion regalo">
+    <div class="angosto">
+      <div class="tarjeta-regalo">
+        <span class="etiqueta">🎁 Regalo para ti, sin pagar nada</span>
+        <h2>Escucha gratis el comienzo de la Noche 1</h2>
+        <p>Esta noche, ya acostada, apaga la luz y dale play. Son 50 segundos con la voz que te va a acompañar las 21 noches.</p>
+        <audio id="muestra" controls preload="none" src="assets/muestra-noche-01.mp3"></audio>
+        <p class="chico">Cada audio completo dura unos 10 minutos, con pausas largas para respirar. <a href="assets/muestra-noche-01.mp3" download>Descargar este regalo</a></p>
+        <a class="btn-comprar" href="#comprar" data-boton="regalo">Quiero las 21 noches completas <span class="flecha">→</span></a>
       </div>
-      <figcaption>21 Noches para Dormir Profundo<span class="visually-hidden">. Composición referencial con portada y páginas reales. Producto digital, sin envío físico.</span></figcaption>
-    </figure><div><ul class="check-list"><li>Libro PDF de 182 páginas</li><li>21 audios guiados</li><li>Tarjeta de las 3 a. m.</li><li>Hojas imprimibles</li><li>Apartado de calores nocturnos</li></ul><p class="pack-total">Todo por <b>12 USD</b> · pago único</p><div class="pack-cta"><a class="button btn-comprar" href="#comprar">Quiero el pack completo <span aria-hidden="true">→</span></a><p class="purchase-note">Garantía de 7 días por Hotmart</p></div></div></div>
-</div></section>
-<section class="section preview-section" id="por-dentro" aria-labelledby="interior-titulo"><div class="container">
-  <div class="section-heading"><h2 id="interior-titulo">Mira el libro <em>por dentro.</em></h2><p>3 páginas reales. Toca para ampliar.</p></div>
-  <div class="previews">
-          <figure><a href="assets/noche-01.webp" target="_blank" rel="noopener" aria-label="Ver en grande la página 7: apertura de la noche 1"><img src="assets/noche-01.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Página 7 del libro: Noche 1, Vacía tu cabeza. Diez minutos, fuera de la cama, audio 1."></a><figcaption><b>Un paso para esta noche</b><span>Apertura de la noche 1 · Página 7</span></figcaption></figure>
-          <figure><a href="assets/hoja-ejemplo.webp" target="_blank" rel="noopener" aria-label="Ver en grande la página 11: hoja de descarga mental llena"><img src="assets/hoja-ejemplo.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Página 11 del libro: hoja de descarga mental llena, con pendientes y tres pasos pequeños para mañana."></a><figcaption><b>Un ejemplo ya resuelto</b><span>Hoja de descarga mental · Página 11</span></figcaption></figure>
-          <figure><a href="assets/ya-en-la-cama.webp" target="_blank" rel="noopener" aria-label="Ver en grande la página 12: Ya en la cama y botón del audio"><img src="assets/ya-en-la-cama.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Página 12 del libro: Ya en la cama, con el botón Escuchar la noche 1 y un repaso de los pasos."></a><figcaption><b>El audio, a un toque</b><span>Ya en la cama · Página 12</span></figcaption></figure>
-        </div>
-  <div class="section-cta"><a class="button btn-comprar" href="#comprar">Quiero mis 21 noches <span aria-hidden="true">→</span></a><p class="purchase-note">Pago único · Acceso inmediato</p></div>
-</div></section>
-<section class="section comparison" aria-labelledby="comparacion-titulo"><div class="container">
-  <div class="section-heading"><h2 id="comparacion-titulo">La diferencia no es dormir “perfecto”. Es <em>saber qué hacer.</em></h2></div>
-  <div class="comparison-table"><div class="comparison-row"><p class="without"><span aria-hidden="true">×</span><span><small>Sin un plan</small>Consejos sueltos, sin un orden.</span></p><p class="with"><span aria-hidden="true">✓</span><span><small>Con 21 Noches</small><b>Un paso concreto</b> cada noche.</span></p></div><div class="comparison-row"><p class="without"><span aria-hidden="true">×</span><span><small>Sin un plan</small>Pendientes en la cabeza.</span></p><p class="with"><span aria-hidden="true">✓</span><span><small>Con 21 Noches</small>Los dejas <b>en un papel.</b></span></p></div><div class="comparison-row"><p class="without"><span aria-hidden="true">×</span><span><small>Sin un plan</small>Miras el reloj de madrugada.</span></p><p class="with"><span aria-hidden="true">✓</span><span><small>Con 21 Noches</small>Sigues <b>tu tarjeta</b> de las 3 a. m.</span></p></div><div class="comparison-row"><p class="without"><span aria-hidden="true">×</span><span><small>Sin un plan</small>Das vueltas esperando el sueño.</span></p><p class="with"><span aria-hidden="true">✓</span><span><small>Con 21 Noches</small>Sabes <b>cuándo levantarte</b> y qué hacer.</span></p></div><div class="comparison-row"><p class="without"><span aria-hidden="true">×</span><span><small>Sin un plan</small>A solas con tus pensamientos.</span></p><p class="with"><span aria-hidden="true">✓</span><span><small>Con 21 Noches</small><b>Una voz tranquila</b> te acompaña 10 min.</span></p></div></div>
-  <div class="section-cta"><a class="button btn-comprar" href="#comprar">Empezar esta noche <span aria-hidden="true">→</span></a><p class="purchase-note">Menos de 0,60 USD por noche</p></div>
-</div></section>
-<section class="section journey" aria-labelledby="recorrido"><div class="container">
-  <div class="section-heading"><h2 id="recorrido">Tres semanas. <em>Una noche a la vez.</em></h2></div>
-  <div class="weeks"><article><span>SEMANA 1 · NOCHES 1–7</span><h3>Bajar el ruido</h3><p>Pendientes al papel y horarios claros.</p></article><article><span>SEMANA 2 · NOCHES 8–14</span><h3>La cama, para dormir</h3><p>Soltar la tensión y salir de la espera.</p></article><article><span>SEMANA 3 · NOCHES 15–21</span><h3>Tu plan para seguir</h3><p>Tu plan de madrugada y tu rutina.</p></article></div>
-</div></section>
-<section class="section fit" aria-labelledby="para-quien">
-      <div class="container">
-        <div class="section-heading"><h2 id="para-quien">¿Es para <em>ti?</em></h2></div>
-        <div class="fit-grid">
-          <div class="fit-card"><h3>Puede acompañarte si…</h3><ul><li>Eres una persona adulta y quieres ordenar tus hábitos de noche.</li><li>Tu mente repasa pendientes al acostarte.</li><li>Buscas pasos simples y una voz tranquila que te guíe.</li><li>Quieres saber qué hacer cuando despiertas de madrugada.</li></ul></div>
-          <div class="fit-card medical-card"><h3>Consulta primero si…</h3><ul><li>Sospechas apnea: roncas fuerte, te ahogas o te dicen que dejas de respirar al dormir.</li><li>El dolor, una enfermedad o los sudores frecuentes cortan tu sueño.</li><li>Duermes mal desde hace meses o el sueño de día afecta tu seguridad.</li></ul><p>Este programa no trata esas causas. Un profesional puede ayudarte a elegir el cuidado adecuado.</p></div>
-        </div>
-      </div>
-    </section>
-<!-- TESTIMONIOS: solo reales y con permiso
-  <section class="section testimonials" aria-labelledby="testimonios-titulo">
-    <div class="container"><h2 id="testimonios-titulo">Experiencias de lectores</h2>
-      <article class="testimonial-card"><blockquote>[Texto real autorizado]</blockquote>
-        <p class="testimonial-author">[Nombre de pila e inicial] · [País]</p>
-      </article>
     </div>
   </section>
--->
-<section class="section start-section" aria-labelledby="empezar-titulo"><div class="container">
-  <div class="section-heading"><h2 id="empezar-titulo">Así de fácil es <em>empezar.</em></h2></div>
-  <ol class="start-steps"><li><span>1</span><div><h3>Tocas el botón y pagas</h3><p>Hotmart procesa tu pago de forma segura.</p></div></li><li><span>2</span><div><h3>Te llega un correo</h3><p>Hotmart te envía el acceso. Revisa también Promociones o Spam.</p></div></li><li><span>3</span><div><h3>Abres la Noche 1</h3><p>En tu celular, abres el PDF y tocas el botón del audio.</p></div></li></ol>
-  <p class="support-note">¿Te trabas en algún paso? Escríbenos desde tu compra en Hotmart (opción «Contactar al productor») y te ayudamos.</p>
-</div></section>
-<section class="section offer" id="comprar" aria-labelledby="precio-titulo"><div class="container offer-grid">
-  <div class="offer-copy"><p class="eyebrow">TU PROGRAMA COMPLETO</p><h2 id="precio-titulo">Empieza con <em>la primera noche.</em></h2><p>El libro, los audios y las hojas prácticas. Sigue el camino a tu ritmo.</p><figure class="product-pack" aria-label="21 Noches para Dormir Profundo: libro digital, audios y hojas">
-      <div class="pack-scene">
-        <img class="pack-book" src="assets/portada.webp" width="640" height="960" loading="lazy" decoding="async" alt="Portada real de 21 Noches para Dormir Profundo.">
-        <img class="pack-sheet" src="assets/hoja-ejemplo.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Hoja real de descarga mental, con un ejemplo lleno.">
-        <div class="pack-phone"><span class="phone-speaker" aria-hidden="true"></span><img src="assets/noche-01.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Página real de la Noche 1 vista en un marco de celular referencial."></div>
-        <span class="page-seal"><b>182</b><span>páginas</span></span>
-        <div class="pack-audio"><span class="play-circle" aria-hidden="true">▶</span><span><b>21 audios guiados</b><small>Unos 10 min cada uno</small></span><div class="mini-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
-        <div class="pack-card"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg><span>Tarjeta de<br><b>las 3 a. m.</b></span></div>
+
+  <section class="seccion">
+    <div class="angosto">
+      <h2>¿Te pasa esto cuando te acuestas?</h2>
+      <ul class="dolor-lista">
+        <li>Llegas rendida a la cama y la cabeza arranca sola: las cuentas, los hijos, lo que te dijeron hoy.</li>
+        <li>Miras el reloj y sacas la cuenta de cuántas horas te quedan para levantarte.</li>
+        <li>Te despiertas a las 3 de la mañana y ya no hay forma de volver a dormir.</li>
+        <li>Los calores te despiertan y pasas la noche tapándote y destapándote.</li>
+        <li>Al otro día andas cansada, con la cabeza pesada y sin paciencia para nada.</li>
+      </ul>
+      <p class="cita">«Probaste tecitos, pastillas, dejar el celular lejos… y la cabeza sigue igual.»</p>
+    </div>
+  </section>
+
+  <section class="seccion ensenanza">
+    <div class="angosto">
+      <span class="etiqueta">Lo que enseña el Monje</span>
+      <h2>El sueño llega cuando la mente suelta. Y soltar se aprende.</h2>
+      <p>Nadie te enseñó a cerrar el día. Por eso te acuestas con todo encima. En 21 Noches aprendes a soltarlo de a poco, un paso por noche, con la calma del Monje y con las técnicas que hoy usan los especialistas del sueño.</p>
+      <ol class="pasos">
+        <li><span class="num">1</span><div><h3>Lees el paso de la noche</h3><p>Dos minutos en tu celular. Cosas simples, como dejar tus pendientes en un papel fuera del cuarto.</p></div></li>
+        <li><span class="num">2</span><div><h3>Te acuestas y le das play</h3><p>Un audio de 10 minutos con la voz del Monje y pausas largas para respirar.</p></div></li>
+        <li><span class="num">3</span><div><h3>Si te despiertas de madrugada, ya sabes qué hacer</h3><p>Sigues tu Tarjeta de las 3 a. m. y vuelves a la cama con un plan.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="angosto" style="width:auto;max-width:680px;margin:0">
+        <h2>Tus 21 noches, una por una</h2>
+        <p>Cada noche tiene su paso y su audio. Vas a tu ritmo.</p>
       </div>
-      <figcaption>21 Noches para Dormir Profundo<span class="visually-hidden">. Composición referencial con portada y páginas reales. Producto digital, sin envío físico.</span></figcaption>
-    </figure></div>
-  <div class="price-card"><p class="price-label">PRECIO DE LANZAMIENTO</p><p class="price"><span>12</span> USD</p><p class="price-detail">Pago único · Sin mensualidades</p><p class="night-price">Son 21 noches: menos de 0,60 USD por noche.</p><ul class="check-list"><li>Libro PDF de 182 páginas</li><li>21 audios guiados</li><li>Tarjeta de las 3 a. m.</li><li>Hojas imprimibles</li><li>Apartado de calores nocturnos</li></ul>
-  <a class="button btn-comprar" href="#comprar">Quiero mis 21 noches <span aria-hidden="true">→</span></a><p class="checkout-note"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg> Pago seguro por Hotmart<br>Acceso inmediato a tu correo tras confirmar el pago</p><p class="price-guarantee"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6Z"/><path d="m8 12 3 3 5-6"/></svg> Garantía de 7 días</p></div>
-</div></section>
-<section class="section guarantee-section" aria-labelledby="garantia-titulo"><div class="container guarantee-layout">
-  <div class="guarantee-seal" role="img" aria-label="Garantía de 7 días"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6Z"/><path d="m8 12 3 3 5-6"/></svg><b>7 DÍAS</b><span>GARANTÍA</span></div>
-  <div><h2 id="garantia-titulo">Pruébalo 7 días. Si no es para ti, <em>te devuelven tu dinero.</em></h2>
-    <p>Empieza las primeras noches con calma. Si el programa no es para ti, pide el reembolso desde tu cuenta de Hotmart dentro de los 7 días después de la compra. Hotmart te devuelve el 100% de lo que pagaste.</p>
-    <p class="secure-note"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg> Pago seguro procesado por Hotmart</p>
-    <div class="guarantee-cta"><a class="button btn-comprar" href="#comprar">Sí, quiero dormir mejor <span aria-hidden="true">→</span></a><p class="purchase-note">Garantía de 7 días por Hotmart</p></div>
-  </div>
-</div></section>
-<section class="section faq" aria-labelledby="preguntas"><div class="container faq-grid"><div><h2 id="preguntas">Resolvemos <em>tus dudas.</em></h2></div><div class="faq-list"><details><summary>¿Es seguro pagar?</summary><div><p>Sí. El pago lo procesa Hotmart, una plataforma de productos digitales. Tus datos de pago no pasan por nosotros.</p></div></details><details><summary>¿Cómo pago? ¿Puedo pagar desde mi país?</summary><div><p>Al tocar el botón de compra, Hotmart te muestra los métodos de pago disponibles en tu país.</p></div></details><details><summary>¿Cómo recibo el programa?</summary><div><p>Después de que Hotmart confirme tu pago, tienes acceso inmediato al producto digital. Te llega un correo de Hotmart con las instrucciones para abrir o descargar el PDF. Si no lo ves, revisa Spam o Promociones. Los botones dentro del libro abren los audios.</p></div></details><details><summary>No soy buena con la tecnología, ¿podré usarlo?</summary><div><p>Sí. Abres el PDF en el celular, buscas la noche que te toca y pulsas su botón de audio. Si te trabas, usa el contacto de soporte indicado en “Así de fácil es empezar”.</p></div></details><details><summary>¿Los audios se pueden escuchar sin internet?</summary><div><p>Actualmente necesitas conexión a internet para abrir los audios desde sus botones en el PDF. La muestra de esta página sí se puede descargar.</p></div></details><details><summary>¿Qué pasa si no me sirve?</summary><div><p>Tienes 7 días de garantía. Dentro de ese plazo, puedes pedir el reembolso desde Hotmart.</p></div></details><details><summary>¿Puedo usarlo en mi celular?</summary><div><p>Sí. El PDF está pensado para leerse en el celular. Abre la noche que te toca y pulsa su botón de audio. Necesitas conexión a internet para abrir los audios.</p></div></details><details><summary>¿Necesito imprimir las hojas?</summary><div><p>No. Cada hoja tiene un ejemplo lleno y una opción para hacerla a mano. Puedes usar un cuaderno o cualquier papel.</p></div></details><details><summary>¿Cuánto tiempo necesito al día?</summary><div><p>Cada audio dura unos 9–10 minutos. Antes haces el paso de esa noche: suele llevar unos pocos minutos y el libro te dice cuánto. Algunas prácticas, como la hora de la preocupación o el ritual, se hacen en otro momento del día.</p></div></details><details><summary>¿Y si tomo pastillas para dormir?</summary><div><p>No dejes ninguna medicación ni cambies la dosis sin consultar a tu médico. Pregúntale cómo integrar estas prácticas a tu cuidado actual.</p></div></details><details><summary>¿Es para hombres y mujeres?</summary><div><p>Sí. Es para personas adultas de cualquier género. El apartado de calores nocturnos se usa si te pasa; no tienes que hacer todo de la misma manera.</p></div></details><details><summary>¿Es una suscripción?</summary><div><p>No. Son 12 USD en un solo pago por el programa. No hay pagos mensuales.</p></div></details></div></div></section>
-<section class="section evidence" id="base-cientifica" aria-labelledby="respaldo"><div class="container evidence-inner">
-  <h2 id="respaldo">Prácticas con <em>una base real.</em></h2>
-  <details><summary>¿En qué se basa?</summary><div><p>El libro adapta prácticas de la terapia cognitivo-conductual para el insomnio y de la higiene del sueño: descarga mental, hora de la preocupación, control de estímulos, relajación muscular y respiración lenta.</p><p>Es una guía educativa. El respaldo corresponde a las técnicas; no es una prueba de resultados de este ebook ni equivale a recibir terapia.</p><ul class="source-list">
-            <li><a href="https://pubmed.ncbi.nlm.nih.gov/33164742/" target="_blank" rel="noopener noreferrer">Edinger y colaboradores · AASM, 2021 <span aria-hidden="true">↗</span></a><span>Guía clínica sobre tratamientos conductuales y psicológicos del insomnio.</span></li>
-            <li><a href="https://www.nhs.uk/every-mind-matters/mental-wellbeing-tips/self-help-cbt-techniques/tackling-your-worries/" target="_blank" rel="noopener noreferrer">NHS · Tackling your worries <span aria-hidden="true">↗</span></a><span>Escribir preocupaciones y reservarles un momento del día.</span></li>
-            <li><a href="https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits" target="_blank" rel="noopener noreferrer">NHLBI / NIH · Healthy Sleep Habits <span aria-hidden="true">↗</span></a><span>Hábitos de sueño, horarios y ambiente de descanso.</span></li>
-          </ul></div></details>
-</div></section>
-<section class="section closing" aria-labelledby="cierre"><div class="container closing-inner"><span class="moon" aria-hidden="true"></span><h2 id="cierre">Por hoy, puedes <em>soltar el día.</em></h2><p>Un paso pequeño. Una noche a la vez.</p><div class="closing-cta"><a class="button btn-comprar" href="#comprar">Empezar hoy · 12 USD <span aria-hidden="true">→</span></a><p class="purchase-note">Pago único · Garantía de 7 días</p></div></div></section>
-</main>
-<footer class="site-footer">
-    <div class="container footer-inner"><p class="footer-title">21 Noches para Dormir Profundo</p><p>Imagen referencial: composición del pack. Portada y páginas reales. Producto digital, sin envío físico.</p><p>Contenido educativo. No reemplaza la atención médica ni psicológica. Los resultados varían según cada persona.</p><!-- POR COMPLETAR: enlaces legales (Privacidad, Términos) --></div>
+      <div class="semanas">
+        <div class="semana">
+          <h3><span>Semana 1</span>Soltar el día</h3>
+          <ol>
+            <li><b>1</b>Respira y suelta el día</li>
+            <li><b>2</b>Suelta hombros y mandíbula</li>
+            <li><b>3</b>Deja pasar los pensamientos</li>
+            <li><b>4</b>La casa que se apaga</li>
+            <li><b>5</b>Respiración 4-6 guiada</li>
+            <li><b>6</b>Recorrido suave por el cuerpo</li>
+            <li><b>7</b>Tu ritual, guiado</li>
+          </ol>
+        </div>
+        <div class="semana">
+          <h3><span>Semana 2</span>Aquietar el cuerpo</h3>
+          <ol>
+            <li><b>8</b>Relajación con la respiración</li>
+            <li><b>9</b>Audio para el sillón</li>
+            <li><b>10</b>Relajación progresiva, parte de arriba</li>
+            <li><b>11</b>Relajación progresiva completa</li>
+            <li><b>12</b>Pausa de descanso de día</li>
+            <li><b>13</b>Pensamientos que pesan menos</li>
+            <li><b>14</b>Descansar sin buscar dormir</li>
+          </ol>
+        </div>
+        <div class="semana">
+          <h3><span>Semana 3</span>Dormir toda la noche</h3>
+          <ol>
+            <li><b>15</b>Audio de las 3 a. m.</li>
+            <li><b>16</b>Contar hacia atrás con la respiración</li>
+            <li><b>17</b>Imaginar frescura: el río</li>
+            <li><b>18</b>Respiración lenta para cuando llega el calor</li>
+            <li><b>19</b>Viaje al lugar seguro</li>
+            <li><b>20</b>Gratitud y soltar el día</li>
+            <li><b>21</b>Tu audio de siempre</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion por-dentro">
+    <div class="angosto">
+      <h2>Mira el libro por dentro</h2>
+      <p>Tres páginas del libro. Toca una para verla en grande.</p>
+      <div class="paginas">
+        <figure><a href="assets/noche-01.webp" target="_blank" rel="noopener"><img src="assets/noche-01.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Página 7: la Noche 1"></a><figcaption><b>El paso de la noche</b>Página 7</figcaption></figure>
+        <figure><a href="assets/hoja-ejemplo.webp" target="_blank" rel="noopener"><img src="assets/hoja-ejemplo.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Página 11: hoja para sacar los pendientes de la cabeza, con un ejemplo lleno"></a><figcaption><b>Un ejemplo ya lleno</b>Página 11</figcaption></figure>
+        <figure><a href="assets/ya-en-la-cama.webp" target="_blank" rel="noopener"><img src="assets/ya-en-la-cama.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Página 12: ya en la cama, con el botón del audio"></a><figcaption><b>El audio, a un toque</b>Página 12</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="comprar">
+    <div class="angosto">
+      <h2>Todo lo que recibes hoy</h2>
+      <ul class="pack">
+        <li><span class="ico">📖</span><div><h3>Libro de 182 páginas</h3><p>Las 21 noches con sus pasos y ejemplos, para leer en el celular.</p></div><span class="tag">Incluido</span></li>
+        <li><span class="ico">🎧</span><div><h3>21 audios con la voz del Monje</h3><p>Unos 10 minutos cada uno. Se abren con un toque desde el libro.</p></div><span class="tag">Incluido</span></li>
+        <li><span class="ico">⏰</span><div><h3>Tarjeta de las 3 a. m.</h3><p>Qué hacer, paso a paso, si te despiertas de madrugada.</p></div><span class="tag regalo-tag">Regalo</span></li>
+        <li><span class="ico">📝</span><div><h3>Hojas para la noche</h3><p>Para sacar los pendientes de la cabeza y anotar cómo dormiste. Las llenas a mano o en el celular.</p></div><span class="tag regalo-tag">Regalo</span></li>
+        <li><span class="ico">🔥</span><div><h3>Calores de la noche</h3><p>Pasos para cuando el calor te despierta sudando.</p></div><span class="tag regalo-tag">Regalo</span></li>
+      </ul>
+
+      <div class="precio">
+        <span class="etiqueta">Precio de lanzamiento</span>
+        <div class="monto">12 <small>USD</small></div>
+        <p>Pago único. Son menos de 0,60 USD por noche.</p>
+        <p class="subida" id="subida" hidden></p>
+        <a class="btn-comprar" href="#comprar" data-boton="precio">Sí, quiero mis 21 noches <span class="flecha">→</span></a>
+        <p class="pagos">Pagas con tarjeta, PayPal o en efectivo según tu país (OXXO en México, Yape y PagoEfectivo en Perú, y otros). Al pagar ves el precio en tu moneda.</p>
+        <ul class="confianza">
+          <li>🔒 Pago seguro con Hotmart</li>
+          <li>✉️ Acceso inmediato</li>
+        </ul>
+      </div>
+
+      <div class="garantia">
+        <div class="sello"><span><b>7</b>días de garantía</span></div>
+        <div>
+          <h3>Prueba las primeras noches con calma</h3>
+          <p>Si sientes que no es para ti, pides el reembolso desde tu cuenta de Hotmart dentro de los 7 días y te devuelven el 100 % de lo que pagaste.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion faq" style="padding-top:8px">
+    <div class="angosto">
+      <h2>Preguntas frecuentes</h2>
+      <details><summary>¿Choca con mi fe o mi religión?</summary><p>No. El Monje te enseña a calmar la mente y el cuerpo antes de dormir, y no te pide cambiar tus creencias. Si rezas antes de dormir, puedes sumar tu oración a la rutina de la noche.</p></details>
+      <details><summary>¿Cómo lo recibo?</summary><p>Apenas Hotmart confirma tu pago, te llega un correo con el acceso. Si no lo ves, revisa Promociones o Spam. Si pagas en efectivo, te llega cuando se acredita el pago.</p></details>
+      <details><summary>No soy buena con la tecnología, ¿podré usarlo?</summary><p>Sí. Abres el libro en el celular, buscas la noche que te toca y tocas el botón del audio. Si te trabas, nos escribes desde tu compra en Hotmart (opción «Contactar al productor») y te ayudamos.</p></details>
+      <details><summary>¿Puedo pagar desde mi país?</summary><p>Sí. Al tocar el botón, Hotmart te muestra el precio en tu moneda y las formas de pago de tu país.</p></details>
+      <details><summary>¿Y si me despierto de madrugada?</summary><p>Para eso están la Tarjeta de las 3 a. m. y el audio de la Noche 15. Te dicen qué hacer en vez de quedarte dando vueltas.</p></details>
+      <details><summary>¿Los audios necesitan internet?</summary><p>Sí, se abren con internet desde los botones del libro. El regalo de esta página sí lo puedes descargar.</p></details>
+      <details><summary>¿Qué pasa si no me sirve?</summary><p>Tienes 7 días de garantía. Pides el reembolso desde Hotmart y te devuelven todo lo que pagaste.</p></details>
+      <details><summary>¿Es seguro pagar?</summary><p>Sí. El pago lo procesa Hotmart, una plataforma de productos digitales. Tus datos de pago no pasan por nosotros.</p></details>
+    </div>
+  </section>
+
+  <section class="seccion cierre">
+    <div class="angosto">
+      <img src="assets/monje.webp" width="120" height="120" loading="lazy" alt="El Monje">
+      <h2>Esta noche puede ser la primera</h2>
+      <p>Lees un paso, te acuestas y le das play. Son 10 minutos.</p>
+      <a class="btn-comprar" href="#comprar" data-boton="cierre">Quiero empezar esta noche <span class="flecha">→</span></a>
+      <p class="bajo-boton" style="color:#cfc4dc">12 USD, pago único · 7 días de garantía</p>
+    </div>
+  </section>
+
+  <footer class="pie">
+    <p>¿Dudas? Escríbenos desde tu compra en Hotmart.</p>
+    <p>© 2026 Biblioteca Práctica</p>
   </footer>
-<div class="sticky-cta" hidden aria-label="Compra del programa">
-  <div class="sticky-inner"><p>21 Noches <b>12 USD</b></p><a class="button btn-comprar" href="#comprar">Empezar hoy <span aria-hidden="true">→</span></a></div>
-</div>
+
+  <div class="barra-fija" aria-hidden="true">
+    <div class="texto">21 Noches<br><b>12 USD</b> · pago único</div>
+    <a class="btn-comprar" href="#comprar" data-boton="barra">Empezar hoy →</a>
+  </div>
+
+  <script>
+    // Enlace de pago de Hotmart. VENTA_PAUSADA = true deja los botones en "Disponible muy pronto".
+    const LINK_COMPRA = "https://pay.hotmart.com/U108022318D";
+    const VENTA_PAUSADA = false;
+    // Subida de precio real: poner la fecha (por ejemplo "1 de diciembre") y el precio nuevo. Vacío = no se muestra.
+    const SUBE_EL = "";
+    const PRECIO_NUEVO = "19 USD";
+    // Microsoft Clarity (mapas de calor y grabaciones). Vacío = apagado.
+    const CLARITY_ID = "z3456uvziu";
+
+    // De dónde viene la visita, para verlo en Hotmart (Informes → SRC).
+    const entrada = new URLSearchParams(location.search);
+    const origen = entrada.get("src") || (entrada.has("fbclid") ? "fb" : "landing");
+    const destino = new URL(LINK_COMPRA);
+    destino.searchParams.set("src", origen);
+    for (const [clave, valor] of entrada) {
+      if (clave.startsWith("utm_") || clave === "sck") destino.searchParams.set(clave, valor);
+    }
+
+    document.querySelectorAll(".btn-comprar").forEach(boton => {
+      if (VENTA_PAUSADA) {
+        boton.textContent = "Disponible muy pronto";
+        boton.removeAttribute("href");
+        boton.style.opacity = "0.75";
+        return;
+      }
+      boton.href = destino.toString();
+      boton.addEventListener("click", () => {
+        fbq("track", "InitiateCheckout", {value: 12, currency: "USD"});
+        fbq("trackCustom", "ClicComprar", {boton: boton.dataset.boton});
+      });
+    });
+
+    if (SUBE_EL) {
+      const subida = document.getElementById("subida");
+      subida.textContent = `Desde el ${SUBE_EL} sube a ${PRECIO_NUEVO}.`;
+      subida.hidden = false;
+    }
+
+    // Cuánto baja la gente y si escucha el regalo (se ve en el Administrador de eventos).
+    const marcas = [25, 50, 75, 100];
+    const vistas = new Set();
+    addEventListener("scroll", () => {
+      const total = document.documentElement.scrollHeight - innerHeight;
+      const avance = total > 0 ? Math.round(scrollY / total * 100) : 100;
+      for (const marca of marcas) {
+        if (avance >= marca && !vistas.has(marca)) {
+          vistas.add(marca);
+          fbq("trackCustom", "Scroll" + marca);
+        }
+      }
+    }, {passive: true});
+    document.getElementById("muestra").addEventListener("play", () => fbq("trackCustom", "PlayMuestra"), {once: true});
+
+    // Barra fija: aparece al pasar el primer botón y se esconde en la zona de compra.
+    const barra = document.querySelector(".barra-fija");
+    const botonHero = document.querySelector('[data-boton="hero"]');
+    const zonaCompra = document.querySelector(".precio");
+    let compraVisible = false;
+    const actualizarBarra = () => {
+      const pasado = botonHero.getBoundingClientRect().bottom < 0;
+      const mostrar = pasado && !compraVisible;
+      barra.classList.toggle("visible", mostrar);
+      barra.setAttribute("aria-hidden", String(!mostrar));
+    };
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(([e]) => { compraVisible = e.isIntersecting; actualizarBarra(); }).observe(zonaCompra);
+    }
+    addEventListener("scroll", actualizarBarra, {passive: true});
+
+    const vistaPrevia = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+    if (CLARITY_ID && !vistaPrevia) {
+      (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script",CLARITY_ID);
+    }
+  </script>
 </body>
 </html>
