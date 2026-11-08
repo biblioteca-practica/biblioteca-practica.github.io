@@ -3,25 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#2a1612">
+  <meta name="theme-color" content="#fbf6ee">
   <title>Medicina del Espíritu | 100 rituales con cosas de tu casa</title>
-  <meta name="description" content="100 rituales con sal, huevo, limón, vela y hierbas para sacar lo pesado de tu casa, cortar la envidia y que la plata se quede. Cada uno con su señal. 7 USD, pago único.">
+  <meta name="description" content="100 rituales del Maestro Kaizen, el Monje Yun y el Monje Shen, con sal, huevo, limón, vela y lo que ya tienes en la cocina. Cada uno con su señal para saber si funcionó.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_LA">
   <meta property="og:title" content="Medicina del Espíritu: 100 rituales con cosas de tu casa">
-  <meta property="og:description" content="Los rituales del Maestro Kaizen, el Monje Yun y el Monje Shen, con su paso a paso y su señal. 7 USD, pago único.">
+  <meta property="og:description" content="100 rituales del Maestro Kaizen, el Monje Yun y el Monje Shen, con sal, huevo, limón, vela y lo que ya tienes en la cocina. Cada uno con su señal para saber si funcionó.">
   <meta property="og:image" content="https://biblioteca-practica.github.io/medicina/assets/producto-redes.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="1200">
   <meta property="og:url" content="https://biblioteca-practica.github.io/medicina/">
   <link rel="canonical" href="https://biblioteca-practica.github.io/medicina/">
-  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/hoja.svg" type="image/svg+xml">
-  <link rel="preload" as="image" href="assets/kaizen.webp">
+  <link rel="preload" as="image" href="assets/producto.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <!-- Meta Pixel (Biblioteca Practica - Libros). -->
+  <script>
+    (function () { var s = (new URLSearchParams(location.search).get("src") || "").toLowerCase();
+      var m = ["kaizen", "yun", "shen"].filter(function (x) { return s.indexOf(x) === 0; })[0];
+      if (m) location.replace(m + "/" + location.search + location.hash); })();
+  </script>
   <script>
     if (location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
       window.fbq = function () {};
@@ -33,538 +34,256 @@
     document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1087344250838953');
     fbq('track', 'PageView');
-    fbq('track', 'ViewContent', {content_name: 'Medicina del Espiritu', value: 7, currency: 'USD'});
+    fbq('track', 'ViewContent', {content_name: 'Medicina del Espiritu', content_category: 'general', value: 7, currency: 'USD'});
     }
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1087344250838953&ev=PageView&noscript=1"></noscript>
   <style>
     :root {
-      --noche: #2a1612;
-      --noche-2: #46241a;
-      --oro: #f0b54a;
-      --oro-claro: #f8dc9c;
-      --crema: #fbf6ee;
-      --crema-2: #f3e9d8;
-      --tinta: #2b211d;
-      --suave: #6b5a52;
-      --linea: #e6dac6;
-      --boton: #f5a524;
-      --boton-hover: #ffb93d;
-      --radio: 18px;
+      --fondo: #fbf6ee; --fondo-2: #f3e9d8; --tinta: #2a201c; --suave: #5f514a; --linea: #e4d7c3;
+      --vino: #6e2a1f; --oro: #c98a1b; --boton: #e0590d; --boton-hover: #f26a1b; --verde: #2f6b3f;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--crema);
-      color: var(--tinta);
-      font: 400 17px/1.6 "Nunito", system-ui, sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-    img { max-width: 100%; height: auto; display: block; }
-    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; line-height: 1.15; margin: 0 0 .5em; }
-    h2 { font-size: clamp(1.6rem, 6vw, 2.3rem); }
+    body { margin: 0; background: var(--fondo); color: var(--tinta); font: 400 19px/1.6 "Nunito", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    img, video { max-width: 100%; height: auto; display: block; }
+    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; line-height: 1.15; margin: 0 0 .5em; color: var(--vino); }
+    h2 { font-size: clamp(1.7rem, 7vw, 2.4rem); }
     p { margin: 0 0 1em; }
-    .contenedor { width: min(100% - 32px, 1040px); margin-inline: auto; }
-    .angosto { width: min(100% - 32px, 680px); margin-inline: auto; }
-    .seccion { padding: 56px 0; }
-    .etiqueta {
-      display: inline-block;
-      font-weight: 800;
-      font-size: .78rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: #9a5a12;
-      margin-bottom: 10px;
-    }
-    .barra-top { background: #1a0d0a; color: var(--oro-claro); text-align: center; font-size: .82rem; font-weight: 700; padding: 8px 12px; }
+    .caja { width: min(100% - 32px, 640px); margin-inline: auto; }
+    .seccion { padding: 48px 0; }
+    .alt { background: var(--fondo-2); }
+    .barra-top { background: var(--vino); color: #fff3df; text-align: center; font-size: .9rem; font-weight: 700; padding: 9px 12px; }
 
-    .btn-comprar {
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-      width: 100%; max-width: 460px; min-height: 60px; padding: 14px 22px;
-      border-radius: 999px; background: var(--boton); color: #2b1600;
-      font-weight: 800; font-size: 1.12rem; text-decoration: none; text-align: center;
-      box-shadow: 0 10px 24px rgba(245, 165, 36, .35);
-      transition: transform .15s ease, background .15s ease;
-    }
-    .btn-comprar:hover { background: var(--boton-hover); transform: translateY(-1px); }
-    .btn-comprar .flecha { font-size: 1.3em; line-height: 1; }
-    .bajo-boton { font-size: .9rem; color: var(--suave); margin: 10px 0 0; }
-    .confianza { display: flex; flex-wrap: wrap; gap: 6px 16px; list-style: none; padding: 0; margin: 14px 0 0; font-size: .86rem; font-weight: 700; }
+    .btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 64px; padding: 14px 20px;
+      border-radius: 14px; background: var(--boton); color: #fff; font-weight: 800; font-size: 1.25rem; text-decoration: none; text-align: center;
+      box-shadow: 0 8px 20px rgba(224, 89, 13, .3); transition: background .15s ease; }
+    .btn:hover { background: var(--boton-hover); }
+    .bajo { font-size: 1rem; color: var(--suave); margin: 10px 0 0; text-align: center; }
+    .sellos { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; list-style: none; padding: 0; margin: 12px 0 0; font-size: .95rem; font-weight: 700; color: var(--verde); }
 
-    /* Hero */
-    .hero {
-      background:
-        radial-gradient(120% 70% at 80% 0%, rgba(240, 150, 60, .22), transparent 60%),
-        linear-gradient(180deg, var(--noche) 0%, var(--noche-2) 100%);
-      color: #fff;
-      padding: 28px 0 44px;
-    }
-    .hero .contenedor { display: grid; gap: 22px; }
-    .hero .etiqueta { color: var(--oro); margin: 0; }
-    .hero h1 { font-size: clamp(1.9rem, 7.6vw, 3rem); margin: 0; }
-    .hero h1 em { font-style: normal; color: var(--oro-claro); }
-    .hero .sub { color: #f1e6de; font-size: 1.05rem; margin: 0; }
-    .hero-visual { position: relative; margin: 4px 0 84px; }
-    .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; border-radius: 22px; overflow: hidden; box-shadow: 0 18px 40px rgba(0, 0, 0, .45); }
-    .trio img { width: 100%; aspect-ratio: 3 / 4.4; object-fit: cover; object-position: 50% 18%; }
-    .hv-libro {
-      position: absolute; right: 8px; bottom: -78px; width: 27%;
-      border-radius: 6px; transform: rotate(4deg);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, .55);
-    }
-    .hv-sello {
-      position: absolute; left: 12px; bottom: 12px;
-      background: rgba(26, 13, 10, .85); color: var(--oro-claro);
-      border: 1px solid rgba(248, 220, 156, .45); border-radius: 999px;
-      padding: 6px 14px; font-size: .85rem; font-weight: 800;
-    }
-    .beneficios { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
-    .beneficios li { display: flex; gap: 12px; align-items: flex-start; font-weight: 600; color: #f8efe9; }
-    .beneficios .ico { flex: 0 0 auto; width: 1.6em; text-align: center; }
-    .hero .bajo-boton { color: #dccbc2; }
-    .hero .confianza { color: #f1e6de; }
-    .prueba-social { display: flex; align-items: center; gap: 12px; margin-top: 18px; padding: 12px 14px; border-radius: 14px; background: rgba(255, 255, 255, .07); font-size: .92rem; color: #f8efe9; }
-    .caras { display: flex; flex: 0 0 auto; }
-    .caras img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--noche-2); margin-left: -10px; }
-    .caras img:first-child { margin-left: 0; }
-    .prueba-social b { color: var(--oro-claro); }
+    .hero { padding: 22px 0 36px; }
+    .quien { display: flex; align-items: center; gap: 10px; font-weight: 800; color: var(--suave); font-size: 1rem; margin-bottom: 12px; }
+    .quien img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 2px solid var(--oro); }
+    .hero h1 { font-size: clamp(2.1rem, 9vw, 3.2rem); margin-bottom: 14px; }
+    .hero h1 em { font-style: normal; color: var(--boton); }
+    .hero .sub { font-size: 1.12rem; color: var(--tinta); }
+    .foto-hero { width: 100%; border-radius: 16px; margin: 18px 0 20px; box-shadow: 0 10px 28px rgba(60, 30, 10, .18); }
+    .precio-hero { text-align: center; margin: 0 0 12px; font-size: 1.1rem; }
+    .precio-hero b { font: 700 2rem "Fraunces", serif; color: var(--vino); }
 
-    /* Dolor */
-    .dolor-lista { list-style: none; padding: 0; margin: 0 0 22px; display: grid; gap: 12px; }
-    .dolor-lista li { background: #fff; border: 1px solid var(--linea); border-radius: 14px; padding: 14px 16px 14px 46px; position: relative; }
-    .dolor-lista li::before { content: "🕯️"; position: absolute; left: 14px; top: 13px; }
-    .cita { font-family: "Fraunces", Georgia, serif; font-size: 1.25rem; line-height: 1.4; border-left: 4px solid var(--oro); padding: 4px 0 4px 16px; margin: 0; }
+    .mensaje { background: #fff; border: 1px solid var(--linea); border-radius: 18px; padding: 20px 18px 22px; box-shadow: 0 6px 18px rgba(60, 30, 10, .06); }
+    .mensaje .etq { display: inline-block; background: var(--vino); color: #fff3df; font-weight: 800; font-size: .85rem; border-radius: 999px; padding: 5px 12px; margin-bottom: 12px; }
+    .video { position: relative; border-radius: 14px; overflow: hidden; background: #000; aspect-ratio: 9 / 16; max-height: 78vh; margin: 0 auto 18px; }
+    .video video, .video img { width: 100%; height: 100%; object-fit: cover; }
+    .play { position: absolute; inset: 0; display: grid; place-items: center; background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,.55)); border: 0; cursor: pointer; padding: 0; }
+    .play span { display: flex; align-items: center; gap: 10px; background: var(--boton); color: #fff; font: 800 1.15rem "Nunito", sans-serif; border-radius: 999px; padding: 14px 22px; box-shadow: 0 8px 20px rgba(0,0,0,.35); }
+    .play span::before { content: ""; border-left: 16px solid #fff; border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
+    .foto-monje { width: 100%; border-radius: 14px; aspect-ratio: 4 / 4.2; object-fit: cover; object-position: 50% 15%; margin-bottom: 16px; }
+    .carta p { font-size: 1.08rem; }
+    .firma { font: italic 600 1.35rem "Fraunces", serif; color: var(--vino); margin: 6px 0 0; }
 
-    /* Monjes y pasos */
-    .ensenanza { background: linear-gradient(180deg, var(--noche-2), var(--noche)); color: #fff; }
-    .ensenanza .etiqueta { color: var(--oro); }
-    .ensenanza p { color: #f1e6de; font-size: 1.05rem; }
-    .monjes { display: grid; gap: 12px; margin: 22px 0 34px; }
-    .monje { display: grid; grid-template-columns: 64px 1fr; gap: 14px; align-items: start; background: rgba(255, 255, 255, .06); border-radius: 16px; padding: 14px; }
-    .monje img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid var(--oro); }
-    .monje h3 { font-size: 1.1rem; margin: 2px 0 2px; color: #fff; }
-    .monje h3 span { display: block; font: 800 .72rem "Nunito", sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--oro); }
-    .monje p { margin: 0; font-size: .95rem; }
-    .pasos { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 14px; }
-    .pasos li { display: grid; grid-template-columns: 48px 1fr; gap: 14px; align-items: start; background: rgba(255, 255, 255, .06); border-radius: 16px; padding: 16px; }
-    .pasos .num { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--oro); color: #2b1600; font: 700 1.3rem "Fraunces", serif; }
-    .pasos h3 { font-size: 1.15rem; margin: 2px 0 4px; color: #fff; }
-    .pasos p { margin: 0; font-size: .98rem; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 18px 0 0; }
-    .chips li { background: #fff; border: 1px solid var(--linea); border-radius: 999px; padding: 7px 13px; font-size: .9rem; font-weight: 700; }
+    .dolores { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+    .dolores li { background: #fff; border: 1px solid var(--linea); border-radius: 14px; padding: 14px 16px 14px 50px; position: relative; font-weight: 600; }
+    .dolores li::before { content: "✔"; position: absolute; left: 16px; top: 13px; width: 24px; height: 24px; border-radius: 50%; background: var(--fondo-2); color: var(--vino); display: grid; place-items: center; font-size: .85rem; }
+    .remate { font-size: 1.15rem; font-weight: 700; margin-top: 18px; }
 
-    /* Partes */
-    .semanas { display: grid; gap: 16px; margin-top: 22px; }
-    .semana { background: #fff; border: 1px solid var(--linea); border-radius: var(--radio); padding: 18px; }
-    .semana.regalo-parte { border: 2px dashed #e2b25a; background: #fffaf0; }
-    .semana h3 { font-size: 1.15rem; margin-bottom: 10px; }
-    .semana h3 span { display: block; font: 800 .75rem "Nunito", sans-serif; letter-spacing: .12em; text-transform: uppercase; color: #9a5a12; }
-    .semana ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 7px; }
-    .semana li { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: center; font-size: .95rem; line-height: 1.35; }
-    .semana li b { width: 34px; height: 30px; border-radius: 999px; display: grid; place-items: center; background: var(--crema-2); font-size: .78rem; }
-    .semana .mas { font-size: .88rem; color: var(--suave); margin: 10px 0 0; }
+    .partes { display: grid; gap: 12px; margin-top: 16px; }
+    .parte { display: grid; grid-template-columns: 64px 1fr; gap: 14px; background: #fff; border: 1px solid var(--linea); border-radius: 16px; padding: 14px; }
+    .parte.suya { border: 2px solid var(--oro); }
+    .parte img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; }
+    .parte .num { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: var(--fondo-2); font: 700 1.5rem "Fraunces", serif; color: var(--vino); }
+    .parte h3 { font-size: 1.15rem; margin: 0 0 2px; }
+    .parte h3 small { display: block; font: 800 .78rem "Nunito", sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--oro); }
+    .parte p { margin: 0; font-size: 1rem; }
+    .parte .ej { color: var(--suave); font-size: .95rem; margin-top: 4px; }
 
-    /* Por dentro */
-    .por-dentro { background: var(--crema-2); }
-    .paginas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 18px; }
-    .paginas figure { margin: 0; }
-    .paginas img { border-radius: 10px; box-shadow: 0 8px 18px rgba(42, 34, 48, .18); }
-    .paginas figcaption { font-size: .78rem; line-height: 1.3; margin-top: 8px; color: var(--suave); }
-    .paginas figcaption b { display: block; color: var(--tinta); font-size: .86rem; }
+    .carrusel { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 16px 14px; margin: 16px -16px 0; -webkit-overflow-scrolling: touch; }
+    .carrusel figure { flex: 0 0 82%; max-width: 380px; margin: 0; scroll-snap-align: center; }
+    .carrusel img { border-radius: 12px; box-shadow: 0 8px 20px rgba(60, 30, 10, .18); }
+    .carrusel figcaption { font-size: .95rem; margin-top: 8px; color: var(--suave); }
+    .carrusel figcaption b { display: block; color: var(--tinta); }
+    .desliza { font-size: .95rem; color: var(--suave); text-align: center; margin: 4px 0 0; }
 
-    /* Lo que recibes */
-    .pack { display: grid; gap: 10px; margin: 20px 0 26px; padding: 0; list-style: none; }
-    .pack li { display: grid; grid-template-columns: 40px 1fr auto; gap: 12px; align-items: center; background: #fff; border: 1px solid var(--linea); border-radius: 14px; padding: 14px; }
-    .pack .ico { font-size: 1.6rem; text-align: center; }
-    .pack h3 { font: 800 1rem "Nunito", sans-serif; margin: 0; }
-    .pack p { margin: 2px 0 0; font-size: .9rem; color: var(--suave); line-height: 1.4; }
-    .pack .tag { font-size: .7rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 4px 8px; border-radius: 999px; background: #e8f5e9; color: #23662b; }
-    .pack .tag.regalo-tag { background: #fff1d6; color: #8a5a00; }
-    .precio { background: linear-gradient(180deg, var(--noche-2), var(--noche)); color: #fff; border-radius: 22px; padding: 28px 20px; text-align: center; }
-    .precio .etiqueta { color: var(--oro); }
-    .precio .monto { font: 700 3.6rem/1 "Fraunces", serif; color: var(--oro-claro); margin: 4px 0 6px; }
-    .precio .monto small { font-size: 1.2rem; }
-    .precio p { color: #f1e6de; margin-bottom: 6px; }
-    .precio .subida { color: var(--oro-claro); font-weight: 800; }
-    .precio .btn-comprar { margin: 18px auto 0; }
-    .precio .pagos { font-size: .88rem; color: #dccbc2; margin-top: 14px; }
-    .precio .confianza { justify-content: center; color: #f1e6de; }
-    .garantia { display: grid; grid-template-columns: 84px 1fr; gap: 16px; align-items: center; background: #fff; border: 1px solid var(--linea); border-radius: var(--radio); padding: 20px; margin-top: 22px; }
-    .garantia .sello { width: 84px; height: 84px; border-radius: 50%; display: grid; place-items: center; text-align: center; background: var(--oro); color: #2b1600; font: 800 .72rem/1.1 "Nunito", sans-serif; text-transform: uppercase; }
+    .recibes { list-style: none; padding: 0; margin: 16px 0 22px; display: grid; gap: 10px; }
+    .recibes li { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: start; background: #fff; border: 1px solid var(--linea); border-radius: 14px; padding: 14px; }
+    .recibes .ico { font-size: 1.7rem; text-align: center; line-height: 1.2; }
+    .recibes h3 { font: 800 1.08rem "Nunito", sans-serif; color: var(--tinta); margin: 0; }
+    .recibes p { margin: 2px 0 0; font-size: .98rem; color: var(--suave); line-height: 1.45; }
+    .recibes .regalo { border: 2px dashed var(--oro); background: #fffaf0; }
+    .precio { background: #fff; border: 2px solid var(--vino); border-radius: 20px; padding: 24px 18px; text-align: center; }
+    .precio .monto { font: 700 3.8rem/1 "Fraunces", serif; color: var(--vino); margin: 4px 0 6px; }
+    .precio .monto small { font-size: 1.3rem; }
+    .precio .pagos { font-size: .98rem; color: var(--suave); margin: 14px 0 0; }
+    .garantia { display: grid; grid-template-columns: 80px 1fr; gap: 14px; align-items: center; margin-top: 18px; background: #fff; border: 1px solid var(--linea); border-radius: 16px; padding: 16px; }
+    .garantia .sello { width: 80px; height: 80px; border-radius: 50%; display: grid; place-items: center; text-align: center; background: var(--verde); color: #fff; font: 800 .72rem/1.1 "Nunito", sans-serif; text-transform: uppercase; }
     .garantia .sello b { display: block; font: 700 1.9rem/1 "Fraunces", serif; }
-    .garantia h3 { font-size: 1.15rem; margin-bottom: 4px; }
-    .garantia p { margin: 0; font-size: .95rem; }
+    .garantia h3 { font-size: 1.15rem; margin: 0 0 4px; }
+    .garantia p { margin: 0; font-size: 1rem; }
 
-    /* Preguntas */
     .faq details { background: #fff; border: 1px solid var(--linea); border-radius: 14px; padding: 0 16px; margin-bottom: 10px; }
-    .faq summary { cursor: pointer; font-weight: 800; padding: 16px 28px 16px 0; list-style: none; position: relative; }
+    .faq summary { cursor: pointer; font-weight: 800; padding: 17px 30px 17px 0; list-style: none; position: relative; }
     .faq summary::-webkit-details-marker { display: none; }
-    .faq summary::after { content: "+"; position: absolute; right: 0; top: 12px; font-size: 1.4rem; color: #9a5a12; }
+    .faq summary::after { content: "+"; position: absolute; right: 0; top: 12px; font-size: 1.6rem; color: var(--boton); }
     .faq details[open] summary::after { content: "–"; }
     .faq details p { margin: 0 0 16px; color: var(--suave); }
 
-    /* Cierre */
-    .cierre { background: linear-gradient(180deg, var(--noche), #1a0d0a); color: #fff; text-align: center; }
-    .cierre .caras { justify-content: center; margin-bottom: 16px; }
-    .cierre .caras img { width: 84px; height: 84px; border: 3px solid var(--oro); margin-left: -16px; }
-    .cierre .caras img:first-child { margin-left: 0; }
-    .cierre p { color: #f1e6de; }
-    .cierre .btn-comprar { margin: 20px auto 0; }
-    .pie { background: #1a0d0a; color: #b8a39a; text-align: center; font-size: .85rem; padding: 22px 16px 96px; }
+    .cierre { text-align: center; }
+    .cierre .cara { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; margin: 0 auto 14px; border: 3px solid var(--oro); }
+    .pie { background: var(--vino); color: #f1dcc8; text-align: center; font-size: .9rem; padding: 22px 16px 100px; }
     .pie p { margin: 0 0 6px; }
 
-    .barra-fija {
-      position: fixed; left: 0; right: 0; bottom: 0;
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
-      padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
-      background: rgba(26, 13, 10, .96); color: #fff;
-      box-shadow: 0 -8px 24px rgba(0, 0, 0, .3); z-index: 20;
-      transform: translateY(110%); transition: transform .25s ease;
-    }
+    .barra-fija { position: fixed; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: #fff; border-top: 1px solid var(--linea);
+      box-shadow: 0 -8px 24px rgba(60, 30, 10, .15); z-index: 20; transform: translateY(110%); transition: transform .25s ease; }
     .barra-fija.visible { transform: translateY(0); }
-    .barra-fija .texto { font-size: .9rem; line-height: 1.25; }
-    .barra-fija .texto b { color: var(--oro-claro); font-size: 1.05rem; }
-    .barra-fija .btn-comprar { width: auto; min-height: 48px; font-size: 1rem; padding: 10px 20px; box-shadow: none; }
-
-    @media (min-width: 860px) {
-      .hero { padding: 48px 0 64px; }
-      .hero .contenedor { grid-template-columns: 1.05fr .95fr; align-items: center; column-gap: 48px; }
-      .hero-texto { grid-column: 1; }
-      .hero-visual { grid-column: 2; grid-row: 1 / span 2; }
-      .semanas { grid-template-columns: repeat(2, 1fr); }
-      .paginas { grid-template-columns: repeat(4, 1fr); }
-      .monjes { grid-template-columns: repeat(3, 1fr); }
-      .monje { grid-template-columns: 1fr; text-align: center; }
-      .monje img { margin: 0 auto; width: 84px; height: 84px; }
-      .barra-fija { display: none; }
-      .pie { padding-bottom: 22px; }
-    }
+    .barra-fija .texto { font-size: .95rem; line-height: 1.25; font-weight: 700; }
+    .barra-fija .texto b { color: var(--vino); font-size: 1.2rem; }
+    .barra-fija .btn { width: auto; min-height: 52px; font-size: 1.08rem; padding: 10px 18px; box-shadow: none; }
+    @media (min-width: 900px) { .barra-fija { display: none; } .pie { padding-bottom: 22px; } }
   </style>
 </head>
 <body>
-  <div class="barra-top">🕯️ Acceso inmediato · Pago único · 7 días de garantía</div>
+  <div class="barra-top">📲 Lo lees en tu celular · Pagas en tu moneda · 7 días de garantía</div>
 
   <header class="hero">
-    <div class="contenedor">
-      <div class="hero-texto">
-        <p class="etiqueta">Del Maestro Kaizen, el Monje Yun y el Monje Shen</p>
-        <h1>Saca lo pesado de tu casa y <em>haz que la plata se quede</em></h1>
-      </div>
-
-      <div class="hero-visual">
-        <div class="trio">
-          <img src="assets/kaizen.webp" width="520" height="867" alt="Maestro Kaizen">
-          <img src="assets/yun.webp" width="520" height="867" alt="Monje Yun">
-          <img src="assets/shen.webp" width="520" height="867" alt="Monje Shen">
-        </div>
-        <img class="hv-libro" src="assets/portada.webp" width="640" height="1021" alt="Portada del libro Medicina del Espíritu">
-        <span class="hv-sello">🧂 130 rituales con su señal</span>
-      </div>
-
-      <div class="hero-texto">
-        <p class="sub">100 rituales con sal, huevo, limón, vela y hierbas que ya tienes en la cocina. Cada uno con su paso a paso y la señal que te dice si funcionó.</p>
-        <div style="margin-top:20px">
-          <a class="btn-comprar" href="#comprar" data-boton="hero">Quiero mi libro ahora <span class="flecha">→</span></a>
-          <p class="bajo-boton">7 USD, pago único. Al pagar lo ves en tu moneda.</p>
-          <ul class="confianza">
-            <li>🔒 Pago seguro con Hotmart</li>
-            <li>✉️ Te llega al correo al toque</li>
-            <li>✅ 7 días de garantía</li>
-          </ul>
-        </div>
-        <ul class="beneficios" style="margin-top:26px">
-          <li><span class="ico">🧂</span>Qué hacer cuando la casa se siente pesada y pelean por cualquier cosa</li>
-          <li><span class="ico">🧄</span>Cómo cortar la envidia que te mandan y lo que deja una visita pesada</li>
-          <li><span class="ico">💰</span>25 rituales de plata: la que se va el mismo día, las deudas, el trabajo y el negocio</li>
-          <li><span class="ico">🌙</span>Para dormir de corrido y que la cabeza se calle cuando te acuestas</li>
-          <li><span class="ico">🥚</span>Cómo leer la señal en el huevo, la sal, la vela y el agua</li>
-        </ul>
-        <div class="prueba-social">
-          <span class="caras"><img src="assets/cara-kaizen.webp" width="40" height="40" alt=""><img src="assets/cara-yun.webp" width="40" height="40" alt=""><img src="assets/cara-shen.webp" width="40" height="40" alt=""></span>
-          <span>Son <b>los mismos monjes de los videos</b> que ves en Facebook. Aquí está todo lo que no entra en un video.</span>
-        </div>
-      </div>
+    <div class="caja">
+      <div class="quien"><img src="assets/cara-yun.webp" width="46" height="46" alt="">Del Maestro Kaizen, el Monje Yun y el Monje Shen</div>
+      <h1>Saca lo pesado de tu casa y <em>haz que la plata se quede</em></h1>
+      <p class="sub">100 rituales del Maestro Kaizen, el Monje Yun y el Monje Shen, con sal, huevo, limón, vela y lo que ya tienes en la cocina. Cada uno con su señal para saber si funcionó.</p>
+      <img class="foto-hero" src="assets/producto.webp" width="900" height="900" alt="El libro Medicina del Espíritu en un celular, con sal, limón, huevo y una vela en la mesa">
+      <p class="precio-hero"><b>7 USD</b> · un solo pago</p>
+      <p class="bajo" style="margin:-6px 0 12px">En Perú son S/ 27. Al pagar ves el precio en tu moneda.</p>
+      <a class="btn" href="#comprar" data-boton="hero">Comprar por 7 USD →</a>
+      <ul class="sellos"><li>💳 Yape, PagoEfectivo, OXXO o tarjeta</li><li>📲 Te llega al instante para abrirlo en tu celular</li><li>✅ 7 días de garantía</li></ul>
     </div>
   </header>
 
+  <section class="seccion alt" style="padding-top:32px">
+    <div class="caja">
+      <div class="mensaje">
+        <span class="etq">Un mensaje de los tres Monjes</span>
+        <img class="foto-monje" src="assets/yun.webp" width="520" height="867" loading="lazy" alt="Monje Yun">
+        <div class="carta"><p>Si llegaste aquí desde uno de nuestros videos, ya nos conoces.</p><p>Al Maestro Kaizen le toca la puerta de tu casa: la envidia, la visita que te deja todo pesado, la mala racha. El Monje Shen cuida tu descanso y la paz de tu mesa. El Monje Yun habla de plata: la que entra y se va, la deuda que no baja, el negocio que no vende.</p><p>En este libro cada uno te deja 25 rituales, y los otros 25 los escribimos juntos. Cada ritual trae lo que necesitas, cómo se hace y la señal que te dice si funcionó.</p><p>Busca lo que te pasa en el índice y empieza hoy.</p></div>
+        <p class="firma">— Maestro Kaizen, Monje Yun y Monje Shen</p>
+      </div>
+    </div>
+  </section>
+
   <section class="seccion">
-    <div class="angosto">
+    <div class="caja">
       <h2>¿Te pasa algo de esto?</h2>
-      <ul class="dolor-lista">
-        <li>Entras a tu casa y se siente pesada. En la casa se pelea por cualquier cosa.</li>
-        <li>Alguien te sonríe de frente y desde ese día todo se te tranca.</li>
-        <li>Cobras y a los pocos días ya no queda nada, como si la billetera tuviera un hueco.</li>
-        <li>Te despiertas a las 3 de la mañana con la cabeza llena y ya no vuelves a dormir.</li>
-        <li>Vienes en mala racha y nadie te sabe explicar por qué.</li>
-      </ul>
-      <p class="cita">«Lo que te mandan se queda en la casa hasta que alguien lo saca. Con sal, agua y una vela se saca.»</p>
+      <ul class="dolores"><li>Entras a tu casa y se siente pesada. Se pelea por cualquier cosa.</li><li>Alguien te sonríe de frente y desde ese día todo se te traba.</li><li>Cobras y a los pocos días ya no queda nada.</li><li>Te despiertas a las 3 de la mañana con la cabeza llena.</li><li>Vienes en mala racha y nadie te sabe explicar por qué.</li></ul>
+      <p class="remate">Para cada una de estas cosas hay un ritual en el libro, con lo que tienes en tu cocina.</p>
+      <a class="btn" href="#comprar" data-boton="dolores">Quiero mi libro →</a>
     </div>
   </section>
 
-  <section class="seccion ensenanza">
-    <div class="angosto">
-      <span class="etiqueta">Quiénes te enseñan</span>
-      <h2>Cada monje te enseña lo suyo</h2>
-      <div class="monjes">
-        <div class="monje"><img src="assets/cara-kaizen.webp" width="84" height="84" loading="lazy" alt="Maestro Kaizen"><div><h3><span>Parte I</span>Maestro Kaizen</h3><p>La envidia, la visita que te deja todo pesado y la mala racha. Te enseña a soltar lo que traes de la calle y a limpiar lo que te mandaron.</p></div></div>
-        <div class="monje"><img src="assets/cara-shen.webp" width="84" height="84" loading="lazy" alt="Monje Shen"><div><h3><span>Parte II</span>Monje Shen</h3><p>Tu descanso. Que la cabeza se calle al acostarte, que no despiertes a las 3 de la mañana y que en tu mesa se coma sin pelear.</p></div></div>
-        <div class="monje"><img src="assets/cara-yun.webp" width="84" height="84" loading="lazy" alt="Monje Yun"><div><h3><span>Parte III</span>Monje Yun</h3><p>La plata. La que entra y se va el mismo día, la deuda que no baja, el trabajo que no sale y el negocio que no vende.</p></div></div>
-      </div>
-      <h2>Cómo se usa</h2>
-      <ol class="pasos">
-        <li><span class="num">1</span><div><h3>Buscas lo que te pasa</h3><p>El índice tiene 17 problemas de la vida diaria. Tocas el tuyo y te lleva directo al ritual.</p></div></li>
-        <li><span class="num">2</span><div><h3>Lo haces con lo que tienes en casa</h3><p>Cada ritual te dice qué necesitas y cómo se hace, paso por paso, y cuántas veces repetirlo.</p></div></li>
-        <li><span class="num">3</span><div><h3>Miras la señal</h3><p>El huevo, la sal, la vela o el agua te muestran si salió lo pesado. El libro te dice qué significa cada cosa y qué hacer después.</p></div></li>
-      </ol>
+  <section class="seccion alt">
+    <div class="caja">
+      <h2>Lo que hay adentro</h2>
+      <p>100 rituales en cuatro partes. Cada Monje te enseña lo suyo.</p>
+      <div class="partes"><div class="parte"><img src="assets/cara-kaizen.webp" width="64" height="64" loading="lazy" alt=""><div><h3><small>Parte I · Maestro Kaizen</small>Soltar y limpiar</h3><p>La envidia, la visita pesada y la mala racha.</p><p class="ej">Barrido con sal y ruda · Ajo detrás de la puerta · El cuenco de sal en la entrada</p></div></div><div class="parte"><img src="assets/cara-yun.webp" width="64" height="64" loading="lazy" alt=""><div><h3><small>Parte III · Monje Yun</small>Que la plata entre y se quede</h3><p>La plata que se va, las deudas, el trabajo y el negocio.</p><p class="ej">El billete doblado hacia ti · La vela verde para la deuda · Albahaca en la caja del dinero</p></div></div><div class="parte"><img src="assets/cara-shen.webp" width="64" height="64" loading="lazy" alt=""><div><h3><small>Parte II · Monje Shen</small>Calmar y descansar</h3><p>Dormir de corrido y tener paz en la mesa.</p><p class="ej">Limón con clavos junto a la cama · Sal debajo del colchón · Huevo pasado por el cuerpo</p></div></div><div class="parte"><span class="num">IV</span><div><h3><small>Parte IV · Los tres</small>Sostener la paz</h3><p>Para que la casa se quede limpia y en calma cuando ya limpiaste.</p></div></div></div>
     </div>
   </section>
 
   <section class="seccion">
-    <div class="angosto">
-      <h2>Busca lo que te pasa</h2>
-      <p>Estos son los 17 problemas del índice. Cada uno te lleva a los rituales que tocan.</p>
-      <ul class="chips">
-        <li>Duermes y amaneces cansada</li>
-        <li>La cabeza no para</li>
-        <li>La casa se siente pesada</li>
-        <li>Alguien te tiene envidia</li>
-        <li>Una visita te dejó mal</li>
-        <li>Pelea en la casa o con tu pareja</li>
-        <li>La plata no alcanza o se va</li>
-        <li>Deudas o te deben plata</li>
-        <li>Buscas trabajo</li>
-        <li>Tienes un negocio</li>
-        <li>Envidia a lo que ganas</li>
-        <li>Mala racha</li>
-        <li>Tus hijos y tu familia</li>
-        <li>Perdiste a alguien</li>
-        <li>Un miedo pegado al pecho</li>
-        <li>Te sientes sin fuerzas</li>
-        <li>Casa nueva o cosas heredadas</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="seccion" style="padding-top:8px">
-    <div class="contenedor">
-      <div class="angosto" style="width:auto;max-width:680px;margin:0">
-        <h2>Lo que hay adentro</h2>
-        <p>Cuatro partes de 25 rituales y un regalo al final. Aquí van algunos.</p>
-      </div>
-      <div class="semanas">
-        <div class="semana">
-          <h3><span>Parte I · Maestro Kaizen</span>Soltar y limpiar</h3>
-          <ol>
-            <li><b>2</b>Vinagre y sal en el agua de trapear</li>
-            <li><b>6</b>El cuenco de sal en la entrada</li>
-            <li><b>8</b>Ajo detrás de la puerta para cortar lo que te mandan</li>
-            <li><b>18</b>Barrido con sal y ruda desde el fondo hacia la calle</li>
-            <li><b>21</b>Clavos de olor en el bolsillo para un día difícil</li>
-          </ol>
-          <p class="mas">Y 20 rituales más.</p>
-        </div>
-        <div class="semana">
-          <h3><span>Parte II · Monje Shen</span>Calmar y descansar</h3>
-          <ol>
-            <li><b>28</b>Limón con clavos junto a la cama</li>
-            <li><b>34</b>El alumbre detrás de la puerta</li>
-            <li><b>38</b>Huevo pasado por el cuerpo (limpia completa)</li>
-            <li><b>44</b>Sal en el lugar de la discusión</li>
-            <li><b>47</b>Sal debajo del colchón</li>
-          </ol>
-          <p class="mas">Y 20 rituales más.</p>
-        </div>
-        <div class="semana">
-          <h3><span>Parte III · Monje Yun</span>Que la plata entre y se quede</h3>
-          <ol>
-            <li><b>51</b>La billetera limpia con agua de canela</li>
-            <li><b>53</b>El billete doblado hacia ti</li>
-            <li><b>57</b>La vela verde para pagar una deuda</li>
-            <li><b>61</b>Velas de tres colores para pedir un trabajo</li>
-            <li><b>66</b>Siete hojas de albahaca en la caja del dinero</li>
-          </ol>
-          <p class="mas">Y 20 rituales más.</p>
-        </div>
-        <div class="semana">
-          <h3><span>Parte IV · Los tres</span>Sostener la paz</h3>
-          <ol>
-            <li><b>78</b>Sal gruesa en las cuatro esquinas de la sala</li>
-            <li><b>87</b>La veladora de la familia</li>
-            <li><b>90</b>Lavar el piso de adentro hacia afuera con limón y sal</li>
-            <li><b>93</b>Pan y sal para abrir la casa nueva</li>
-            <li><b>95</b>Barrida de sal y vaso con limón después de visitas pesadas</li>
-          </ol>
-          <p class="mas">Y 20 rituales más.</p>
-        </div>
-        <div class="semana regalo-parte">
-          <h3><span>🎁 Regalo</span>Los 30 rituales de los videos</h3>
-          <ol>
-            <li><b>B7</b>Limpia con huevo y vaso con agua</li>
-            <li><b>B5</b>Tijera abierta bajo la alfombra de entrada</li>
-            <li><b>B16</b>Siete lentejas en la billetera</li>
-            <li><b>B20</b>Congelar la deuda en un vaso de agua</li>
-            <li><b>B29</b>Nunca barras de noche</li>
-          </ol>
-          <p class="mas">Los que contamos en Facebook, completos y con su señal.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="seccion por-dentro">
-    <div class="angosto">
+    <div class="caja">
       <h2>Mira el libro por dentro</h2>
-      <p>Páginas reales del libro. La del billete es el ritual 53 completo: lo puedes hacer hoy mismo. Toca una para verla en grande.</p>
-      <div class="paginas">
-        <figure><a href="assets/pag-ritual.webp" target="_blank" rel="noopener"><img src="assets/pag-ritual.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Página 123: ritual 53, el billete doblado hacia ti"></a><figcaption><b>Un ritual paso a paso</b>Página 123</figcaption></figure>
-        <figure><a href="assets/pag-senal.webp" target="_blank" rel="noopener"><img src="assets/pag-senal.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Página 124: la señal del ritual y qué hacer después"></a><figcaption><b>Su señal y qué hacer después</b>Página 124</figcaption></figure>
-        <figure><a href="assets/pag-indice.webp" target="_blank" rel="noopener"><img src="assets/pag-indice.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Página 7: índice por lo que te pasa"></a><figcaption><b>Busca por lo que te pasa</b>Página 7</figcaption></figure>
-        <figure><a href="assets/pag-parte.webp" target="_blank" rel="noopener"><img src="assets/pag-parte.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Página 16: Parte I, Soltar y limpiar, con el Maestro Kaizen"></a><figcaption><b>Cada parte con su monje</b>Página 16</figcaption></figure>
-      </div>
+      <p>Son páginas reales, con letra grande. La primera es un ritual completo: lo puedes hacer hoy mismo.</p>
+      <p class="desliza" style="font-weight:800;color:var(--vino)">👉 Pasa las páginas con tu dedo, de derecha a izquierda</p>
+      <div class="carrusel"><figure><a href="assets/pag-ritual.webp" target="_blank" rel="noopener"><img src="assets/pag-ritual.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Un ritual completo"></a><figcaption><b>Un ritual completo</b>Página 123</figcaption></figure><figure><a href="assets/pag-senal.webp" target="_blank" rel="noopener"><img src="assets/pag-senal.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Su señal y qué hacer después"></a><figcaption><b>Su señal y qué hacer después</b>Página 124</figcaption></figure><figure><a href="assets/pag-indice.webp" target="_blank" rel="noopener"><img src="assets/pag-indice.webp" width="681" height="1135" loading="lazy" decoding="async" alt="El índice por lo que te pasa"></a><figcaption><b>El índice por lo que te pasa</b>Página 7</figcaption></figure><figure><a href="assets/pag-parte.webp" target="_blank" rel="noopener"><img src="assets/pag-parte.webp" width="681" height="1135" loading="lazy" decoding="async" alt="Cada parte con su Monje"></a><figcaption><b>Cada parte con su Monje</b>Página 16</figcaption></figure></div>
     </div>
   </section>
 
-  <section class="seccion" id="comprar">
-    <div class="angosto">
+  <section class="seccion alt" id="comprar">
+    <div class="caja">
       <h2>Todo lo que recibes hoy</h2>
-      <ul class="pack">
-        <li><span class="ico">📖</span><div><h3>Libro de 287 páginas</h3><p>100 rituales en cuatro partes, para leer en el celular.</p></div><span class="tag">Incluido</span></li>
-        <li><span class="ico">🔎</span><div><h3>Índice por lo que te pasa</h3><p>17 problemas. Tocas el tuyo y te lleva al ritual.</p></div><span class="tag">Incluido</span></li>
-        <li><span class="ico">🥚</span><div><h3>Cómo leer las señales</h3><p>Con fotos: el huevo, la sal, la vela, el agua, el limón, el alumbre y las hierbas.</p></div><span class="tag">Incluido</span></li>
-        <li><span class="ico">📅</span><div><h3>Tu primera semana</h3><p>Qué ritual hacer cada día si no sabes por dónde empezar.</p></div><span class="tag">Incluido</span></li>
-        <li><span class="ico">🎁</span><div><h3>Los 30 rituales de los videos</h3><p>Completos, con su paso a paso y su señal.</p></div><span class="tag regalo-tag">Regalo</span></li>
+      <ul class="recibes">
+        <li><span class="ico">📖</span><div><h3>El libro completo, 287 páginas</h3><p>100 rituales para leer en tu celular, con letra grande.</p></div></li>
+        <li><span class="ico">🔎</span><div><h3>Índice por lo que te pasa</h3><p>No tienes que leer todo. Al principio hay una lista de 17 problemas (la plata, la envidia, el sueño, las peleas). Tocas el tuyo con el dedo y el libro te lleva solito al ritual.</p></div></li>
+        <li><span class="ico">🥚</span><div><h3>Cómo leer las señales, con fotos</h3><p>Para que no te quedes con la duda: qué significa cuando el agua del huevo sale con burbujas, cuando la sal se pone oscura o la vela llora.</p></div></li>
+        <li><span class="ico">📅</span><div><h3>Tu primera semana</h3><p>Si no sabes por cuál empezar, te decimos qué ritual hacer cada día, de lunes a domingo.</p></div></li>
+        <li class="regalo"><span class="ico">🎁</span><div><h3>De regalo: los 30 rituales de nuestros videos</h3><p>Los que nos viste en Facebook y no alcanzaste a anotar, escritos paso a paso y con su señal.</p></div></li>
       </ul>
-
       <div class="precio">
-        <span class="etiqueta">Precio de lanzamiento</span>
+        <div>Todo por</div>
         <div class="monto">7 <small>USD</small></div>
-        <p>Pago único. Son 130 rituales: ni 6 centavos cada uno.</p>
-        <p class="subida" id="subida" hidden></p>
-        <a class="btn-comprar" href="#comprar" data-boton="precio">Sí, quiero mi libro <span class="flecha">→</span></a>
-        <p class="pagos">Pagas con tarjeta, PayPal o en efectivo según tu país (OXXO en México, Yape y PagoEfectivo en Perú, y otros). Al pagar ves el precio en tu moneda.</p>
-        <ul class="confianza">
-          <li>🔒 Pago seguro con Hotmart</li>
-          <li>✉️ Te llega al correo al toque</li>
-        </ul>
+        <p>Pagas una sola vez y el libro es tuyo. No hay cobros mensuales.</p>
+        <a class="btn" href="#comprar" data-boton="precio">Comprar por 7 USD →</a>
+        <p class="pagos"><b>Pagas en tu moneda y como tú quieras:</b><br>En Perú: Yape, PagoEfectivo o tarjeta (S/ 27).<br>En México: OXXO o tarjeta.<br>En otros países: tarjeta de débito o crédito, PayPal o efectivo según tu país.</p>
       </div>
-
       <div class="garantia">
         <div class="sello"><span><b>7</b>días de garantía</span></div>
-        <div>
-          <h3>Haz tus primeros rituales con calma</h3>
-          <p>Si sientes que no es para ti, pides el reembolso desde tu cuenta de Hotmart dentro de los 7 días y te devuelven el 100 % de lo que pagaste.</p>
-        </div>
+        <div><h3>Pruébalo tranquila 7 días</h3><p>Lee el libro y haz tus primeros rituales. Si sientes que no es para ti, pides tu devolución dentro de los 7 días y te regresan el 100 % de lo que pagaste, sin preguntas.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="seccion faq" style="padding-top:8px">
-    <div class="angosto">
+  <section class="seccion faq">
+    <div class="caja">
       <h2>Preguntas frecuentes</h2>
-      <details><summary>¿Tengo que comprar cosas raras?</summary><p>Casi todo está en tu cocina: sal, limón, huevo, canela, ajo, romero, laurel, un vaso de agua. Lo demás (alumbre, ruda, una vela) lo consigues en el mercado por poco.</p></details>
-      <details><summary>¿Choca con mi fe o mi religión?</summary><p>No. Son rituales con cosas de tu casa y no te piden cambiar lo que crees. Si rezas, puedes sumar tu oración al ritual.</p></details>
-      <details><summary>¿Por dónde empiezo?</summary><p>Por el índice: buscas lo que te pasa y te dice qué ritual hacer. Si no sabes, el libro trae «Tu primera semana», con un ritual para cada día.</p></details>
-      <details><summary>¿Cómo sé si funcionó?</summary><p>Cada ritual trae su señal: qué mirar en el huevo, el agua, la sal o la vela, y qué hacer después según lo que veas.</p></details>
-      <details><summary>¿Cómo lo recibo?</summary><p>Apenas Hotmart confirma tu pago, te llega un correo con el acceso. Si no lo ves, revisa Promociones o Spam. Si pagas en efectivo, te llega cuando se acredita el pago.</p></details>
-      <details><summary>No soy buena con la tecnología, ¿podré usarlo?</summary><p>Sí. Abres el libro en el celular, tocas lo que te pasa en el índice y te lleva al ritual. Si te trabas, nos escribes desde tu compra en Hotmart (opción «Contactar al productor») y te ayudamos.</p></details>
+      <details><summary>¿Cómo me llega y cómo lo abro?</summary><p>Apenas pagas, te llega un correo de Hotmart con el botón para abrir tu libro. Lo descargas y queda guardado en tu celular para leerlo cuando quieras. Si no ves el correo, búscalo en «Correo no deseado». Si pagas en efectivo o con PagoEfectivo, te llega apenas se confirma tu pago.</p></details>
+      <details><summary>¿Qué es Hotmart?</summary><p>Es la plataforma que cobra y te entrega el libro. Es de Brasil y la usan miles de autores de libros y cursos en toda Latinoamérica. Tus datos de pago quedan con ellos, no con nosotros, y desde ahí pides tu devolución si la necesitas.</p></details>
+      <details><summary>¿Tengo que comprar cosas raras?</summary><p>Casi todo está en tu cocina: sal, limón, huevo, canela, ajo, romero, laurel y un vaso de agua. Lo demás (alumbre, ruda, una vela) lo consigues en el mercado por poco.</p></details>
+      <details><summary>No soy buena con el celular, ¿podré usarlo?</summary><p>Sí, está hecho pensando en ti. Tiene letra grande. Al principio hay una lista de problemas: tocas el tuyo con el dedo (por ejemplo «La plata no te alcanza») y el libro te lleva solito al ritual. Si te trabas, nos escribes y te ayudamos.</p></details>
+      <details><summary>¿Choca con mi fe?</summary><p>No. Son rituales con cosas de tu casa y no te piden cambiar lo que crees. Si rezas, puedes sumar tu oración al ritual.</p></details>
       <details><summary>¿Puedo pagar desde mi país?</summary><p>Sí. Al tocar el botón, Hotmart te muestra el precio en tu moneda y las formas de pago de tu país.</p></details>
-      <details><summary>¿Qué pasa si no me sirve?</summary><p>Tienes 7 días de garantía. Pides el reembolso desde Hotmart y te devuelven todo lo que pagaste.</p></details>
-      <details><summary>¿Es seguro pagar?</summary><p>Sí. El pago lo procesa Hotmart, una plataforma de productos digitales. Tus datos de pago no pasan por nosotros.</p></details>
+      <details><summary>¿Y si no me sirve?</summary><p>Tienes 7 días de garantía. Pides el reembolso desde Hotmart y te devuelven todo lo que pagaste.</p></details>
     </div>
   </section>
 
-  <section class="seccion cierre">
-    <div class="angosto">
-      <span class="caras"><img src="assets/cara-kaizen.webp" width="84" height="84" loading="lazy" alt="Maestro Kaizen"><img src="assets/cara-yun.webp" width="84" height="84" loading="lazy" alt="Monje Yun"><img src="assets/cara-shen.webp" width="84" height="84" loading="lazy" alt="Monje Shen"></span>
-      <h2>Empieza hoy con lo que tienes en la cocina</h2>
-      <p>Buscas lo que te pasa, haces el ritual y miras la señal.</p>
-      <a class="btn-comprar" href="#comprar" data-boton="cierre">Quiero mi libro ahora <span class="flecha">→</span></a>
-      <p class="bajo-boton" style="color:#dccbc2">7 USD, pago único · 7 días de garantía</p>
+  <section class="seccion alt cierre">
+    <div class="caja">
+      <img class="cara" src="assets/cara-yun.webp" width="110" height="110" loading="lazy" alt="">
+      <h2>Empieza esta misma noche</h2>
+      <p>Hoy en tu cocina ya tienes sal, un limón o un billete para tu primer ritual. Lo haces antes de dormir y mañana miras la señal.</p>
+      <a class="btn" href="#comprar" data-boton="cierre">Comprar por 7 USD →</a>
+      <p class="bajo">Un solo pago · En tu moneda · 7 días de garantía</p>
     </div>
   </section>
 
   <footer class="pie">
-    <p>¿Dudas? Escríbenos desde tu compra en Hotmart.</p>
+    <p>Medicina del Espíritu · Maestro Kaizen, Monje Yun y Monje Shen</p>
     <p>© 2026 Biblioteca Práctica</p>
   </footer>
 
   <div class="barra-fija" aria-hidden="true">
     <div class="texto">Medicina del Espíritu<br><b>7 USD</b> · pago único</div>
-    <a class="btn-comprar" href="#comprar" data-boton="barra">Lo quiero →</a>
+    <a class="btn" href="#comprar" data-boton="barra">Comprar →</a>
   </div>
 
   <script>
-    // Enlace de pago de Hotmart. VENTA_PAUSADA = true deja los botones en "Disponible muy pronto".
-    const LINK_COMPRA = "https://pay.hotmart.com/H108389273M";
-    const VENTA_PAUSADA = false;
-    const PRECIO = 7;
-    // Subida de precio real: poner la fecha (por ejemplo "1 de diciembre") y el precio nuevo. Vacío = no se muestra.
-    const SUBE_EL = "";
-    const PRECIO_NUEVO = "12 USD";
-    // Microsoft Clarity (mapas de calor y grabaciones). Vacío = apagado.
-    const CLARITY_ID = "z3456uvziu";
-
-    // De dónde viene la visita, para verlo en Hotmart (Informes → SRC). Ej.: ?src=kaizen-med
-    const entrada = new URLSearchParams(location.search);
-    const origen = entrada.get("src") || (entrada.has("fbclid") ? "fb" : "landing");
-    const destino = new URL(LINK_COMPRA);
+    var LINK_COMPRA = "https://pay.hotmart.com/H108389273M";
+    var CLARITY_ID = "z3456uvziu";
+    var entrada = new URLSearchParams(location.search);
+    var origen = entrada.get("src") || (entrada.has("fbclid") ? "fb-general" : "landing-general");
+    var destino = new URL(LINK_COMPRA);
     destino.searchParams.set("src", origen);
-    for (const [clave, valor] of entrada) {
-      if (clave.startsWith("utm_") || clave === "sck") destino.searchParams.set(clave, valor);
-    }
-
-    document.querySelectorAll(".btn-comprar").forEach(boton => {
-      if (VENTA_PAUSADA) {
-        boton.textContent = "Disponible muy pronto";
-        boton.removeAttribute("href");
-        boton.style.opacity = "0.75";
-        return;
-      }
+    entrada.forEach(function (valor, clave) { if (clave.indexOf("utm_") === 0 || clave === "sck") destino.searchParams.set(clave, valor); });
+    document.querySelectorAll(".btn").forEach(function (boton) {
       boton.href = destino.toString();
-      boton.addEventListener("click", () => {
-        fbq("track", "InitiateCheckout", {value: PRECIO, currency: "USD"});
-        fbq("trackCustom", "ClicComprar", {boton: boton.dataset.boton, origen});
+      boton.addEventListener("click", function () {
+        fbq("track", "InitiateCheckout", {value: 7, currency: "USD"});
+        fbq("trackCustom", "ClicComprar", {boton: boton.dataset.boton, landing: "general", origen: origen});
       });
     });
-
-    if (SUBE_EL) {
-      const subida = document.getElementById("subida");
-      subida.textContent = `Desde el ${SUBE_EL} sube a ${PRECIO_NUEVO}.`;
-      subida.hidden = false;
-    }
-
-    const marcas = [25, 50, 75, 100];
-    const vistas = new Set();
-    addEventListener("scroll", () => {
-      const total = document.documentElement.scrollHeight - innerHeight;
-      const avance = total > 0 ? Math.round(scrollY / total * 100) : 100;
-      for (const marca of marcas) {
-        if (avance >= marca && !vistas.has(marca)) {
-          vistas.add(marca);
-          fbq("trackCustom", "Scroll" + marca);
-        }
-      }
+    var marcas = [25, 50, 75, 100], vistas = {};
+    addEventListener("scroll", function () {
+      var total = document.documentElement.scrollHeight - innerHeight;
+      var avance = total > 0 ? Math.round(scrollY / total * 100) : 100;
+      marcas.forEach(function (m) { if (avance >= m && !vistas[m]) { vistas[m] = 1; fbq("trackCustom", "Scroll" + m, {landing: "general"}); } });
     }, {passive: true});
-
-    // Barra fija: aparece al pasar el primer botón y se esconde en la zona de compra.
-    const barra = document.querySelector(".barra-fija");
-    const botonHero = document.querySelector('[data-boton="hero"]');
-    const zonaCompra = document.querySelector(".precio");
-    let compraVisible = false;
-    const actualizarBarra = () => {
-      const pasado = botonHero.getBoundingClientRect().bottom < 0;
-      const mostrar = pasado && !compraVisible;
-      barra.classList.toggle("visible", mostrar);
-      barra.setAttribute("aria-hidden", String(!mostrar));
-    };
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(([e]) => { compraVisible = e.isIntersecting; actualizarBarra(); }).observe(zonaCompra);
+    var video = document.querySelector(".video video"), play = document.querySelector(".play");
+    if (video && play) {
+      play.addEventListener("click", function () { play.remove(); video.controls = true; video.play(); fbq("trackCustom", "PlayVideoMonje", {landing: "general"}); });
     }
-    addEventListener("scroll", actualizarBarra, {passive: true});
-
-    const vistaPrevia = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-    if (CLARITY_ID && !vistaPrevia) {
+    var barra = document.querySelector(".barra-fija"), botonHero = document.querySelector('[data-boton="hero"]'), zona = document.querySelector(".precio"), enCompra = false;
+    function actualizar() { var m = botonHero.getBoundingClientRect().bottom < 0 && !enCompra; barra.classList.toggle("visible", m); barra.setAttribute("aria-hidden", String(!m)); }
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (e) { enCompra = e[0].isIntersecting; actualizar(); }).observe(zona);
+    addEventListener("scroll", actualizar, {passive: true});
+    var local = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+    if (CLARITY_ID && !local) {
       (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
       t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script",CLARITY_ID);
