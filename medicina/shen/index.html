@@ -111,6 +111,8 @@
     .precio .monto { font: 700 3.8rem/1 "Fraunces", serif; color: var(--vino); margin: 4px 0 6px; }
     .precio .monto small { font-size: 1.3rem; }
     .precio .pagos { font-size: .98rem; color: var(--suave); margin: 14px 0 0; }
+    .precio .local { font-size: 1.15rem; margin: 0 0 12px; }
+    [data-precio-local] b { color: var(--vino); }
     .garantia { display: grid; grid-template-columns: 80px 1fr; gap: 14px; align-items: center; margin-top: 18px; background: #fff; border: 1px solid var(--linea); border-radius: 16px; padding: 16px; }
     .garantia .sello { width: 80px; height: 80px; border-radius: 50%; display: grid; place-items: center; text-align: center; background: var(--verde); color: #fff; font: 800 .72rem/1.1 "Nunito", sans-serif; text-transform: uppercase; }
     .garantia .sello b { display: block; font: 700 1.9rem/1 "Fraunces", serif; }
@@ -149,7 +151,7 @@
       <p class="sub">25 rituales del Monje Shen para dormir y tener paz en la casa, y 75 más para cortar la envidia y que la plata se quede. Con huevo, sal, limón y lo que ya tienes en la cocina.</p>
       <img class="foto-hero" src="../assets/producto-shen.webp" width="900" height="900" alt="El libro Medicina del Espíritu en un celular, con sal, limón, huevo y una vela en la mesa">
       <p class="precio-hero"><b>7 USD</b> · un solo pago</p>
-      <p class="bajo" style="margin:-6px 0 12px">Al pagar ves el precio en la moneda de tu país.</p>
+      <p class="bajo" style="margin:-6px 0 12px" data-precio-local>Al pagar ves el precio en la moneda de tu país.</p>
       <a class="btn" href="#comprar" data-boton="hero">Comprar por 7 USD →</a>
       <ul class="sellos"><li>💳 Tarjeta, PayPal o efectivo, según tu país</li><li>📲 Te llega al instante para abrirlo en tu celular</li><li>✅ 7 días de garantía</li></ul>
     </div>
@@ -205,6 +207,7 @@
       <div class="precio">
         <div>Todo por</div>
         <div class="monto">7 <small>USD</small></div>
+        <p class="local" data-precio-local hidden></p>
         <p>Pagas una sola vez y el libro es tuyo. No hay cobros mensuales.</p>
         <a class="btn" href="#comprar" data-boton="precio">Comprar por 7 USD →</a>
         <p class="pagos"><b>Pagas en tu moneda y como tú quieras:</b><br>Con tarjeta de débito o crédito, con PayPal o en efectivo, según los medios de tu país. Al pagar ves el precio exacto en tu moneda.</p>
@@ -254,6 +257,16 @@
     var CLARITY_ID = "z3456uvziu";
     var entrada = new URLSearchParams(location.search);
     var origen = entrada.get("src") || (entrada.has("fbclid") ? "fb-shen" : "landing-shen");
+    var PRECIOS = {"MX": "En tu moneda son unos <b>$159 pesos mexicanos</b>, IVA incluido.", "US": "En tu país pagas en dólares: son <b>7 dólares</b>.", "AR": "En tu moneda son unos <b>$12.800 pesos argentinos</b>.", "CO": "En tu moneda son unos <b>$24.200 pesos colombianos</b>.", "PE": "En tu moneda son unos <b>27 soles</b>.", "CL": "En tu moneda son unos <b>$7.160 pesos chilenos</b>, IVA incluido.", "EC": "En tu país pagas en dólares: son <b>7 dólares</b>.", "VE": "En tu país pagas en dólares: son <b>7 dólares</b>.", "BO": "En tu moneda son unos <b>89 bolivianos</b>.", "PY": "En tu moneda son unos <b>46.200 guaraníes</b>.", "UY": "En tu moneda son unos <b>$299 pesos uruguayos</b>.", "CR": "En tu moneda son unos <b>3.350 colones</b>.", "GT": "En tu moneda son unos <b>57 quetzales</b>.", "HN": "En tu moneda son unos <b>200 lempiras</b>.", "SV": "En tu país pagas en dólares: son <b>7 dólares</b>.", "NI": "En tu país pagas en dólares: son <b>7 dólares</b>.", "DO": "En tu moneda son unos <b>$449 pesos dominicanos</b>.", "PR": "En tu país pagas en dólares: son <b>7 dólares</b>.", "ES": "En tu moneda son <b>7 euros</b>, IVA incluido.", "CA": "En tu moneda son unos <b>12 dólares canadienses</b>, impuestos incluidos.", "IT": "En tu moneda son <b>7 euros</b>, impuestos incluidos.", "DE": "En tu moneda son <b>7 euros</b>, impuestos incluidos.", "FR": "En tu moneda son <b>7 euros</b>, impuestos incluidos.", "GB": "En tu moneda son <b>7 libras</b>.", "PT": "En tu moneda son <b>7 euros</b>, impuestos incluidos.", "CH": "En tu moneda son <b>7 francos suizos</b>."}, ZONAS = {"America/Mexico_City":"MX","America/Cancun":"MX","America/Merida":"MX","America/Monterrey":"MX","America/Matamoros":"MX","America/Chihuahua":"MX","America/Ciudad_Juarez":"MX","America/Ojinaga":"MX","America/Mazatlan":"MX","America/Bahia_Banderas":"MX","America/Hermosillo":"MX","America/Tijuana":"MX","America/Santa_Isabel":"MX","America/Ensenada":"MX","Mexico/General":"MX","Mexico/BajaNorte":"MX","Mexico/BajaSur":"MX","America/New_York":"US","America/Detroit":"US","America/Chicago":"US","America/Denver":"US","America/Boise":"US","America/Phoenix":"US","America/Los_Angeles":"US","America/Anchorage":"US","America/Juneau":"US","America/Sitka":"US","America/Metlakatla":"US","America/Yakutat":"US","America/Nome":"US","America/Adak":"US","Pacific/Honolulu":"US","America/Indianapolis":"US","America/Fort_Wayne":"US","America/Louisville":"US","America/Menominee":"US","America/Shiprock":"US","America/Knox_IN":"US","US/Eastern":"US","US/Central":"US","US/Mountain":"US","US/Pacific":"US","US/Arizona":"US","US/Alaska":"US","US/Hawaii":"US","US/Michigan":"US","US/East-Indiana":"US","US/Indiana-Starke":"US","America/Buenos_Aires":"AR","America/Cordoba":"AR","America/Catamarca":"AR","America/Jujuy":"AR","America/Mendoza":"AR","America/Rosario":"AR","America/Bogota":"CO","America/Lima":"PE","America/Santiago":"CL","America/Punta_Arenas":"CL","America/Coyhaique":"CL","Pacific/Easter":"CL","Chile/Continental":"CL","Chile/EasterIsland":"CL","America/Guayaquil":"EC","Pacific/Galapagos":"EC","America/Caracas":"VE","America/La_Paz":"BO","America/Asuncion":"PY","America/Montevideo":"UY","America/Costa_Rica":"CR","America/Guatemala":"GT","America/Tegucigalpa":"HN","America/El_Salvador":"SV","America/Managua":"NI","America/Santo_Domingo":"DO","America/Puerto_Rico":"PR","Europe/Madrid":"ES","Atlantic/Canary":"ES","Africa/Ceuta":"ES","Europe/Rome":"IT","Europe/Berlin":"DE","Europe/Busingen":"DE","Europe/Paris":"FR","Europe/Lisbon":"PT","Atlantic/Madeira":"PT","Atlantic/Azores":"PT","Europe/London":"GB","Europe/Belfast":"GB","Europe/Zurich":"CH","America/Toronto":"CA","America/Montreal":"CA","America/Vancouver":"CA","America/Edmonton":"CA","America/Winnipeg":"CA","America/Halifax":"CA","America/St_Johns":"CA","America/Regina":"CA","America/Moncton":"CA","America/Thunder_Bay":"CA"};
+    var pais = (entrada.get("pais") || "").toUpperCase();
+    if (!PRECIOS[pais]) {
+      pais = "";
+      try {
+        var zonaHoraria = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+        pais = ZONAS[zonaHoraria] || (zonaHoraria.indexOf("America/Argentina/") === 0 ? "AR" : /^America\/(Indiana|Kentucky|North_Dakota)\//.test(zonaHoraria) ? "US" : "");
+      } catch (e) {}
+    }
+    if (pais) document.querySelectorAll("[data-precio-local]").forEach(function (el) { el.innerHTML = PRECIOS[pais]; el.hidden = false; });
     var destino = new URL(LINK_COMPRA);
     destino.searchParams.set("src", origen);
     entrada.forEach(function (valor, clave) { if (clave.indexOf("utm_") === 0 || clave === "sck") destino.searchParams.set(clave, valor); });
